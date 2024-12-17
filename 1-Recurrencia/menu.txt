@@ -1,0 +1,30 @@
+<menu type="window">
+	<action name="Nueva pestaña">
+		<shortcut>Ctrl + T</shortcut>
+	</action>
+	<action name="Nueva ventana">
+		<shortcut>Ctrl + N</shortcut>
+	</action>
+	...
+	<menu type="submenu" name="Zoom">
+		<action name="Reducir">
+			<shortcut>Ctrl + -</shortcut>
+		</action>
+		<action name="Ampliar">
+			<shortcut>Ctrl + +</shortcut>
+		</action>
+		<action name="Fullscreen">
+			<shortcut>F11</shortcut>
+		</action>
+	</menu>
+	<menu type="window" name="Más herramientas">
+		<action name="Guardar página como...">
+			<shortcut>Ctrl + S</shortcut>
+		</action>
+		<action name="Crear acceso directo">
+			<shortcut></shortcut>
+		</action>
+		...
+	</menu>
+	...
+</menu>

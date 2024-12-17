@@ -1,0 +1,34 @@
+<calendario>
+	<title>HORARIO ESCOLAR 1RO "B" DE PRIMARIA</title>
+	<month>Marzo</month>
+	<year>2019</year>
+	<days-data type="WORKDAYS">
+		<day type="LUNES">
+			<activities-data>
+				<activity name="ACTIVIDADES PERMANENTES">
+					<start>7:25</start>
+					<end>7:35</end>
+				</activity>
+				<activity name="COMUNICACIÓN">
+					<start>7:35</start>
+					<end>8:10</end>
+				</activity>
+				...
+			</activities-data>
+		</day>
+		<days type="MARTES">
+			<activities-data>
+				<activity name="ACTIVIDADES PERMANENTES">
+					<start>7:25</start>
+					<end>7:35</end>
+				</activity>
+				<activity name="MATEMÁTICA">
+					<start>7:35</start>
+					<end>8:10</end>
+				</activity>
+				...
+			</activities-data>
+		</days>
+		...
+	</days-data>
+</calendario>

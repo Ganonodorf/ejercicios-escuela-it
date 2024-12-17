@@ -1,0 +1,46 @@
+<curriculum>
+	<title>Curriculum Vitae</title>
+	<personal-data>
+		<name>Michelle</name>
+		<surname>Torres Quiroz</surname>
+		<age>25 años</age>
+		<adress>Av. Siempreviva No. 17 Col.Anzures, México D.F. 04565</adress>
+		<phone>55-34-45-95</phone>
+		<email>curriculum@gmail.com</email>
+		<description>Tengo un carácter de mujer emprendedora ...</description>
+	</personal-data>
+	<education-data>
+		<education type="Licenciatura">
+			<institution>Universidad Autónoma de México. Factulad de Ciencias de la Comunicación.</institution>
+			<qualification>Licenciatura en Ciencias de la Comunicación</qualification>
+			<start>2001</start>
+			<end>2005</end>
+		</education>
+		<education type="Licenciatura">
+			<institution>Universidad Autónoma de...</institution>
+			...
+		</education>
+		...
+	</education-data>
+	<experience-data>
+		<experience>
+			<position>Asesor Jurídico para Revista México</position>
+			<location>México</location>
+			<start>2000</start>
+			<end>2011</end>
+		</experience>
+		<experience>
+			<position>Creadora publicitaria y editora de revista y periódico</position>
+			...
+		</experience>
+		...
+	</experience-data>
+	<skills-data>
+		<skill>
+			<name>Administrativas y contable, curso realizado online, constancia de la SEC. Año 2008.</name>
+		</skill>
+		<skill>
+			<name>Windows office...</name>
+		</skill>
+		...
+</curriculum>
