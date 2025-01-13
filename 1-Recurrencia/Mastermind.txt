@@ -1,0 +1,54 @@
+@startuml
+
+skin rose
+
+class MasterMind
+
+MasterMind *--> Board
+MasterMind *--> "2" Player
+MasterMind *--> "16" Turn
+
+    Board *--> "4x9" Square 
+    Board *--> "4x8" Hint
+            
+            Square o--> Big
+            Square *--> Position
+            
+            Hint o--> Small
+        
+        Piece <|-- Big
+        Piece <|-- Small
+        
+            Big <|-- Orange
+            Big <|-- Yellow
+            Big <|-- Green
+            Big <|-- Blue
+            Big <|-- Purple
+            Big <|-- Pink
+            
+            Small <|-- Red
+            Small <|-- White
+    
+    Player *--> Piece
+    Player <|-- Master
+    Player <|-- Guesser
+        
+            Master ..> CreateGoal : beggining
+            Master ..> "8" CheckGuess
+            
+                CreateGoal --> Square
+                
+                CheckGuess ..> Square
+                CheckGuess --> Hint
+                
+            Guesser ..> "8" Guess
+            
+                Guess --> Square
+                
+    Turn --> "2" Player
+    
+Action <|-- CreateGoal
+Action <|-- Guess
+Action <|-- CheckGuess
+
+@enduml
