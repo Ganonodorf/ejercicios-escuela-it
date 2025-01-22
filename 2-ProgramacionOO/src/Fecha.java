@@ -1,4 +1,3 @@
-package pruebita;
 class Fecha{
 
 	public Fecha(){};

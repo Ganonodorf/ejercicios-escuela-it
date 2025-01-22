@@ -1,16 +1,4 @@
-package pruebita;
-
 class Intervalo {
-
-	public static void Main(String[] args) {
-		Intervalo intervalo = new Intervalo(0, 10);
-		
-		Intervalo[] intervaloTroceado = intervalo.trocear(5);
-		
-		for(int i = 0; i < intervaloTroceado.length; i++) {
-			intervaloTroceado[i].mostrar();
-		}
-	}
 
 	private double inferior;
 
@@ -50,6 +38,10 @@ class Intervalo {
 
 	public double longitud (){
 		return superior - inferior;
+	}
+
+	public double puntoMedio (){
+		return longitud()/2;
 	}
 
 	public void desplazar(double desplazamiento){
@@ -117,9 +109,19 @@ class Intervalo {
 		Intervalo[] intervalos = new Intervalo[trozos];
 		
 		for(int i = 0; i < trozos; i++) {
-			intervalos[i] = new Intervalo(inferior*i*incremento, superior*i++*incremento);
+			intervalos[i] = new Intervalo(inferior + incremento*i, inferior + incremento*(i + 1));
 		}
 		
 		return intervalos;
+	}
+
+	public static void main(String[] args) {
+		Intervalo intervalo = new Intervalo(0, 10);
+		
+		Intervalo[] intervaloTroceado = intervalo.trocear(6);
+		
+		for(int i = 0; i < intervaloTroceado.length; i++) {
+			intervaloTroceado[i].mostrar();
+		}
 	}
 }
