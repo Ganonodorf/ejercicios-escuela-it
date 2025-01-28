@@ -12,28 +12,26 @@ class Intervalo {
 		return superior;
 	}
 
-	public Intervalo(double _inferior, double _superior){
-		inferior = _inferior;
-		superior = _superior;
+	public Intervalo(double inferior, double superior){
+		assert inferior <= superior;
+		this.inferior = inferior;
+		this.superior = superior;
 	}
 
-	public Intervalo(double _superior){
-		inferior = 0;
-		superior = _superior;
+	public Intervalo(double superior){
+		this(0, superior);
 	}
 
 	public Intervalo(Intervalo intervalo){
-		inferior = intervalo.getInferior();
-		superior = intervalo.getSuperior();
+		this(intervalo.inferior, intervalo.superior);
 	}
 
 	public Intervalo(){
-		inferior = 0;
-		superior = 0;
+		this(0, 0);
 	}
 
 	public Intervalo clonar(){
-		return new Intervalo(inferior, superior);
+		return new Intervalo(this);
 	}
 
 	public double longitud (){
@@ -50,7 +48,9 @@ class Intervalo {
 	}
 
 	public Intervalo desplazado(double desplazamiento){
-		return new Intervalo(inferior + desplazamiento, superior + desplazamiento);
+		Intervalo intervalo = this.clonar();
+		intervalo.desplazar(desplazamiento);
+		return intervalo;
 	}
 
 	public boolean incluye(double punto){
@@ -58,35 +58,43 @@ class Intervalo {
 	}
 
 	public boolean incluye(Intervalo intervalo){
-		return inferior <= intervalo.getInferior() && intervalo.getSuperior() <= superior;
+		assert intervalo != null;
+		return this.incluye(intervalo.inferior) && this.incluye(intervalo.superior);
 	}
 
 	public boolean igual(Intervalo intervalo){
-		return inferior == intervalo.getInferior() && superior == intervalo.getSuperior();
+		assert intervalo != null;
+		return inferior == intervalo.inferior && superior == intervalo.superior;
 	}
 
 	public Intervalo interseccion(Intervalo intervalo){
+		assert intervalo != null;
 		assert intersecta(intervalo) : "No hay intersección";
 		
 		if(incluye(intervalo)) {
-			return intervalo;
+			return intervalo.clonar();
 		}
 		
-		if(incluye(intervalo.getInferior())) {
-			return new Intervalo(intervalo.getInferior(), superior);
+		if(intervalo.incluye(this)) {
+			return clonar();
 		}
 		
-		return new Intervalo(inferior, intervalo.getSuperior());
+		if(incluye(intervalo.inferior)) {
+			return new Intervalo(intervalo.inferior, superior);
+		}
+		
+		return new Intervalo(inferior, intervalo.superior);
 	}
 
 	public boolean intersecta(Intervalo intervalo){
-		return incluye(intervalo.getInferior()) || incluye(intervalo.getSuperior());
+		assert intervalo != null;
+		return incluye(intervalo.inferior) || incluye(intervalo.superior) || intervalo.incluye(this);
 	}
 
 	public void oponer(){
-		double x = superior;
+		double superiorInicial = superior;
 		superior = inferior * -1;
-		inferior = x * -1;
+		inferior = superiorInicial * -1;
 	}
 
 	public void doblar(){
@@ -96,7 +104,11 @@ class Intervalo {
 	}
 
 	public void recoger(){
-		
+		GestorIO gestorIO = new GestorIO();
+		gestorIO.out("¿Inferior?");
+		inferior = gestorIO.inDouble();
+		gestorIO.out("¿Superior?");
+		superior = gestorIO.inDouble();
 	}
 
 	public void mostrar(){
@@ -116,7 +128,9 @@ class Intervalo {
 	}
 
 	public static void main(String[] args) {
-		Intervalo intervalo = new Intervalo(0, 10);
+		Intervalo intervalo = new Intervalo();
+		
+		intervalo.recoger();
 		
 		Intervalo[] intervaloTroceado = intervalo.trocear(6);
 		

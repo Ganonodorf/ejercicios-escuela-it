@@ -23,24 +23,23 @@ public class Intervalo_PM {
 	}
 
 	public Intervalo_PM(Intervalo_PM intervalo){
-		longitud = intervalo.getSuperior() - intervalo.getInferior();
-		puntoMedio = intervalo.getInferior() + longitud / 2;
+		longitud = intervalo.longitud;
+		puntoMedio = intervalo.puntoMedio;
 	}
 
 	public Intervalo_PM(){
-		longitud = 0;
-		puntoMedio = 0;
+		this(0, 0);
 	}
 
 	public Intervalo_PM clonar(){
-		return new Intervalo_PM(puntoMedio - longitud/2, puntoMedio + longitud/2);
+		return new Intervalo_PM(this);
 	}
 
-	public double longitud (){
+	public double longitud(){
 		return longitud;
 	}
 
-	public double puntoMedio (){
+	public double puntoMedio(){
 		return puntoMedio;
 	}
 
@@ -49,7 +48,9 @@ public class Intervalo_PM {
 	}
 
 	public Intervalo_PM desplazado(double desplazamiento){
-		return new Intervalo_PM(getInferior() + desplazamiento, getSuperior() + desplazamiento);
+		Intervalo_PM intervalo = this.clonar();
+		intervalo.desplazar(desplazamiento);
+		return intervalo;
 	}
 
 	public boolean incluye(double punto){
@@ -61,7 +62,7 @@ public class Intervalo_PM {
 	}
 
 	public boolean igual(Intervalo_PM intervalo){
-		return puntoMedio == intervalo.puntoMedio() && longitud == intervalo.longitud();
+		return puntoMedio == intervalo.puntoMedio && longitud == intervalo.longitud;
 	}
 
 	public Intervalo_PM interseccion(Intervalo_PM intervalo){
@@ -118,5 +119,7 @@ public class Intervalo_PM {
 		for(int i = 0; i < intervaloTroceado.length; i++) {
 			intervaloTroceado[i].mostrar();
 		}
+		
+		Intervalo a = new Intervalo(0,5);
 	}
 }
