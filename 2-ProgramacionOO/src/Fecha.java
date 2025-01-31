@@ -6,20 +6,9 @@ class Fecha{
 	private int mes;
 	private int ano;
 	
-	private HashMap<Integer, Integer> meses = new HashMap<Integer, Integer>(){{
-		put(1, 31);
-		put(2, 28);
-		put(3, 31);
-		put(4, 30);
-		put(5, 31);
-		put(6, 30);
-		put(7, 31);
-		put(8, 31);
-		put(9, 30);
-		put(10, 31);
-		put(11, 30);
-		put(12, 31);
-	}};
+	private static final int[] DIAS_MESES = new int[] {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	private static final char[] INICIALES_DIAS = new char[] {'s', 'd', 'l', 'm', 'x', 'j', 'v'};
 	
 	private HashMap<Estacion, Fecha> estaciones = new HashMap<Estacion, Fecha>(){{
 		put(Estacion.PRIMAVERA, new Fecha(20, 3, 1970));
@@ -31,13 +20,11 @@ class Fecha{
 	public Fecha(){
 		dia = 1;
 		mes = 1;
-		ano = 1970;
+		ano = 1;
 	};
 
 	public Fecha(int dia, int mes, int ano){
-		this.dia = dia;
-		this.mes = mes;
-		this.ano = ano;
+		set(dia, mes, ano);
 	};
 
 	public Fecha(Fecha fecha){
@@ -53,6 +40,17 @@ class Fecha{
 	public Fecha(int timeStamp){
 		//int anos = timeStamp/1000/60/60/24/365;
 	};
+	
+	private void set(int dia, int mes, int ano) {
+		this.dia = dia;
+		this.mes = mes;
+		this.ano = ano;
+	}
+
+	
+	public void set(Fecha fecha) {
+		set(fecha.dia, fecha.mes, fecha.ano);
+	}
 
 	public int getDia(){
 		return dia;
@@ -67,7 +65,7 @@ class Fecha{
 	}
 
 	public Fecha clone(){
-		return new Fecha(this);
+		return new Fecha(dia, mes, ano);
 	}
 
 	public void mostrar(){
@@ -83,74 +81,103 @@ class Fecha{
 	}
 	
 	public int toTimeStamp() {
-		float diasTotales = dia + ano*365.25f;
+		int diasTotales = this.diaAno();
 		
-		for(int i = mes; i < 1; i--) {
-			diasTotales += meses.get(i);
+		diasTotales += (ano - 1)*365;
+		
+		for(int i = 1; i < ano - 1; i++) {
+			if(Fecha.bisiesto(i)) {
+				diasTotales += 1;
+			}
 		}
 		
-		return (int)(diasTotales*24*60*60);
+		return diasTotales;
 	}
 
 	public boolean igual(Fecha fecha){
 		return this.ano == fecha.ano && this.dia == fecha.dia && this.mes == fecha.mes;
 	}
 
-	public boolean anterior (Fecha fecha){
+	public boolean anterior(Fecha fecha){
 		return this.toTimeStamp() < fecha.toTimeStamp();
 	}
 
-	public boolean posterior (Fecha fecha){
+	public boolean posterior(Fecha fecha){
 		return this.toTimeStamp() > fecha.toTimeStamp();
 	}
 
 	public int diferenciaDias(Fecha fecha){
-		return (fecha.toTimeStamp() - this.toTimeStamp())/86400;
+		return fecha.toTimeStamp() - this.toTimeStamp();
 	}
 	
 	public boolean bisiesto(){
-		return this.checkBisiesto(ano);
+		return bisiesto(ano);
 	}
 	
-	public boolean checkBisiesto(int ano) {
-		if(ano % 100 == 0) {
-			return ano % 400 == 0;
+	public static boolean bisiesto(int ano) {
+		return ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0;
+	}
+	
+	public int diaAno() {
+		int diasTotales = dia;
+		
+		for(int i = 0; i < mes; i++) {
+			diasTotales += DIAS_MESES[i-1];
 		}
 		
-		return ano % 4 == 0;
+		if(this.bisiesto() && mes > 2) {
+			diasTotales += 1;
+		}
+		
+		return diasTotales;
 	}
 
-	public int diasAno(int ano){
-		if(this.checkBisiesto(ano)) {
+	public static int diasAno(int ano){
+		if(bisiesto(ano)) {
 			return 366;
 		}
 		
 		return 365;
 	}
+	
+	private void incrementar() {
+		dia += 1;
+		if(dia > DIAS_MESES[mes-1]) {
+			dia = 1;
+			mes += 1;
+			if(mes > 12) {
+				mes = 1;
+				ano += 1;
+			}
+		}
+	}
 
 	public void incrementar(int dias){
-		while(dias > 0) {
-			dia += 1;
-			if(dia > meses.get(mes)) {
-				dia = 1;
-				mes += 1;
-				if(mes > 12) {
-					mes = 1;
-					ano += 1;
-				}
-			}
-			dias -= 1;
+		for(int i=0; i<dias; i++) {
+			this.incrementar();
 		}
 	}
 
 	public int diasAnoRestantes(){
 		float diasTotales = dia;
 		
-		for(int i = mes; i < 1; i--) {
-			diasTotales += meses.get(i);
+		for(int i = 0; i < mes; i++) {
+			diasTotales += DIAS_MESES[i - 1];
 		}
 		
-		return (int)(365 - diasTotales);
+		if(this.bisiesto() && mes > 2) {
+			diasTotales++;
+		}
+		
+		return (int)(Fecha.diasAno(ano) - diasTotales);
+	}
+	
+	public char diaSemana() {
+		return INICIALES_DIAS[(this.toTimeStamp()-1) % 7];
+	}
+	
+	public int numeroSemana() {
+		return (this.toTimeStamp() - new Fecha(1,1,ano).toTimeStamp())/7+1;
 	}
 
 	public void sumarMes(int mes){
@@ -192,5 +219,9 @@ class Fecha{
 		VERANO,
 		OTONO,
 		INVIERNO
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 }
