@@ -22,6 +22,16 @@ public class Montones {
 
 	public boolean SePuedeAnadirCarta(Object obtenerDescarte, char charAt) {
 		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void MoverCartas(String string, String string2, String string3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void CartaAlPilar(Pilares pilares, char charAt) {
+		// TODO Auto-generated method stub
 		
 	}
 
