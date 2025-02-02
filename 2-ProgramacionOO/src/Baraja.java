@@ -10,4 +10,14 @@ public class Baraja {
 		
 	}
 
+	public void NuevaCarta() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object ObtenerDescarte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

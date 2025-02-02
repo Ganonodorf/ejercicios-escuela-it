@@ -15,4 +15,14 @@ public class Montones {
 		
 	}
 
+	public void AnadirCarta(Object obtenerDescarte, char charAt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean SePuedeAnadirCarta(Object obtenerDescarte, char charAt) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
