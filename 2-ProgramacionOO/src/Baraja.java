@@ -19,7 +19,23 @@ public class Baraja {
 	}
 
 	public void Mostrar() {
-		System.out.println("▒ " + descarte.getLast().Mostrar());
+		String mostrar = "";
+		
+		if(HayCartasEnElMazo()) {
+			mostrar += "▒ ";
+		}
+		else {
+			mostrar += "  ";
+		}
+		
+		if(HayDescarte()) {
+			mostrar += descarte.getFirst().Mostrar();
+		}
+		else {
+			mostrar += " ";
+		}
+		
+		System.out.println(mostrar);
 	}
 
 	public void NuevaCarta() {
