@@ -23,7 +23,7 @@ public class Baraja {
 	}
 
 	public void NuevaCarta() {
-		descarte.add(mazo.getFirst());
+		descarte.addFirst(mazo.getFirst());
 		mazo.removeFirst();
 	}
 
@@ -32,7 +32,7 @@ public class Baraja {
 	}
 
 	public Carta ObtenerDescarte() {
-		return descarte.getLast();
+		return descarte.getFirst();
 	}
 
 	public boolean HayCartasEnElMazo() {
