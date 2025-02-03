@@ -11,20 +11,25 @@ public class Accion {
 			return;
 		}
 		
-		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))) {
-			montones.AnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2));
+		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
+			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
 			return;
 		}
 		
-		if(CartaDelMontonAlPilar(inputJugador) && montones.SePuedeMoverCartaAlPilar(pilares, inputJugador.charAt(0))) {
-			montones.CartaAlPilar(pilares, inputJugador.charAt(0));
+		if(CartaDelMontonAlPilar(inputJugador) && montones.SePuedeMoverCartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)))) {
+			montones.CartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)));
 			return;
 		}
 		
 		if(MoverCartasEntreMontones(inputJugador)) {
 			String[] informacion = inputJugador.split("-");
-			if(montones.SePuedeMoverCarta(informacion[0], informacion[1], informacion[2])) {
-				montones.MoverCartas(informacion[0], informacion[1], informacion[2]);				
+			
+			int[] informacionInt = new int[]{ Integer.parseInt(informacion[0]),
+											  Integer.parseInt(informacion[1]),
+											  Integer.parseInt(informacion[2])};
+
+			if(montones.SePuedeMoverCarta(informacionInt[0], informacionInt[1], informacionInt[2])) {
+				montones.MoverCartas(informacionInt[0], informacionInt[1], informacionInt[2]);				
 			}
 			return;
 		}
