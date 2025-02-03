@@ -5,4 +5,9 @@ public class Carta {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String Mostrar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

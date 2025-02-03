@@ -1,38 +1,43 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Baraja {
 	
-	private Carta[] cartas;
+	private ArrayList<Carta> mazo;
+	
+	private ArrayList<Carta> descarte;
 	
 	public Baraja() {
-		cartas = new Carta[52];
-		
-		int k = 0;
-		
 		for(int i = 1; i < 5; i++) {
 			for(int j = 1; j < 14; j++) {
-				cartas[k] = new Carta(i, j);
-				k++;
+				mazo.add(new Carta(i, j));
 			}
 		}
 	}
 
 	public void Mostrar() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("▒ " + descarte.getLast().Mostrar());
 	}
 
 	public void NuevaCarta() {
-		// TODO Auto-generated method stub
-		
+		descarte.add(mazo.getFirst());
+		mazo.removeFirst();
 	}
 
-	public Object ObtenerDescarte() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean HayDescarte() {
+		return !descarte.isEmpty();
+	}
+
+	public Carta ObtenerDescarte() {
+		return descarte.getLast();
 	}
 
 	public boolean HayCartasEnElMazo() {
-		// TODO Auto-generated method stub
-		return false;
+		return !mazo.isEmpty();
 	}
 
+	public void Barajar() {
+		Collections.shuffle(mazo);
+		
+	}
 }

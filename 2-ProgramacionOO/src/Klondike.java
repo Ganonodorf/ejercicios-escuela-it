@@ -17,6 +17,8 @@ public class Klondike {
 	public void Jugar() {
 		String inputJugador;
 		
+		baraja.Barajar();
+		
 		do {
 			this.MostrarInformacionDeJuego();
 			

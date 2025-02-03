@@ -11,7 +11,7 @@ public class Accion {
 			return;
 		}
 		
-		if(CartaDelDescarteAMonton(inputJugador) && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))) {
+		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))) {
 			montones.AnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2));
 			return;
 		}
