@@ -8,6 +8,9 @@ public class Baraja {
 	private ArrayList<Carta> descarte;
 	
 	public Baraja() {
+		mazo = new ArrayList<Carta>();
+		descarte = new ArrayList<Carta>();
+		
 		for(int i = 1; i < 5; i++) {
 			for(int j = 1; j < 14; j++) {
 				mazo.add(new Carta(i, j));
