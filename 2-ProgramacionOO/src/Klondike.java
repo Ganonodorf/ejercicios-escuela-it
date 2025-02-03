@@ -19,6 +19,8 @@ public class Klondike {
 		
 		baraja.Barajar();
 		
+		montones.Repartir(baraja);
+		
 		do {
 			this.MostrarInformacionDeJuego();
 			
