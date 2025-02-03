@@ -1,8 +1,18 @@
-
 public class Baraja {
-
+	
+	private Carta[] cartas;
+	
 	public Baraja() {
-		// TODO Auto-generated constructor stub
+		cartas = new Carta[52];
+		
+		int k = 0;
+		
+		for(int i = 1; i < 5; i++) {
+			for(int j = 1; j < 14; j++) {
+				cartas[k] = new Carta(i, j);
+				k++;
+			}
+		}
 	}
 
 	public void Mostrar() {
