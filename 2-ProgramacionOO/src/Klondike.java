@@ -10,7 +10,7 @@ public class Klondike {
 		jugador = new Jugador();
 		baraja = new Baraja();
 		pilares = new Pilares();
-		montones = new Montones(baraja);
+		montones = new Montones();
 		accion = new Accion();
 	}
 	
