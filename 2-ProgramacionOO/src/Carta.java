@@ -1,13 +1,40 @@
 
 public class Carta {
-
-	public Carta(int i, int j) {
-		// TODO Auto-generated constructor stub
+	
+	private int palo;
+	
+	private int numero;
+	
+	public Carta(int palo, int numero) {
+		this.palo = palo;
+		this.numero = numero;
+		
 	}
 
 	public String Mostrar() {
-		// TODO Auto-generated method stub
+		ObtenerNumero(numero);
+		ObtenerPalo(palo);
 		return null;
+	}
+
+	private String ObtenerPalo(int palo) {
+		if(palo == 1) {
+			return "♥";
+		}
+		if(palo == 1) {
+			return "♦";
+		}
+		if(palo == 1) {
+			return "♣";
+		}
+		if(palo == 1) {
+			return "♠";
+		}
+		return " ";
+	}
+
+	private String ObtenerNumero(int numero) {
+		return String.format("%02d", numero);
 	}
 
 }
