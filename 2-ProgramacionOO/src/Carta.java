@@ -37,4 +37,19 @@ public class Carta {
 		return String.format("%02d", numero);
 	}
 
+	private boolean TieneDiferenteColor(Carta primeraCartaMonton) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean EsInmediatamenteInferior(Carta primeraCartaMonton) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean SePuedeColocarDebajo(Carta primeraCartaMonton) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
