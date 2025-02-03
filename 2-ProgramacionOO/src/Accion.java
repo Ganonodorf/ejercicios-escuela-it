@@ -5,7 +5,9 @@ public class Accion {
 		assert montones != null;
 		
 		if(NuevaCartaDelMazo(inputJugador)) {
-			baraja.NuevaCarta();
+			if(baraja.HayCartasEnElMazo()) {
+				baraja.NuevaCarta();
+			}
 			return;
 		}
 		
@@ -13,15 +15,22 @@ public class Accion {
 			if(montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))){
 				montones.AnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2));
 			}
+			return;
 		}
 		
 		if(CartaDelMontonAlPilar(inputJugador)) {
-			montones.CartaAlPilar(pilares, inputJugador.charAt(0));
+			if(montones.SePuedeMoverCartaAlPilar(pilares, inputJugador.charAt(0))) {
+				montones.CartaAlPilar(pilares, inputJugador.charAt(0));
+			}
+			return;
 		}
 		
 		if(MoverCartasEntreMontones(inputJugador)) {
 			String[] informacion = inputJugador.split("-");
-			montones.MoverCartas(informacion[0], informacion[1], informacion[2]);
+			if(montones.SePuedeMoverCarta(informacion[0], informacion[1], informacion[2])) {
+				montones.MoverCartas(informacion[0], informacion[1], informacion[2]);				
+			}
+			return;
 		}
 	}
 
@@ -42,7 +51,7 @@ public class Accion {
 	}
 
 	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 }

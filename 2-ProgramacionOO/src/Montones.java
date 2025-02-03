@@ -35,4 +35,14 @@ public class Montones {
 		
 	}
 
+	public boolean SePuedeMoverCartaAlPilar(Pilares pilares, char charAt) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean SePuedeMoverCarta(String string, String string2, String string3) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

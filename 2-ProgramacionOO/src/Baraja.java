@@ -20,4 +20,9 @@ public class Baraja {
 		return null;
 	}
 
+	public boolean HayCartasEnElMazo() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
