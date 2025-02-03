@@ -1,27 +1,23 @@
 public class Accion {
 		
 	public void Accionar(String inputJugador, Baraja baraja, Montones montones, Pilares pilares) {
+		assert inputJugador != null;
 		assert baraja != null;
 		assert montones != null;
+		assert pilares != null;
 		
-		if(NuevaCartaDelMazo(inputJugador)) {
-			if(baraja.HayCartasEnElMazo()) {
-				baraja.NuevaCarta();
-			}
+		if(NuevaCartaDelMazo(inputJugador) && baraja.HayCartasEnElMazo()) {
+			baraja.NuevaCarta();
 			return;
 		}
 		
-		if(CartaDelDescarteAMonton(inputJugador)) {
-			if(montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))){
-				montones.AnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2));
-			}
+		if(CartaDelDescarteAMonton(inputJugador) && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2))) {
+			montones.AnadirCarta(baraja.ObtenerDescarte(), inputJugador.charAt(2));
 			return;
 		}
 		
-		if(CartaDelMontonAlPilar(inputJugador)) {
-			if(montones.SePuedeMoverCartaAlPilar(pilares, inputJugador.charAt(0))) {
-				montones.CartaAlPilar(pilares, inputJugador.charAt(0));
-			}
+		if(CartaDelMontonAlPilar(inputJugador) && montones.SePuedeMoverCartaAlPilar(pilares, inputJugador.charAt(0))) {
+			montones.CartaAlPilar(pilares, inputJugador.charAt(0));
 			return;
 		}
 		
@@ -32,6 +28,8 @@ public class Accion {
 			}
 			return;
 		}
+		
+		System.out.println("Input o acción inválida");
 	}
 
 	private boolean NuevaCartaDelMazo(String input) {
