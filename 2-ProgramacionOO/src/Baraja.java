@@ -39,8 +39,20 @@ public class Baraja {
 	}
 
 	public void NuevaCarta() {
-		descarte.addFirst(mazo.getFirst());
-		mazo.removeFirst();
+		if(mazo.isEmpty()) {
+			RellenarMazo();
+		}
+		else {
+			descarte.addFirst(mazo.getFirst());
+			mazo.removeFirst();
+		}
+	}
+
+	private void RellenarMazo() {
+		while(!descarte.isEmpty()) {
+			mazo.addFirst(descarte.getFirst());
+			descarte.remove(0);
+		}
 	}
 
 	public boolean HayDescarte() {
