@@ -103,6 +103,6 @@ public class Baraja {
 	}
 
 	public boolean HayCartasEnLaBaraja() {
-		return HayCartasEnElMazo() && HayDescarte();
+		return HayCartasEnElMazo() || HayDescarte();
 	}
 }
