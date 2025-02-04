@@ -44,6 +44,8 @@ public class Klondike {
 		
 		baraja.Mostrar();
 		
+		pilares.Mostrar();
+		
 		montones.Mostrar();
 	}
 

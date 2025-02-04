@@ -22,4 +22,8 @@ public class Pilares {
 	public void AnadirCarta(Carta carta) {
 		PilaresCartas.get(carta.getPalo() - 1).addFirst(carta);
 	}
+	
+	public void Mostrar() {
+		
+	}
 }

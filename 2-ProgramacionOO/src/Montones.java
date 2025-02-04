@@ -38,8 +38,10 @@ public class Montones {
 				}
 				cartasEnColumnas += "  ";
 			}
-			cartasEnColumnas += "/n";
+			cartasEnColumnas += "\n";
 		}
+		
+		System.out.println(cartasEnColumnas);
 	}
 
 	private int ObtenerCartasEnColumnaMasLarga() {
@@ -91,6 +93,9 @@ public class Montones {
 		for(int i = 0; i < NUMERO_COLUMNAS; i++) {
 			for(int j = 0; j <= i ; j++) {
 				montonesCartas.get(i).add(baraja.ObtenerPrimeraCarta());
+				if(j == i) {
+					montonesCartas.get(i).get(0).Revelar(true);
+				}
 			}
 		}
 	}
@@ -102,11 +107,20 @@ public class Montones {
 	public Carta ObtenerPrimeraCartaDeUnMonton(int numeroMonton) {
 		Carta cartaADevolver = VerPrimeraCartaDeUnMonton(numeroMonton);
 		EliminarPrimeraCartaDeUnMonton(numeroMonton);
+		VerPrimeraCartaDeUnMonton(numeroMonton).Revelar(true);
 		return cartaADevolver;
 	}
 
 	private void EliminarPrimeraCartaDeUnMonton(int numeroMonton) {
 		montonesCartas.get(numeroMonton - 1).remove(0);
 	}
-
+	
+	public static void main(String[] args) {
+		Baraja baraja = new Baraja();
+		Montones montones = new Montones();
+		
+		montones.Repartir(baraja);
+		
+		montones.Mostrar();
+	}
 }

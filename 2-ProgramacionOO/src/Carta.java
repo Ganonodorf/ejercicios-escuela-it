@@ -54,4 +54,8 @@ public class Carta {
 	public int getPalo() {
 		return palo;
 	}
+	
+	public void Revelar(boolean estado) {
+		this.estaRevelada = estado;
+	}
 }

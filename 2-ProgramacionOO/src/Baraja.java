@@ -22,7 +22,7 @@ public class Baraja {
 		String mostrar = "";
 		
 		if(HayCartasEnElMazo()) {
-			mostrar += "▒ ";
+			mostrar += "▒▒▒";
 		}
 		else {
 			mostrar += "  ";
@@ -41,9 +41,11 @@ public class Baraja {
 	public void NuevaCarta() {
 		if(mazo.isEmpty()) {
 			RellenarMazo();
+			NuevaCarta();
 		}
 		else {
 			descarte.addFirst(mazo.getFirst());
+			descarte.get(0).Revelar(true);
 			mazo.removeFirst();
 		}
 	}
@@ -51,6 +53,7 @@ public class Baraja {
 	private void RellenarMazo() {
 		while(!descarte.isEmpty()) {
 			mazo.addFirst(descarte.getFirst());
+			mazo.get(0).Revelar(false);
 			descarte.remove(0);
 		}
 	}
@@ -81,5 +84,19 @@ public class Baraja {
 		Carta cartaADevolver = mazo.getFirst();
 		mazo.remove(0);
 		return cartaADevolver;
+	}
+	
+	public static void main(String[] args) {
+		Baraja baraja = new Baraja();
+		
+		baraja.Barajar();
+		
+		baraja.Mostrar();
+		
+		for(int i = 0; i < 100; i++) {
+			baraja.NuevaCarta();
+
+			baraja.Mostrar();
+		}
 	}
 }
