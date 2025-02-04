@@ -11,17 +11,17 @@ public class Accion {
 			return;
 		}
 		
-		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ClonarDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
+		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.VerDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
 			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
 			return;
 		}
 		
-		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.ClonarDescarte())){
+		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.VerDescarte())){
 			pilares.AnadirCarta(baraja.ObtenerDescarte());
 			return;
 		}
 		
-		if(CartaDelMontonAlPilar(inputJugador) && pilares.SePuedeAnadirCarta(montones.ClonarPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))))) {
+		if(CartaDelMontonAlPilar(inputJugador) && pilares.SePuedeAnadirCarta(montones.VerPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))))) {
 			pilares.AnadirCarta(montones.ObtenerCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))));
 			return;
 		}
@@ -63,7 +63,7 @@ public class Accion {
 	}
 
 	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
-		
+		// TODO
 		return false;
 	}
 }
