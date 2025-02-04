@@ -74,7 +74,7 @@ public class Baraja {
 		return cartaADevolver;
 	}
 
-	public boolean HayCartasEnElMazo() {
+	private boolean HayCartasEnElMazo() {
 		return !mazo.isEmpty();
 	}
 
@@ -100,5 +100,9 @@ public class Baraja {
 
 			baraja.Mostrar();
 		}
+	}
+
+	public boolean HayCartasEnLaBaraja() {
+		return HayCartasEnElMazo() && HayDescarte();
 	}
 }

@@ -6,7 +6,7 @@ public class Accion {
 		assert montones != null;
 		assert pilares != null;
 		
-		if(NuevaCartaDelMazo(inputJugador) && baraja.HayCartasEnElMazo()) {
+		if(NuevaCartaDelMazo(inputJugador) && baraja.HayCartasEnLaBaraja()) {
 			baraja.NuevaCarta();
 			return;
 		}
@@ -63,6 +63,6 @@ public class Accion {
 	}
 
 	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
-		return (baraja.HayCartasEnElMazo() || baraja.HayDescarte()) && !montones.EstanVacios();
+		return baraja.HayCartasEnLaBaraja() && !montones.EstanVacios();
 	}
 }
