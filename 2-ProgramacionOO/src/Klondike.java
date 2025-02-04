@@ -51,6 +51,7 @@ public class Klondike {
 	private void MostrarReglas() {
 		System.out.println("Nueva carta del mazo: c \n");
 		System.out.println("Carta del descarte a un montón: d-número montón \n");
+		System.out.println("Carta del descarte a un pilar: d-p \n");
 		System.out.println("Carta de un montón a un pilar: número montón-p \n");
 		System.out.println("Mover carta: número montón-posición carta desde abajo-nuevo número montón");
 	}
@@ -58,5 +59,4 @@ public class Klondike {
 	public static void main(String[] args) {
 		
 	}
-	
 }
