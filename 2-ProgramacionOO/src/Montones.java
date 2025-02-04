@@ -70,7 +70,7 @@ public class Montones {
 		return false;
 	}
 	
-	private boolean EstaElMontonVacio(int numeroMonton) {
+	public boolean EstaElMontonVacio(int numeroMonton) {
 		return montonesCartas.get(numeroMonton - 1).isEmpty();
 	}
 	
@@ -79,7 +79,7 @@ public class Montones {
 	}
 
 	public void AnadirCarta(Carta carta, int numeroMonton) {
-		montonesCartas.get(numeroMonton - 1).add(carta);
+		montonesCartas.get(numeroMonton - 1).addFirst(carta);
 	}
 
 	public boolean SePuedeMoverCarta(int montonOrigen, int posicionCarta, int montonDestino) {
@@ -120,7 +120,9 @@ public class Montones {
 	public Carta ObtenerPrimeraCartaDeUnMonton(int numeroMonton) {
 		Carta cartaADevolver = VerPrimeraCartaDeUnMonton(numeroMonton);
 		EliminarPrimeraCartaDeUnMonton(numeroMonton);
-		VerPrimeraCartaDeUnMonton(numeroMonton).Revelar(true);
+		if(!EstaElMontonVacio(numeroMonton)) {
+			VerPrimeraCartaDeUnMonton(numeroMonton).Revelar(true);
+		}
 		return cartaADevolver;
 	}
 

@@ -32,8 +32,10 @@ public class Accion {
 			int[] informacionInt = new int[]{ Integer.parseInt(informacion[0]),
 											  Integer.parseInt(informacion[1]),
 											  Integer.parseInt(informacion[2])};
-
-			if(montones.SePuedeMoverCarta(informacionInt[0], informacionInt[1], informacionInt[2])) {
+			
+			
+			if(!montones.EstaElMontonVacio(informacionInt[0]) &&
+					montones.SePuedeMoverCarta(informacionInt[0], informacionInt[1], informacionInt[2])) {
 				montones.MoverCartas(informacionInt[0], informacionInt[1], informacionInt[2]);				
 			}
 			return;
@@ -63,6 +65,6 @@ public class Accion {
 	}
 
 	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
-		return baraja.HayCartasEnLaBaraja() && !montones.EstanVacios();
+		return baraja.HayCartasEnLaBaraja() || !montones.EstanVacios();
 	}
 }
