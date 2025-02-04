@@ -57,9 +57,13 @@ public class Montones {
 	}
 
 	public boolean SePuedeAnadirCarta(Carta carta, int numeroMonton) {
-		Carta primeraCartaMonton = montonesCartas.get(numeroMonton - 1).getFirst();
+		if(EstaElMontonVacio(numeroMonton) && carta.getNumero() == 13) {
+			return true;
+		}
 		
-		if(!carta.SonDelMismoColor(primeraCartaMonton) && carta.EsInmediatamenteInferior(primeraCartaMonton)) {
+		if(!EstaElMontonVacio(numeroMonton) && 
+				!carta.SonDelMismoColor(PrimeraCartaMonton(numeroMonton)) && 
+				carta.EsInmediatamenteInferior(PrimeraCartaMonton(numeroMonton))) {
 			return true;
 		}
 		
