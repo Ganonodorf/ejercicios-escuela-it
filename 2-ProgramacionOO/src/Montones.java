@@ -54,26 +54,26 @@ public class Montones {
 		return cartasEnColumnaMasLarga;
 	}
 
-	public boolean SePuedeAnadirCarta(Carta cartaDescarte, int numeroMonton) {
+	public boolean SePuedeAnadirCarta(Carta carta, int numeroMonton) {
 		Carta primeraCartaMonton = montonesCartas.get(numeroMonton - 1).getFirst();
 		
-		if(cartaDescarte.SePuedeColocarDebajo(primeraCartaMonton)) {
+		if(carta.SePuedeColocarEncima(primeraCartaMonton)) {
 			return true;
 		}
 		
 		return false;
 	}
 
-	public void AnadirCarta(Carta cartaDescarte, int numeroMonton) {
+	public void AnadirCarta(Carta carta, int numeroMonton) {
 		Carta primeraCartaMonton = montonesCartas.get(numeroMonton - 1).getFirst();
 		
-		montonesCartas.get(numeroMonton - 1).add(cartaDescarte);
+		montonesCartas.get(numeroMonton - 1).add(carta);
 	}
 
 	public boolean SePuedeMoverCarta(int montonOrigen, int posicionCarta, int montonDestino) {
 		Carta cartaSeleccionada = montonesCartas.get(montonOrigen - 1).get(posicionCarta - 1);
 		Carta cartaDestino = montonesCartas.get(montonDestino - 1).getFirst();
-		if(cartaSeleccionada != null && cartaDestino != null && cartaSeleccionada.SePuedeColocarDebajo(cartaDestino)){
+		if(cartaSeleccionada != null && cartaDestino != null && cartaSeleccionada.SePuedeColocarEncima(cartaDestino)){
 			return true;
 		}
 		return false;
@@ -86,18 +86,28 @@ public class Montones {
 		}
 	}
 
-	public boolean SePuedeMoverCartaAlPilar(Pilares pilares, int numeroMonton) {
-		return false;
-	}
-
-	public void CartaAlPilar(Pilares pilares, int numeroMonton) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void Repartir(Baraja baraja) {
+		for(int i = 0; i < NUMERO_COLUMNAS; i++) {
+			for(int j = 0; j <= i ; j++) {
+				montonesCartas.get(i).add(baraja.ObtenerPrimeraCarta());
+				//Tienes que revelar cartas
+			}
+		}
+	}
+
+	public Carta ObtenerPrimeraCarta(int numericValue) {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	public Carta VerPrimeraCartaDeUnMonton(int numericValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Carta ObtenerCartaDeUnMonton(int numericValue) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

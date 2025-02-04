@@ -47,7 +47,7 @@ public class Carta {
 		return false;
 	}
 
-	public boolean SePuedeColocarDebajo(Carta primeraCartaMonton) {
+	public boolean SePuedeColocarEncima(Carta primeraCartaMonton) {
 		// TODO Auto-generated method stub
 		return false;
 	}
