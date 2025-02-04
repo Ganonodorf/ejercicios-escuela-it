@@ -21,6 +21,8 @@ public class Klondike {
 		
 		montones.Repartir(baraja);
 		
+		MostrarReglas();
+		
 		do {
 			this.MostrarInformacionDeJuego();
 			
@@ -40,13 +42,9 @@ public class Klondike {
 	}
 	
 	private void MostrarInformacionDeJuego() {
-		MostrarReglas();
+		System.out.println(baraja.Mostrar() + "       " + pilares.Mostrar() + "\n\n");
 		
-		baraja.Mostrar();
-		
-		pilares.Mostrar();
-		
-		montones.Mostrar();
+		System.out.println(montones.Mostrar());
 	}
 
 

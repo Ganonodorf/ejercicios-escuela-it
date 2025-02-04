@@ -18,24 +18,26 @@ public class Baraja {
 		}
 	}
 
-	public void Mostrar() {
+	public String Mostrar() {
 		String mostrar = "";
 		
 		if(HayCartasEnElMazo()) {
 			mostrar += "▒▒▒";
 		}
 		else {
-			mostrar += "  ";
+			mostrar += "___";
 		}
+		
+		mostrar += "  ";
 		
 		if(HayDescarte()) {
 			mostrar += descarte.getFirst().Mostrar();
 		}
 		else {
-			mostrar += " ";
+			mostrar += "___";
 		}
 		
-		System.out.println(mostrar);
+		return mostrar;
 	}
 
 	public void NuevaCarta() {

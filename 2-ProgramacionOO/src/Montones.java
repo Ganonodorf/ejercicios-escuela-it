@@ -23,7 +23,7 @@ public class Montones {
 		return true;
 	}
 
-	public void Mostrar() {
+	public String Mostrar() {
 		int cartasEnColumnaMasLarga = ObtenerCartasEnColumnaMasLarga();
 		
 		String cartasEnColumnas = "";
@@ -41,7 +41,7 @@ public class Montones {
 			cartasEnColumnas += "\n";
 		}
 		
-		System.out.println(cartasEnColumnas);
+		return cartasEnColumnas;
 	}
 
 	private int ObtenerCartasEnColumnaMasLarga() {
@@ -94,7 +94,7 @@ public class Montones {
 			for(int j = 0; j <= i ; j++) {
 				montonesCartas.get(i).add(baraja.ObtenerPrimeraCarta());
 				if(j == i) {
-					montonesCartas.get(i).get(0).Revelar(true);
+					montonesCartas.get(i).get(j).Revelar(true);
 				}
 			}
 		}
