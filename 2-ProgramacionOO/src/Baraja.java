@@ -59,4 +59,10 @@ public class Baraja {
 		Collections.shuffle(mazo);
 		
 	}
+
+	public Carta ObtenerPrimeraCarta() {
+		Carta cartaADevolver = mazo.getFirst();
+		mazo.remove(0);
+		return cartaADevolver;
+	}
 }
