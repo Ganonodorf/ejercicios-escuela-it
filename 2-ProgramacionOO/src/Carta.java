@@ -53,11 +53,11 @@ public class Carta {
 	}
 
 	public boolean SonDelMismoColor(Carta carta) {
-		return this.color != carta.color;
+		return this.color == carta.color;
 	}
 
 	public boolean EsInmediatamenteInferior(Carta carta) {
-		return this.numero - 1 == carta.numero;
+		return this.numero + 1 == carta.numero;
 	}
 	
 	public int getPalo() {
@@ -70,5 +70,21 @@ public class Carta {
 	
 	public void Revelar(boolean estado) {
 		this.estaRevelada = estado;
+	}
+	
+	public static void main(String[] args) {
+		Carta dosCorazones = new Carta(1, 2);
+		Carta tresTreboles = new Carta(2, 3);
+		
+		dosCorazones.Revelar(true);
+		tresTreboles.Revelar(true);
+		
+		System.out.println(dosCorazones.Mostrar() + tresTreboles.Mostrar());
+		
+		System.out.println(dosCorazones.EsInmediatamenteInferior(tresTreboles));
+
+		System.out.println(dosCorazones.color + "   " + tresTreboles.color);
+		
+		System.out.println(dosCorazones.SonDelMismoColor(tresTreboles));
 	}
 }
