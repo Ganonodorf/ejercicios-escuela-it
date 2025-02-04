@@ -47,6 +47,12 @@ public class Baraja {
 		return !descarte.isEmpty();
 	}
 
+	public Carta VerDescarte() {
+		Carta cartaADevolver = descarte.getFirst();
+		descarte.remove(0);
+		return cartaADevolver;
+	}
+
 	public Carta ObtenerDescarte() {
 		return descarte.getFirst();
 	}
@@ -57,7 +63,6 @@ public class Baraja {
 
 	public void Barajar() {
 		Collections.shuffle(mazo);
-		
 	}
 
 	public Carta ObtenerPrimeraCarta() {
