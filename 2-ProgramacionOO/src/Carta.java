@@ -40,6 +40,9 @@ public class Carta {
 	}
 
 	private String ObtenerNumeroString(int numero) {
+		if(numero == 1) {
+			return " A";
+		}
 		if(numero == 11) {
 			return " J";
 		}

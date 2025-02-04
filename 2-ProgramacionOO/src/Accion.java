@@ -36,8 +36,11 @@ public class Accion {
 			
 			if(!montones.EstaElMontonVacio(informacionInt[0]) &&
 					montones.SePuedeMoverCarta(informacionInt[0], informacionInt[1], informacionInt[2])) {
-				montones.MoverCartas(informacionInt[0], informacionInt[1], informacionInt[2]);				
+				montones.MoverCartas(informacionInt[0], informacionInt[1], informacionInt[2]);
+				return;
 			}
+
+			System.out.println("Input o acción inválida");
 			return;
 		}
 		
