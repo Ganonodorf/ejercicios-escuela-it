@@ -65,16 +65,22 @@ public class Montones {
 		
 		return false;
 	}
+	
+	private boolean EstaElMontonVacio(int numeroMonton) {
+		return montonesCartas.get(numeroMonton - 1).isEmpty();
+	}
+	
+	private Carta PrimeraCartaMonton(int numeroMonton) {
+		return montonesCartas.get(numeroMonton - 1).getFirst();
+	}
 
 	public void AnadirCarta(Carta carta, int numeroMonton) {
-		Carta primeraCartaMonton = montonesCartas.get(numeroMonton - 1).getFirst();
-		
 		montonesCartas.get(numeroMonton - 1).add(carta);
 	}
 
 	public boolean SePuedeMoverCarta(int montonOrigen, int posicionCarta, int montonDestino) {
 		Carta cartaSeleccionada = montonesCartas.get(montonOrigen - 1).get(posicionCarta - 1);
-		Carta cartaDestino = montonesCartas.get(montonDestino - 1).getFirst();
+		Carta cartaDestino = PrimeraCartaMonton(montonDestino);
 		if(cartaSeleccionada != null && cartaDestino != null &&
 				!cartaSeleccionada.SonDelMismoColor(cartaDestino) && cartaSeleccionada.EsInmediatamenteInferior(cartaDestino)){
 			return true;
@@ -87,8 +93,8 @@ public class Montones {
 			montonesCartas.get(montonDestino - 1).addFirst(montonesCartas.get(montonOrigen - 1).get(i));
 			montonesCartas.get(montonOrigen - 1).remove(i);
 		}
-		if(!montonesCartas.get(montonOrigen - 1).isEmpty()) {
-			montonesCartas.get(montonOrigen - 1).getFirst().Revelar(true);
+		if(!EstaElMontonVacio(montonOrigen)) {
+			PrimeraCartaMonton(montonOrigen).Revelar(true);
 		}
 	}
 
@@ -104,7 +110,7 @@ public class Montones {
 	}
 
 	public Carta VerPrimeraCartaDeUnMonton(int numeroMonton) {
-		return montonesCartas.get(numeroMonton - 1).getFirst();
+		return PrimeraCartaMonton(numeroMonton);
 	}
 
 	public Carta ObtenerPrimeraCartaDeUnMonton(int numeroMonton) {
