@@ -90,24 +90,22 @@ public class Montones {
 		for(int i = 0; i < NUMERO_COLUMNAS; i++) {
 			for(int j = 0; j <= i ; j++) {
 				montonesCartas.get(i).add(baraja.ObtenerPrimeraCarta());
-				//Tienes que revelar cartas
 			}
 		}
 	}
 
-	public Carta ObtenerPrimeraCarta(int numericValue) {
-		// TODO Auto-generated method stub
-		return null;
+	public Carta VerPrimeraCartaDeUnMonton(int numeroMonton) {
+		return montonesCartas.get(numeroMonton - 1).getFirst();
 	}
 
-	public Carta VerPrimeraCartaDeUnMonton(int numericValue) {
-		// TODO Auto-generated method stub
-		return null;
+	public Carta ObtenerPrimeraCartaDeUnMonton(int numeroMonton) {
+		Carta cartaADevolver = VerPrimeraCartaDeUnMonton(numeroMonton);
+		EliminarPrimeraCartaDeUnMonton(numeroMonton);
+		return cartaADevolver;
 	}
 
-	public Carta ObtenerCartaDeUnMonton(int numericValue) {
-		// TODO Auto-generated method stub
-		return null;
+	private void EliminarPrimeraCartaDeUnMonton(int numeroMonton) {
+		montonesCartas.get(numeroMonton - 1).remove(0);
 	}
 
 }
