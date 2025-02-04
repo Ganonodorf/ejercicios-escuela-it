@@ -87,6 +87,10 @@ public class Baraja {
 		mazo.remove(0);
 		return cartaADevolver;
 	}
+
+	public boolean HayCartasEnLaBaraja() {
+		return HayCartasEnElMazo() || HayDescarte();
+	}
 	
 	public static void main(String[] args) {
 		Baraja baraja = new Baraja();
@@ -100,9 +104,5 @@ public class Baraja {
 
 			baraja.Mostrar();
 		}
-	}
-
-	public boolean HayCartasEnLaBaraja() {
-		return HayCartasEnElMazo() || HayDescarte();
 	}
 }
