@@ -22,7 +22,7 @@ public class Accion {
 		}
 		
 		if(CartaDelMontonAlPilar(inputJugador) && pilares.SePuedeAnadirCarta(montones.VerPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))))) {
-			pilares.AnadirCarta(montones.ObtenerCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))));
+			pilares.AnadirCarta(montones.ObtenerPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))));
 			return;
 		}
 		
