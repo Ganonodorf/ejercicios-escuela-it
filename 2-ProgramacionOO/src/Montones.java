@@ -30,8 +30,8 @@ public class Montones {
 		
 		for(int i = 0; i < cartasEnColumnaMasLarga; i++) {
 			for(int j = 0; j < NUMERO_COLUMNAS; j++) {
-				if(montonesCartas.get(j).size() > i){
-					cartasEnColumnas += montonesCartas.get(j).get(i).Mostrar();
+				if(i < montonesCartas.get(j).size()){
+					cartasEnColumnas += montonesCartas.get(j).get(montonesCartas.get(j).size() - i - 1).Mostrar();
 				}
 				else {
 					cartasEnColumnas += "   ";
@@ -87,6 +87,9 @@ public class Montones {
 			montonesCartas.get(montonDestino - 1).addFirst(montonesCartas.get(montonOrigen - 1).get(i));
 			montonesCartas.get(montonOrigen - 1).remove(i);
 		}
+		if(!montonesCartas.get(montonOrigen - 1).isEmpty()) {
+			montonesCartas.get(montonOrigen - 1).getFirst().Revelar(true);
+		}
 	}
 
 	public void Repartir(Baraja baraja) {
@@ -94,7 +97,7 @@ public class Montones {
 			for(int j = 0; j <= i ; j++) {
 				montonesCartas.get(i).add(baraja.ObtenerPrimeraCarta());
 				if(j == i) {
-					montonesCartas.get(i).get(j).Revelar(true);
+					montonesCartas.get(i).get(0).Revelar(true);
 				}
 			}
 		}
@@ -121,6 +124,22 @@ public class Montones {
 		
 		montones.Repartir(baraja);
 		
-		montones.Mostrar();
+		System.out.println(montones.Mostrar());
+
+		Carta cartaSeleccionada = montones.VerPrimeraCartaDeUnMonton(2);
+
+		Carta cartaDestino = montones.VerPrimeraCartaDeUnMonton(6);
+		
+		System.out.println(cartaSeleccionada.Mostrar());
+
+		System.out.println(cartaDestino.Mostrar());
+		
+		System.out.println(montones.SePuedeMoverCarta(2, 1, 6));
+		
+		montones.MoverCartas(2, 1, 6);
+		
+		System.out.println(montones.Mostrar());
+		
+		
 	}
 }
