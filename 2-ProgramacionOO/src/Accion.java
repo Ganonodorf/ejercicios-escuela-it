@@ -11,18 +11,18 @@ public class Accion {
 			return;
 		}
 		
-		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
+		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.ClonarDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
 			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
 			return;
 		}
 		
-		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.ObtenerDescarte())){
-			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
+		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.ClonarDescarte())){
+			pilares.AnadirCarta(baraja.ObtenerDescarte());
 			return;
 		}
 		
-		if(CartaDelMontonAlPilar(inputJugador) && montones.SePuedeMoverCartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)))) {
-			montones.CartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)));
+		if(CartaDelMontonAlPilar(inputJugador) && pilares.SePuedeAnadirCarta(montones.ClonarPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))))) {
+			pilares.AnadirCarta(montones.ObtenerCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))));
 			return;
 		}
 		
