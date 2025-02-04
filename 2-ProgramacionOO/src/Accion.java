@@ -16,6 +16,11 @@ public class Accion {
 			return;
 		}
 		
+		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.ObtenerDescarte())){
+			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
+			return;
+		}
+		
 		if(CartaDelMontonAlPilar(inputJugador) && montones.SePuedeMoverCartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)))) {
 			montones.CartaAlPilar(pilares, Character.getNumericValue(inputJugador.charAt(0)));
 			return;
@@ -38,11 +43,15 @@ public class Accion {
 	}
 
 	private boolean NuevaCartaDelMazo(String input) {
-		return input.matches("c");
+		return input.matches("^c");
 	}
 	
 	private boolean CartaDelDescarteAMonton(String input) {
 		return input.matches("^d-[1-7]");
+	}
+	
+	private boolean CartaDelDescarteAPilar(String input) {
+		return input.matches("^d-p");
 	}
 	
 	private boolean CartaDelMontonAlPilar(String input) {
