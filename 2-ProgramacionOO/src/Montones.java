@@ -140,6 +140,8 @@ public class Montones {
 		
 		System.out.println(montones.Mostrar());
 		
+		montones.MoverCartas(6, 2, 3);
 		
+		System.out.println(montones.Mostrar());
 	}
 }
