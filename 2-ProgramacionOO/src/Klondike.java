@@ -42,7 +42,7 @@ public class Klondike {
 	}
 	
 	private void MostrarInformacionDeJuego() {
-		System.out.println(baraja.Mostrar() + "       " + pilares.Mostrar() + "\n\n");
+		System.out.println("\n\n" + baraja.Mostrar() + "       " + pilares.Mostrar() + "\n\n");
 		
 		System.out.println(montones.Mostrar());
 	}
