@@ -23,7 +23,20 @@ public class Pilares {
 		PilaresCartas.get(carta.getPalo() - 1).addFirst(carta);
 	}
 	
-	public void Mostrar() {
+	public String Mostrar() {
+		String cartasEnPilares = "";
 		
+		for(int i = 0; i < NUMERO_MONTONES; i++) {
+			if(PilaresCartas.get(i).isEmpty()) {
+				cartasEnPilares += "___";
+			}
+			else {
+				cartasEnPilares += PilaresCartas.get(i).getFirst().Mostrar();
+			}
+			
+			cartasEnPilares += "  ";
+		}
+		
+		return cartasEnPilares;
 	}
 }
