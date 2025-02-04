@@ -48,13 +48,13 @@ public class Baraja {
 	}
 
 	public Carta VerDescarte() {
-		Carta cartaADevolver = descarte.getFirst();
-		descarte.remove(0);
-		return cartaADevolver;
+		return descarte.getFirst();
 	}
 
 	public Carta ObtenerDescarte() {
-		return descarte.getFirst();
+		Carta cartaADevolver = descarte.getFirst();
+		descarte.remove(0);
+		return cartaADevolver;
 	}
 
 	public boolean HayCartasEnElMazo() {
