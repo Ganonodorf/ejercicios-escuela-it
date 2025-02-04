@@ -18,12 +18,12 @@ public class Carta {
 
 	public String Mostrar() {
 		if(estaRevelada) {
-			return ObtenerNumero(numero) + ObtenerPalo(palo);
+			return ObtenerNumeroString(numero) + ObtenerPaloString(palo);
 		}
 		return "▒▒▒";
 	}
 
-	private String ObtenerPalo(int palo) {
+	private String ObtenerPaloString(int palo) {
 		if(palo == 1) {
 			return "♥";
 		}
@@ -39,8 +39,17 @@ public class Carta {
 		return " ";
 	}
 
-	private String ObtenerNumero(int numero) {
-		return String.format("%02d", numero);
+	private String ObtenerNumeroString(int numero) {
+		if(numero == 11) {
+			return " J";
+		}
+		if(numero == 12) {
+			return " Q";
+		}
+		if(numero == 13) {
+			return " K";
+		}
+		return String.format("%2d", numero);
 	}
 
 	public boolean SonDelMismoColor(Carta carta) {
@@ -53,6 +62,10 @@ public class Carta {
 	
 	public int getPalo() {
 		return palo;
+	}
+
+	public int getNumero() {
+		return numero;
 	}
 	
 	public void Revelar(boolean estado) {
