@@ -14,8 +14,4 @@ public class Jugador {
 		System.out.println("Gané gané");
 		
 	}
-	
-	public static void main(String[] args) {
-
-	}
 }
