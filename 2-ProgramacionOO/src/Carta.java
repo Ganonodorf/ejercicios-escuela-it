@@ -50,4 +50,8 @@ public class Carta {
 	public boolean EsInmediatamenteInferior(Carta carta) {
 		return this.numero - 1 == carta.numero;
 	}
+	
+	public int getPalo() {
+		return palo;
+	}
 }
