@@ -43,16 +43,11 @@ public class Carta {
 		return String.format("%02d", numero);
 	}
 
-	private boolean TieneDiferenteColor(Carta carta) {
+	public boolean SonDelMismoColor(Carta carta) {
 		return this.color != carta.color;
 	}
 
-	private boolean EsInmediatamenteInferior(Carta carta) {
+	public boolean EsInmediatamenteInferior(Carta carta) {
 		return this.numero - 1 == carta.numero;
 	}
-
-	public boolean SePuedeColocarEncima(Carta carta) {
-		return TieneDiferenteColor(carta) && EsInmediatamenteInferior(carta);
-	}
-
 }

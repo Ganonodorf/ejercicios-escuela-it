@@ -57,7 +57,7 @@ public class Montones {
 	public boolean SePuedeAnadirCarta(Carta carta, int numeroMonton) {
 		Carta primeraCartaMonton = montonesCartas.get(numeroMonton - 1).getFirst();
 		
-		if(carta.SePuedeColocarEncima(primeraCartaMonton)) {
+		if(!carta.SonDelMismoColor(primeraCartaMonton) && carta.EsInmediatamenteInferior(primeraCartaMonton)) {
 			return true;
 		}
 		
@@ -73,7 +73,8 @@ public class Montones {
 	public boolean SePuedeMoverCarta(int montonOrigen, int posicionCarta, int montonDestino) {
 		Carta cartaSeleccionada = montonesCartas.get(montonOrigen - 1).get(posicionCarta - 1);
 		Carta cartaDestino = montonesCartas.get(montonDestino - 1).getFirst();
-		if(cartaSeleccionada != null && cartaDestino != null && cartaSeleccionada.SePuedeColocarEncima(cartaDestino)){
+		if(cartaSeleccionada != null && cartaDestino != null &&
+				!cartaSeleccionada.SonDelMismoColor(cartaDestino) && cartaSeleccionada.EsInmediatamenteInferior(cartaDestino)){
 			return true;
 		}
 		return false;
