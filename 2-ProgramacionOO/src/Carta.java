@@ -5,29 +5,35 @@ public class Carta {
 	
 	private int numero;
 	
+	private boolean estaRevelada;
+	
+	private int color;
+	
 	public Carta(int palo, int numero) {
 		this.palo = palo;
 		this.numero = numero;
-		
+		this.estaRevelada = false;
+		this.color = palo % 2;
 	}
 
 	public String Mostrar() {
-		ObtenerNumero(numero);
-		ObtenerPalo(palo);
-		return null;
+		if(estaRevelada) {
+			return ObtenerNumero(numero) + ObtenerPalo(palo);
+		}
+		return "▒▒▒";
 	}
 
 	private String ObtenerPalo(int palo) {
 		if(palo == 1) {
 			return "♥";
 		}
-		if(palo == 1) {
-			return "♦";
-		}
-		if(palo == 1) {
+		if(palo == 2) {
 			return "♣";
 		}
-		if(palo == 1) {
+		if(palo == 3) {
+			return "♦";
+		}
+		if(palo == 4) {
 			return "♠";
 		}
 		return " ";
@@ -37,19 +43,16 @@ public class Carta {
 		return String.format("%02d", numero);
 	}
 
-	private boolean TieneDiferenteColor(Carta primeraCartaMonton) {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean TieneDiferenteColor(Carta carta) {
+		return this.color != carta.color;
 	}
 
-	private boolean EsInmediatamenteInferior(Carta primeraCartaMonton) {
-		// TODO Auto-generated method stub
-		return false;
+	private boolean EsInmediatamenteInferior(Carta carta) {
+		return this.numero - 1 == carta.numero;
 	}
 
-	public boolean SePuedeColocarEncima(Carta primeraCartaMonton) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean SePuedeColocarEncima(Carta carta) {
+		return TieneDiferenteColor(carta) && EsInmediatamenteInferior(carta);
 	}
 
 }
