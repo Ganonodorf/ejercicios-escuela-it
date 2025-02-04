@@ -63,7 +63,6 @@ public class Accion {
 	}
 
 	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
-		// TODO
-		return false;
+		return (baraja.HayCartasEnElMazo() || baraja.HayDescarte()) && !montones.EstanVacios();
 	}
 }
