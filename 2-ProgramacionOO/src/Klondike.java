@@ -3,7 +3,7 @@ public class Klondike {
 	Jugador jugador;
 	Baraja baraja;
 	Pilar pilares;
-	Montones montones;
+	Monton montones;
 	Accion accion;
 	
 	public Klondike(){
