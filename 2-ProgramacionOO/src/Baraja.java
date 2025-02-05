@@ -17,13 +17,8 @@ public class Baraja extends Mazo {
 	}
 
 	@Override
-	public void Mostrar() {
-		if(!this.EstaVacio()) {
-			System.out.println("▒▒▒");
-		}
-		else {
-			System.out.println("___");
-		}
+	public void MostrarContenido() {
+		System.out.println("▒▒▒");
 	}
 
 	@Override
