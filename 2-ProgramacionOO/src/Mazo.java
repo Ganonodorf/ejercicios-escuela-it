@@ -12,8 +12,15 @@ public abstract class Mazo {
 	public void AnadirCarta(Carta carta) {
 		cartas.addFirst(carta);
 	}
-	
-	public abstract void Mostrar();
+
+	public void Mostrar() {
+		if(!this.EstaVacio()) {
+			System.out.println(this.VerPrimeracarta().Mostrar());
+		}
+		else {
+			System.out.println("___");
+		}
+	}
 	
 	public boolean EstaVacio() {
 		return cartas.isEmpty();
