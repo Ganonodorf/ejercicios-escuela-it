@@ -18,6 +18,9 @@ public class Pilares {
 		if(pilaresCartas.get(carta.getPalo() - 1).isEmpty() && carta.getNumero() == 1) {
 			return true;
 		}
+		if(pilaresCartas.get(carta.getPalo() - 1).isEmpty() && carta.getNumero() != 1) {
+			return false;
+		}
 		Carta cartaPilar = pilaresCartas.get(carta.getPalo() - 1).getFirst();
 		return carta.SonDelMismoColor(cartaPilar) && cartaPilar.EsInmediatamenteInferior(carta);
 	}

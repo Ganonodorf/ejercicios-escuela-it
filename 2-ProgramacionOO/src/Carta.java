@@ -90,4 +90,8 @@ public class Carta {
 		
 		System.out.println(dosCorazones.SonDelMismoColor(tresTreboles));
 	}
+
+	public boolean EstaRevalada() {
+		return estaRevelada;
+	}
 }

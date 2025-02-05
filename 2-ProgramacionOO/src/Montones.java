@@ -84,6 +84,9 @@ public class Montones {
 
 	public boolean SePuedeMoverCarta(int montonOrigen, int posicionCarta, int montonDestino) {
 		Carta cartaSeleccionada = montonesCartas.get(montonOrigen - 1).get(posicionCarta - 1);
+		if(!cartaSeleccionada.EstaRevalada()) {
+			return false;
+		}
 		if(cartaSeleccionada.getNumero() == 13 && EstaElMontonVacio(montonDestino)) {
 			return true;
 		}
@@ -161,5 +164,9 @@ public class Montones {
 		montones.MoverCartas(6, 2, 3);
 		
 		System.out.println(montones.Mostrar());
+	}
+
+	public int TamanoMonton(int numeroMonton) {
+		return montonesCartas.get(numeroMonton - 1).size();
 	}
 }

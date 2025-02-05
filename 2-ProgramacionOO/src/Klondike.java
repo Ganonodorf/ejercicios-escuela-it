@@ -30,7 +30,7 @@ public class Klondike {
 			
 			accion.Accionar(inputJugador, baraja, montones, pilares);
 		}
-		while(accion.PuedeAccionar(baraja, montones, pilares) && !montones.EstanVacios() && baraja.HayCartasEnLaBaraja());
+		while(accion.PuedeAccionar(baraja, montones, pilares) && (!montones.EstanVacios() || baraja.HayCartasEnLaBaraja()));
 		
 		if(montones.EstanVacios() && !baraja.HayCartasEnLaBaraja()) {
 			jugador.CantarVictoria();
