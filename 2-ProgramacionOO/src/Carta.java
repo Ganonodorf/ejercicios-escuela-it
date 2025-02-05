@@ -16,11 +16,13 @@ public class Carta {
 		this.color = palo % 2;
 	}
 
-	public String Mostrar() {
+	public void Mostrar() {
 		if(estaRevelada) {
-			return ObtenerNumeroString(numero) + ObtenerPaloString(palo);
+			System.out.print(ObtenerNumeroString(numero) + ObtenerPaloString(palo));
 		}
-		return "▒▒▒";
+		else {
+			System.out.print("▒▒▒");
+		}
 	}
 
 	private String ObtenerPaloString(int palo) {
@@ -73,22 +75,6 @@ public class Carta {
 	
 	public void Revelar(boolean estado) {
 		this.estaRevelada = estado;
-	}
-	
-	public static void main(String[] args) {
-		Carta dosCorazones = new Carta(1, 2);
-		Carta tresTreboles = new Carta(2, 3);
-		
-		dosCorazones.Revelar(true);
-		tresTreboles.Revelar(true);
-		
-		System.out.println(dosCorazones.Mostrar() + tresTreboles.Mostrar());
-		
-		System.out.println(dosCorazones.EsInmediatamenteInferior(tresTreboles));
-
-		System.out.println(dosCorazones.color + "   " + tresTreboles.color);
-		
-		System.out.println(dosCorazones.SonDelMismoColor(tresTreboles));
 	}
 
 	public boolean EstaRevalada() {
