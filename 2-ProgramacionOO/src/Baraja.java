@@ -1,108 +1,54 @@
-import java.util.ArrayList;
 import java.util.Collections;
 
-public class Baraja {
+public class Baraja extends Mazo {
 	
-	private ArrayList<Carta> mazo;
+	private final int NUMERO_PALOS = 4;
 	
-	private ArrayList<Carta> descarte;
+	private final int NUMERO_CARTAS = 13;
 	
 	public Baraja() {
-		mazo = new ArrayList<Carta>();
-		descarte = new ArrayList<Carta>();
+		super();
 		
-		for(int i = 1; i < 5; i++) {
-			for(int j = 1; j < 14; j++) {
-				mazo.add(new Carta(i, j));
+		for(int i = 1; i < NUMERO_PALOS + 1; i++) {
+			for(int j = 1; j < NUMERO_CARTAS + 1; j++) {
+				this.AnadirCarta(new Carta (i, j));
 			}
 		}
 	}
 
-	public String Mostrar() {
-		String mostrar = "";
-		
-		if(HayCartasEnElMazo()) {
-			mostrar += "▒▒▒";
+	@Override
+	public void Mostrar() {
+		if(!this.EstaVacio()) {
+			System.out.println("▒▒▒");
 		}
 		else {
-			mostrar += "___";
+			System.out.println("___");
 		}
-		
-		mostrar += "  ";
-		
-		if(HayDescarte()) {
-			mostrar += descarte.getFirst().Mostrar();
-		}
-		else {
-			mostrar += "___";
-		}
-		
-		return mostrar;
 	}
 
-	public void NuevaCarta() {
-		if(mazo.isEmpty()) {
-			RellenarMazo();
-			NuevaCarta();
+	@Override
+	public boolean SePuedeAnadirCarta(Carta carta) {
+		return true;
+	}
+
+	public void CartaAlDescarte(Descarte descarte) {
+		if(this.EstaVacio()) {
+			RellenarMazo(descarte);
+			CartaAlDescarte(descarte);
 		}
 		else {
-			descarte.addFirst(mazo.getFirst());
-			descarte.get(0).Revelar(true);
-			mazo.removeFirst();
+			descarte.AnadirCarta(this.CogerPrimeraCarta());
 		}
 	}
 
-	private void RellenarMazo() {
-		while(!descarte.isEmpty()) {
-			mazo.addFirst(descarte.getFirst());
-			mazo.get(0).Revelar(false);
-			descarte.remove(0);
+	private void RellenarMazo(Descarte descarte) {
+		while(!descarte.EstaVacio()) {
+			this.AnadirCarta(descarte.CogerPrimeraCarta());
+			this.VerPrimeracarta().Revelar(false);
 		}
-	}
-
-	public boolean HayDescarte() {
-		return !descarte.isEmpty();
-	}
-
-	public Carta VerDescarte() {
-		return descarte.getFirst();
-	}
-
-	public Carta ObtenerDescarte() {
-		Carta cartaADevolver = descarte.getFirst();
-		descarte.remove(0);
-		return cartaADevolver;
-	}
-
-	private boolean HayCartasEnElMazo() {
-		return !mazo.isEmpty();
 	}
 
 	public void Barajar() {
-		Collections.shuffle(mazo);
-	}
-
-	public Carta ObtenerPrimeraCarta() {
-		Carta cartaADevolver = mazo.getFirst();
-		mazo.remove(0);
-		return cartaADevolver;
-	}
-
-	public boolean HayCartasEnLaBaraja() {
-		return HayCartasEnElMazo() || HayDescarte();
-	}
-	
-	public static void main(String[] args) {
-		Baraja baraja = new Baraja();
-		
-		baraja.Barajar();
-		
-		baraja.Mostrar();
-		
-		for(int i = 0; i < 100; i++) {
-			baraja.NuevaCarta();
-
-			baraja.Mostrar();
-		}
+		Collections.shuffle(cartas);
 	}
 }
