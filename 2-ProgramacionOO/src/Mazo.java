@@ -5,35 +5,41 @@ public abstract class Mazo {
 	protected ArrayList<Carta> cartas;
 	
 	public Mazo() {
+		
 	}
 	
-	public abstract boolean SePuedeAnadirCarta(Carta carta);
+	protected abstract boolean SePuedeAnadirCarta(Carta carta);
 	
-	public void AnadirCarta(Carta carta) {
+	protected void AnadirCarta(Carta carta) {
 		cartas.addFirst(carta);
 	}
 
-	public void Mostrar() {
+	protected void Mostrar() {
 		if(!this.EstaVacio()) {
-			System.out.println(this.VerPrimeracarta().Mostrar());
+			MostrarContenido();
 		}
 		else {
 			System.out.println("___");
 		}
 	}
 	
-	public boolean EstaVacio() {
+	
+	protected void MostrarContenido() {
+		this.VerPrimeracarta().Mostrar();
+	}
+	
+	protected boolean EstaVacio() {
 		return cartas.isEmpty();
 	}
 	
-	public Carta CogerPrimeraCarta() {
+	protected Carta CogerPrimeraCarta() {
 		assert !this.EstaVacio();
 		Carta cartaADevolver = cartas.getFirst();
 		cartas.remove(0);
 		return cartaADevolver;
 	}
 	
-	public Carta VerPrimeracarta() {
+	protected Carta VerPrimeracarta() {
 		assert !this.EstaVacio();
 		return cartas.getFirst();
 	}
