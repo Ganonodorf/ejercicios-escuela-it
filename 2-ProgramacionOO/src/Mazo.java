@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public abstract class Mazo {
 	
-	private ArrayList<Carta> cartas;
+	protected ArrayList<Carta> cartas;
 	
 	public Mazo() {
 	}
