@@ -1,6 +1,6 @@
 public class Accion {
 		
-	public void Accionar(String inputJugador, Baraja baraja, Montones montones, Pilares pilares) {
+	public void Accionar(String inputJugador, Baraja baraja, Montones montones, Pilar pilares) {
 		assert inputJugador != null;
 		assert baraja != null;
 		assert montones != null;
@@ -68,7 +68,7 @@ public class Accion {
 		return input.matches("^[1-7]-[1-9][0-9]?-[1-7]");
 	}
 
-	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilares pilares) {
+	public boolean PuedeAccionar(Baraja baraja, Montones montones, Pilar pilares) {
 		return baraja.HayCartasEnLaBaraja() || !montones.EstanVacios();
 	}
 }
