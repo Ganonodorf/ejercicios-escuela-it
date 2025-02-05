@@ -25,4 +25,9 @@ public abstract class Mazo {
 		cartas.remove(0);
 		return cartaADevolver;
 	}
+	
+	public Carta VerPrimeracarta() {
+		assert !this.EstaVacio();
+		return cartas.getFirst();
+	}
 }
