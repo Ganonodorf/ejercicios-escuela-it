@@ -59,16 +59,16 @@ public class Carta {
 		return this.color == carta.color;
 	}
 
+	public boolean SonDelMismoPalo(Carta carta) {
+		return this.palo == carta.palo;
+	}
+
 	public boolean EsInmediatamenteInferior(Carta carta) {
 		return this.numero + 1 == carta.numero;
 	}
 	
 	public int getPalo() {
 		return palo;
-	}
-
-	public int getNumero() {
-		return numero;
 	}
 	
 	public void Revelar(boolean estado) {
@@ -93,5 +93,9 @@ public class Carta {
 
 	public boolean EstaRevalada() {
 		return estaRevelada;
+	}
+
+	public boolean EsRey() {
+		return numero == 13;
 	}
 }
