@@ -8,6 +8,6 @@ public class Descarte extends Mazo{
 	
 	public void AnadirCarta(Carta carta) {
 		super.AnadirCarta(carta);
-		this.VerPrimeracarta().Revelar(true);
+		this.VerCarta().Revelar(true);
 	}
 }

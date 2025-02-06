@@ -1,74 +1,99 @@
 public class Accion {
+	
+	public Accion() {
 		
-	public void Accionar(String inputJugador, Baraja baraja, Monton montones, Pilar pilares) {
-		assert inputJugador != null;
+	}
+	
+	public void CartaDeLaBarajaAlDescarte(Baraja baraja, Descarte descarte) {
 		assert baraja != null;
-		assert montones != null;
-		assert pilares != null;
-		
-		if(NuevaCartaDelMazo(inputJugador) && baraja.HayCartasEnLaBaraja()) {
-			baraja.NuevaCarta();
-			return;
-		}
-		
-		if(CartaDelDescarteAMonton(inputJugador) && baraja.HayDescarte() && montones.SePuedeAnadirCarta(baraja.VerDescarte(), Character.getNumericValue(inputJugador.charAt(2)))) {
-			montones.AnadirCarta(baraja.ObtenerDescarte(), Character.getNumericValue(inputJugador.charAt(2)));
-			return;
-		}
-		
-		if(CartaDelDescarteAPilar(inputJugador) && baraja.HayDescarte() && pilares.SePuedeAnadirCarta(baraja.VerDescarte())){
-			pilares.AnadirCarta(baraja.ObtenerDescarte());
-			return;
-		}
-		
-		if(CartaDelMontonAlPilar(inputJugador) && pilares.SePuedeAnadirCarta(montones.VerPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))))) {
-			pilares.AnadirCarta(montones.ObtenerPrimeraCartaDeUnMonton(Character.getNumericValue(inputJugador.charAt(0))));
-			return;
-		}
-		
-		if(MoverCartasEntreMontones(inputJugador)) {
-			String[] informacion = inputJugador.split("-");
-			
-			int[] informacionInt = new int[]{ Integer.parseInt(informacion[0]),
-											  Integer.parseInt(informacion[1]),
-											  Integer.parseInt(informacion[2])};
-			
-			
-			if(!montones.EstaElMontonVacio(informacionInt[0]) &&
-					montones.TamanoMonton(informacionInt[0]) >= informacionInt[1] &&
-					montones.SePuedeMoverCarta(informacionInt[0], informacionInt[1], informacionInt[2])) {
-				montones.MoverCartas(informacionInt[0], informacionInt[1], informacionInt[2]);
-				return;
-			}
+		assert descarte != null;
 
-			System.out.println("Input o acción inválida");
+		if(baraja.EstaVacio() && descarte.EstaVacio()) {
+			System.out.println("No quedan cartas ni en el mazo ni en la baraja!");
 			return;
 		}
 		
-		System.out.println("Input o acción inválida");
-	}
+		if(baraja.EstaVacio() && !descarte.EstaVacio()) {
+			RellenarBarajaConDescarte(baraja, descarte);
+			CartaDeLaBarajaAlDescarte(baraja, descarte);
+		}
 
-	private boolean NuevaCartaDelMazo(String input) {
-		return input.matches("^c");
+		descarte.AnadirCarta(baraja.CogerCarta());
 	}
 	
-	private boolean CartaDelDescarteAMonton(String input) {
-		return input.matches("^d-[1-7]");
+	private void RellenarBarajaConDescarte(Baraja baraja, Descarte descarte) {
+		assert baraja != null;
+		assert descarte != null;
+		
+		while(!descarte.EstaVacio()) {
+			baraja.AnadirCarta(descarte.CogerCarta());
+			baraja.VerCarta().Revelar(false);
+		}
 	}
 	
-	private boolean CartaDelDescarteAPilar(String input) {
-		return input.matches("^d-p");
+	public void CartaDelDescarteAlMonton(Descarte descarte, Monton monton) {
+		assert descarte != null;
+		assert monton != null;
+		
+		if(!monton.SePuedeAnadirCarta(descarte.VerCarta())) {
+			System.out.println("No se puede añadir esa carta del descarte al montón.");
+			return;
+		}
+		
+		monton.AnadirCarta(descarte.CogerCarta());
 	}
 	
-	private boolean CartaDelMontonAlPilar(String input) {
-		return input.matches("^[1-7]-p");
+	public void CartaDelDescarteAlPilar(Descarte descarte, Pilar pilar) {
+		assert descarte != null;
+		assert pilar != null;
+		
+		if(!pilar.SePuedeAnadirCarta(descarte.VerCarta())) {
+			System.out.println("No se puede añadir esa carta del descarte al pilar.");
+			return;
+		}
+		
+		pilar.AnadirCarta(descarte.CogerCarta());
+	}
+	
+	public void CartaDelMontonAlPilar(Monton monton, Pilar pilar) {
+		assert monton != null;
+		assert pilar != null;
+		
+		if(!pilar.SePuedeAnadirCarta(monton.VerCarta())) {
+			System.out.println("No se puede añadir esa carta del monton al pilar.");
+			return;
+		}
+		
+		pilar.AnadirCarta(monton.CogerCarta());
+	}
+	
+	public void MoverCartasEntreMontones(Monton montonOrigen, int numeroCarta, Monton montonDestino) {
+		assert montonOrigen != null;
+		assert numeroCarta > 0;
+		assert montonDestino != null;
+		
+		if(numeroCarta >= montonOrigen.Tamano()) {
+			System.out.println("El montón es más pequeño, la carta que intentas coger no existe.");
+			return;
+		}
+		
+		if(montonDestino.SePuedeAnadirCarta(montonOrigen.CogerCarta(numeroCarta))) {
+			do {
+				montonDestino.AnadirCarta(montonOrigen.CogerCarta());
+				numeroCarta--;
+			}while(numeroCarta < 1);
+		}
 	}
 
-	private boolean MoverCartasEntreMontones(String input) {
-		return input.matches("^[1-7]-[1-9][0-9]?-[1-7]");
-	}
-
-	public boolean PuedeAccionar(Baraja baraja, Monton montones, Pilar pilares) {
-		return baraja.HayCartasEnLaBaraja() || !montones.EstanVacios();
+	public boolean PuedeAccionar(Baraja baraja, Monton[] montones) {
+		boolean hayCartasEnLosMontones = false;
+		
+		int i = 0;
+		
+		while(hayCartasEnLosMontones == false && i < montones.length) {
+			hayCartasEnLosMontones = !montones[i].EstaVacio();
+		}
+		
+		return !baraja.EstaVacio() || hayCartasEnLosMontones;
 	}
 }

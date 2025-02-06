@@ -25,22 +25,10 @@ public class Baraja extends Mazo {
 	public boolean SePuedeAnadirCarta(Carta carta) {
 		return true;
 	}
-
-	public void CartaAlDescarte(Descarte descarte) {
-		if(this.EstaVacio()) {
-			RellenarMazo(descarte);
-			CartaAlDescarte(descarte);
-		}
-		else {
-			descarte.AnadirCarta(this.CogerPrimeraCarta());
-		}
-	}
-
-	private void RellenarMazo(Descarte descarte) {
-		while(!descarte.EstaVacio()) {
-			this.AnadirCarta(descarte.CogerPrimeraCarta());
-			this.VerPrimeracarta().Revelar(false);
-		}
+	
+	public void AnadirCarta(Carta carta) {
+		super.AnadirCarta(carta);
+		carta.Revelar(false);
 	}
 
 	public void Barajar() {

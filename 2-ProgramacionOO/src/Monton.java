@@ -2,7 +2,7 @@ public class Monton extends Mazo{
 	
 	public Monton(int posicion, Baraja baraja) {
 		for(int i = 0; i < posicion; i++) {
-			this.AnadirCarta(baraja.CogerPrimeraCarta());
+			this.AnadirCarta(baraja.CogerCarta());
 		}
 	}
 
@@ -20,7 +20,7 @@ public class Monton extends Mazo{
 			return true;
 		}
 		
-		if(!this.EstaVacio() &&	!carta.SonDelMismoColor(this.VerPrimeracarta()) && carta.EsInmediatamenteInferior(this.VerPrimeracarta())) {
+		if(!this.EstaVacio() &&	!carta.SonDelMismoColor(this.VerCarta()) && carta.EsInmediatamenteInferior(this.VerCarta())) {
 			return true;
 		}
 		
