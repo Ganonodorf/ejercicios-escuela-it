@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Klondike {
 	
 	Jugador jugador;
@@ -19,12 +17,12 @@ public class Klondike {
 		descarte = new Descarte();
 		accion = new Accion();
 		pilares = new Pilar[NUMERO_PALOS];
-		for(int i = 1; i <= NUMERO_PALOS; i++) {
-			pilares[i] = new Pilar(i);
+		for(int i = 0; i < NUMERO_PALOS; i++) {
+			pilares[i] = new Pilar(i + 1);
 		}
 		montones = new Monton[NUMERO_MONTONES];
-		for(int i = 1; i <= NUMERO_MONTONES; i++) {
-			montones[i] = new Monton(i, baraja);
+		for(int i = 0; i < NUMERO_MONTONES; i++) {
+			montones[i] = new Monton(i + 1, baraja);
 		}
 	}
 	
@@ -106,14 +104,17 @@ public class Klondike {
 	private void MostrarInformacionDeJuego() {
 		System.out.println("\n\n");
 		baraja.Mostrar();
+		descarte.Mostrar();
 		System.out.println("       ");
 		for(Pilar pilar: pilares) {
 			pilar.Mostrar();
+			System.out.print(" ");
 		}
 		System.out.println("\n\n");
 
 		for(Monton monton: montones) {
 			monton.Mostrar();
+			System.out.print("\n");
 		}
 	}
 

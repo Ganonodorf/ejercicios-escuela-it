@@ -1,16 +1,20 @@
 public class Monton extends Mazo{
+	int posicion;
 	
 	public Monton(int posicion, Baraja baraja) {
+		this.posicion = posicion;
+		
 		for(int i = 0; i < posicion; i++) {
 			this.AnadirCarta(baraja.CogerCarta());
 		}
+		this.VerCarta().Revelar(true);
 	}
 
 	@Override
 	protected void MostrarContenido() {
-		for(Carta carta : cartas) {
-			 carta.Mostrar();
-			 System.out.println("  ");
+		System.out.print(posicion + " -> ");
+		for(int i = this.Tamano(); i > 0; i--) {
+			this.VerCarta(i).Mostrar();
 		}
 	}
 

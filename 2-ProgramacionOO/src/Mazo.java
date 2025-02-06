@@ -5,7 +5,7 @@ public abstract class Mazo {
 	protected ArrayList<Carta> cartas;
 	
 	public Mazo() {
-		
+		cartas = new ArrayList<Carta>();
 	}
 	
 	protected abstract boolean SePuedeAnadirCarta(Carta carta);
@@ -19,7 +19,7 @@ public abstract class Mazo {
 			MostrarContenido();
 		}
 		else {
-			System.out.println("___");
+			System.out.print("___");
 		}
 	}
 	

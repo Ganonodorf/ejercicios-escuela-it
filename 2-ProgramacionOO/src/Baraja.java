@@ -7,10 +7,9 @@ public class Baraja extends Mazo {
 	private final int NUMERO_CARTAS = 13;
 	
 	public Baraja() {
-		super();
-		
 		for(int i = 1; i < NUMERO_PALOS + 1; i++) {
 			for(int j = 1; j < NUMERO_CARTAS + 1; j++) {
+				
 				this.AnadirCarta(new Carta (i, j));
 			}
 		}
