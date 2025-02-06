@@ -1,18 +1,33 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jugador {
 	
+	private ArrayList<Accion> acciones;
+	
+	
 	public Jugador() {
-		
+		acciones = new ArrayList<Accion>();
 	}
 
-	public String RecogerInput() {
+	public void AnadirAccion(Accion accion) {
+		acciones.add(accion);
+	}
+
+	public Accion RecogerAccion() {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		do {
 	        input = scanner.nextLine();
+	        
+	        if(NuevaCartaDelMazo(input)) {
+	        	return 
+	        }
+		}while(true);
+		if(NuevaCartaDelMazo())
+		do {
 		}while(!NuevaCartaDelMazo(input) &&
 				!CartaDelDescarteAMonton(input) &&
 				!CartaDelDescarteAPilar(input) &&

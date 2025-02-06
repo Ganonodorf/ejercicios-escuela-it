@@ -84,4 +84,8 @@ public class Carta {
 	public boolean EsRey() {
 		return numero == 13;
 	}
+
+	public boolean EsAs() {
+		return numero == 1;
+	}
 }

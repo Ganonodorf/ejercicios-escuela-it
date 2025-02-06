@@ -3,7 +3,6 @@ public class Klondike {
 	Jugador jugador;
 	Baraja baraja;
 	Descarte descarte;
-	Accion accion;
 	Pilar[] pilares;
 	Monton[] montones;
 	
@@ -15,7 +14,6 @@ public class Klondike {
 		jugador = new Jugador();
 		baraja = new Baraja();
 		descarte = new Descarte();
-		accion = new Accion();
 		pilares = new Pilar[NUMERO_PALOS];
 		for(int i = 0; i < NUMERO_PALOS; i++) {
 			pilares[i] = new Pilar(i + 1);
@@ -70,11 +68,18 @@ public class Klondike {
 		
 		if(inputJugador.contains("d-p")) {
 			int pilarDestino = -1;
-			do {
-				pilarDestino++;
-			}while(pilarDestino < NUMERO_PALOS && !pilares[pilarDestino].SePuedeAnadirCarta(descarte.CogerCarta()));
+			for(int i = 0; i < NUMERO_PALOS; i++) {
+				if(!pilares[i].SePuedeAnadirCarta(descarte.VerCarta())) {
+					pilarDestino = i;
+				}
+			}
 			
-			accion.CartaDelDescarteAlPilar(descarte, pilares[pilarDestino]);
+			if(pilarDestino != -1) {
+				accion.CartaDelDescarteAlPilar(descarte, pilares[pilarDestino]);
+				return;
+			}
+			
+			System.out.println("Esa carta no se puede añadir al pilar");
 			return;
 		}
 
@@ -88,7 +93,7 @@ public class Klondike {
 			int montonOrigen = Integer.parseInt(inputJugador.split("-")[0]);
 			do {
 				pilarDestino++;
-			}while(pilarDestino < NUMERO_PALOS && !pilares[pilarDestino].SePuedeAnadirCarta(montones[montonOrigen].CogerCarta()));
+			}while(pilarDestino < NUMERO_PALOS && !pilares[pilarDestino].SePuedeAnadirCarta(montones[montonOrigen].VerCarta()));
 
 			accion.CartaDelMontonAlPilar(montones[montonOrigen], pilares[pilarDestino]);
 			return;

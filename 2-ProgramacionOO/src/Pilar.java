@@ -8,7 +8,7 @@ public class Pilar extends Mazo {
 	
 	@Override
 	public boolean SePuedeAnadirCarta(Carta carta) {
-		if(this.EstaVacio() && carta.EsRey() && carta.getPalo() == palo) {
+		if(this.EstaVacio() && carta.EsAs() && carta.getPalo() == palo) {
 			return true;
 		}
 		
