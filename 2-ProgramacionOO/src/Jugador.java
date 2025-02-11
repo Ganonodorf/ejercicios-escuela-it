@@ -5,13 +5,20 @@ public class Jugador {
 	
 	private ArrayList<Accion> acciones;
 	
+	private Salir salir;
 	
 	public Jugador() {
 		acciones = new ArrayList<Accion>();
+		
+		salir = new Salir();
 	}
 
 	public void AnadirAccion(Accion accion) {
 		acciones.add(accion);
+	}
+	
+	public void CerrarAcciones() {
+		acciones.add(salir);
 	}
 
 	public Accion RecogerAccion() {
@@ -19,47 +26,54 @@ public class Jugador {
 		
 		Scanner scanner = new Scanner(System.in);
 		
+		boolean matchea;
+		
 		do {
 	        input = scanner.nextLine();
 	        
-	        if(NuevaCartaDelMazo(input)) {
-	        	return 
+	        matchea = MatcheaAlgunaAccion(input);
+	        
+	        if(!matchea) {
+	        	System.out.println("Input inválido! Prueba otra vez.");
 	        }
-		}while(true);
-		if(NuevaCartaDelMazo())
-		do {
-		}while(!NuevaCartaDelMazo(input) &&
-				!CartaDelDescarteAMonton(input) &&
-				!CartaDelDescarteAPilar(input) &&
-				!CartaDelMontonAlPilar(input) &&
-				!MoverCartasEntreMontones(input));
+	        
+		}while(!matchea);
 		
-		return input;
+		return DevolverAccion(input);
 	}
 	
-
-	private boolean NuevaCartaDelMazo(String input) {
-		return input.matches("^c");
+	private boolean MatcheaAlgunaAccion(String input) {
+		for(int i = 0; i < acciones.size(); i++) {
+        	if(acciones.get(i).Coincide(input)) {
+        		return true;
+        	}
+        }
+		
+		return false;
 	}
 	
-	private boolean CartaDelDescarteAMonton(String input) {
-		return input.matches("^d-[1-7]");
+	private Accion DevolverAccion(String input) {
+		for(int i = 0; i < acciones.size(); i++) {
+        	if(acciones.get(i).Coincide(input)) {
+        		return acciones.get(i);
+        	}
+        }
+		
+		return null;
 	}
 	
-	private boolean CartaDelDescarteAPilar(String input) {
-		return input.matches("^d-p");
-	}
-	
-	private boolean CartaDelMontonAlPilar(String input) {
-		return input.matches("^[1-7]-p");
-	}
-
-	private boolean MoverCartasEntreMontones(String input) {
-		return input.matches("^[1-7]-[1-9][0-9]?-[1-7]");
+	public boolean SalirPresionado() {
+		return salir.HaSidoAccionado();
 	}
 
 	public void CantarVictoria() {
 		System.out.println("Gané gané");
-		
+	}
+	
+	public void MostrarAcciones() {
+		for(int i = 0; i < acciones.size(); i++) {
+			acciones.get(i).Mostrar();
+			System.out.print("\n");
+		}
 	}
 }

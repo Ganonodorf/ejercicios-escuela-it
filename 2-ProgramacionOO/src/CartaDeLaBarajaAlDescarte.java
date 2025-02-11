@@ -5,7 +5,7 @@ public class CartaDeLaBarajaAlDescarte extends Accion{
 	private Descarte descarte;
 	
 	public CartaDeLaBarajaAlDescarte(Baraja baraja, Descarte descarte) {
-		super("Carta de la baraja al descarte: c");
+		super("Carta de la baraja al descarte: c", "^c");
 		this.baraja = baraja;
 		this.descarte = descarte;
 	}

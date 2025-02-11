@@ -4,7 +4,7 @@ public class Salir extends Accion{
 	private boolean accionado = false;
 	
 	public Salir() {
-		super("Salir: s");
+		super("Salir: s", "^s");
 	}
 	
 	@Override

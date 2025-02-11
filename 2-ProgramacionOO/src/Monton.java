@@ -30,4 +30,18 @@ public class Monton extends Mazo{
 		
 		return false;
 	}
+	
+	@Override
+	public Carta CogerCarta() {
+		Carta cartaADevolver = super.CogerCarta();
+		this.cartas.getFirst().Mostrar();
+		return cartaADevolver;
+	}
+	
+	@Override
+	public Carta CogerCarta(int numeroCarta) {
+		Carta cartaADevolver = super.CogerCarta(numeroCarta);
+		this.cartas.getFirst().Mostrar();
+		return cartaADevolver;
+	}
 }
