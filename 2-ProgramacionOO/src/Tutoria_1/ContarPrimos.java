@@ -36,8 +36,20 @@ public class ContarPrimos {
 		return suma;
 	}
 	
-	public int sumarLosPrimerosXPrimos(int numeroPrimos) {
-		return 0;
+	public int sumarLosPrimerosXPrimos(int tope) {
+		assert tope > 0;
+		
+		int suma = 0;
+		int contador = 0;
+		
+		for(int i = 1; contador <= tope; i++) {
+			if(esPrimo(i)) {
+				suma += i;
+				contador++;
+			}
+		}
+		
+		return suma;
 	}
 	
 	public static void main(String[] args) {
