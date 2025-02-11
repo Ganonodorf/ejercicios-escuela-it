@@ -25,6 +25,14 @@ public class ContarPrimos {
 	}
 	
 	public int sumarPrimosEnLosPrimerosXNumeros(int tope) {
+		int suma = 0;
+		
+		for(int i = 1; i <= tope; i++) {
+			if(esPrimo(i)) {
+				suma += i;
+			}
+		}
+		
 		return 0;
 	}
 	
