@@ -33,7 +33,7 @@ public class ContarPrimos {
 			}
 		}
 		
-		return 0;
+		return suma;
 	}
 	
 	public int sumarLosPrimerosXPrimos(int numeroPrimos) {
