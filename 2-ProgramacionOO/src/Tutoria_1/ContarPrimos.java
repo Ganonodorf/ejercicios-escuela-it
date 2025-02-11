@@ -57,6 +57,10 @@ public class ContarPrimos {
 		
 		int suma = contarPrimos.sumarPrimosEnLosPrimerosXNumeros(50);
 		
-		System.out.print("La suma de los primos en los primeros 50 números es: " + suma);
+		System.out.println("La suma de los primos en los primeros 50 números es: " + suma);
+		
+		int sumaPrimerosPrimos = contarPrimos.sumarLosPrimerosXPrimos(50);
+
+		System.out.println("La suma de los primos 50 primeros primos es: " + sumaPrimerosPrimos);
 	}
 }
