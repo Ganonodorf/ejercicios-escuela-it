@@ -6,6 +6,24 @@ public class ContarPrimos {
 		
 	}
 	
+	public boolean esPrimo(int numero) {
+		if(numero <= 0) {
+			return false;
+		}
+		
+		if(numero == 1) {
+			return true;
+		}
+		
+		for(int i = 2; i < numero; i++) {
+			if(numero % i == 0) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	public int sumarPrimosEnLosPrimerosXNumeros(int tope) {
 		return 0;
 	}
