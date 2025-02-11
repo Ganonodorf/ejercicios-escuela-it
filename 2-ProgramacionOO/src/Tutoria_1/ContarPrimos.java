@@ -25,6 +25,8 @@ public class ContarPrimos {
 	}
 	
 	public int sumarPrimosEnLosPrimerosXNumeros(int tope) {
+		assert tope > 0;
+		
 		int suma = 0;
 		
 		for(int i = 1; i <= tope; i++) {
