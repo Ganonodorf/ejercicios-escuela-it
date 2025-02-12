@@ -7,12 +7,8 @@ public class ContarPrimos {
 	}
 	
 	public boolean esPrimo(int numero) {
-		if(numero <= 0) {
+		if(numero <= 1) {
 			return false;
-		}
-		
-		if(numero == 1) {
-			return true;
 		}
 		
 		for(int i = 2; i < numero; i++) {
@@ -48,6 +44,7 @@ public class ContarPrimos {
 			if(esPrimo(i)) {
 				suma += i;
 				contador++;
+				System.out.println(i);
 			}
 		}
 		
