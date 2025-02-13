@@ -2,11 +2,70 @@
 
 skin rose
 
-class MasterMind
+class MasterMind{
++ play()
+{static} main()
+}
+
+class Turn{
++ switchTurn()
+}
+
+class CodeBreaker{
++ guess()
+}
+
+class CodeMaker{
++ checkGuess()
++ createGoal()
+}
+
+class Action{
++ act()
+}
+
+class Guess{
++ placePieces()
+}
+
+class CheckGuess{
++ checkPieces()
+}
+
+class CreateGoal{
++ placeCodePieces()
+}
+
+class GiveHint{
++ placeHintPieces()
+}
+
+class Board{
++ placeBig()
++ placeSmall()
++ placeCode()
+}
+
+class Square{
++ haveBig()
+}
+
+class Code{
++ matchesCode()
++ getDifferencesWith()
+}
+
+class Piece{
++ place()
+}
+
+class Big{
++ matchesColor()
+}
 
 MasterMind *--> Board
 MasterMind *--> "2" Player
-MasterMind *--> "16" Turn
+MasterMind *--> Turn
 
     Board *--> "4x8" Square 
     Board *--> "4x1" Code 
@@ -30,26 +89,31 @@ MasterMind *--> "16" Turn
             Small <|-- Red
             Small <|-- White
     
-    Player *--> Piece
     Player <|-- CodeMaker
     Player <|-- CodeBreaker
         
             CodeMaker ..> CreateGoal : beggining
-            CodeMaker ..> "8" CheckGuess
+            CodeMaker --> "8" CheckGuess
+            CodeMaker --> GiveHint
             
-                CreateGoal --> Square
+                CreateGoal ..> Square
+                CreateGoal ..> Board
                 
-                CheckGuess ..> Square
-                CheckGuess --> Hint
-                
-            CodeBreaker ..> "8" Guess
+                CheckGuess ..> Board
             
-                Guess --> Square
+                GiveHint ..> Hint
+                GiveHint ..> Board
                 
-    Turn --> "2" Player
+            CodeBreaker --> "8" Guess
+            
+                Guess ..> Big
+                Guess ..> Board
+                
+    Turn --> Player
     
 Action <|-- CreateGoal
 Action <|-- Guess
 Action <|-- CheckGuess
+Action <|-- GiveHint
 
 @enduml
