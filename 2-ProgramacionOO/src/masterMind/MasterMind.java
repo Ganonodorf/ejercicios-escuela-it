@@ -22,6 +22,8 @@ public class MasterMind {
 				
 				board.proposeCombination(player.createCombination());
 			}while(board.numberOfAttemps() < NUMBER_OF_ATTEMPS && board.isWinnerResult() == false);
+
+			board.showInformation();
 			
 			if(board.isWinnerResult()) {
 				System.out.println("You've won!!! ;-)");
