@@ -66,11 +66,14 @@ public class Player {
 		return result;
 	}
 
-	private boolean isGoodCombination(String input) {
-		if(input.matches(COMBINATION_REGEX)) {
-			return true;
+	private String checkErrorInCombination(String input) {
+		if(input.length() != 4) {
+			return "Wrong moved combination length";
+		}
+		if(!input.matches(COMBINATION_REGEX)) {
+			return "Wrong colors, they must be: rgybmc";
 		}
 		
-		return false;
+		return "";
 	}
 }
