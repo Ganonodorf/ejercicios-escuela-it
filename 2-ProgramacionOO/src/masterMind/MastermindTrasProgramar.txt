@@ -1,0 +1,60 @@
+@startuml
+
+skin rose
+
+class MasterMind{
+- playAgain()
+- isPLayingAgain()
+- isGoodAnswer()
++ play()
+{static} main()
+}
+
+class Player{
+- checkErrorInInput()
+- inputToCombination()
+- charToColor()
++ createCombination()
+}
+
+class Combination{
+- Color[4]
++ toString()
++ numberOfEqualColors()
++ numberOfExactMatches()
+}
+
+class Board{
+- attemps
+- secretCombination
+- result[]
+- winnerResult
+- comparisonWithSecretComination()
+- saveResult()
+- createSecretCombination()
++ proposeCombination()
++ isWinnerResult()
++ numberOfAttemps()
++ showInformation()
+}
+
+enum Color{
+RED,
+GREEN,
+BLUE,
+YELLOW,
+CYAN,
+MAGENTA
+}
+
+MasterMind *--> Board
+MasterMind *--> Player
+
+    Player --> Board
+    Player ..> Combination
+
+    Board *--> Combination
+    
+        Combination *--> Color
+
+@enduml
