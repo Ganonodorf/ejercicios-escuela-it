@@ -41,7 +41,7 @@ public class Board {
 	}
 	
 	private void saveResult(Combination combination, int numberOfBlacks, int numberOfWhites) {
-		result[attemps] = combination.toString() + " --> " + numberOfBlacks + " blacks and " + numberOfWhites + " whites";
+		result[attemps] = combination.toString() + " --> " + numberOfBlacks + " blacks and " + numberOfWhites + " whites\n";
 	}
 
 	private void createSecretCombination() {
@@ -52,5 +52,13 @@ public class Board {
 											colors[rand.nextInt(colors.length)], 
 											colors[rand.nextInt(colors.length)], 
 											colors[rand.nextInt(colors.length)]);
+	}
+
+	public void showInformation() {
+		System.out.println(attemps + " attemp(s):");
+		System.out.println("****");
+		for(int i = 0; i < attemps; i++) {
+			System.out.print(result[i]);
+		}
 	}
 }
