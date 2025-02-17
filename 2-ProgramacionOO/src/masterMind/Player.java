@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Player {
 	
-	private String COMBINATION_REGEX = "REGEX_MATCH";
+	private final String COMBINATION_REGEX = "^[rgbycm][rgbycm][rgbycm][rgbycm]$";
 	
 	public Player() {
 	}
