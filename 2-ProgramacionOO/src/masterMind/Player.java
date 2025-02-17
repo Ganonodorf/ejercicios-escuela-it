@@ -45,22 +45,29 @@ public class Player {
 
 	private Color charToColor(char colorChar) {
 		Color result;
-		
+
 		switch(colorChar) {
 		case 'r':
 			result = Color.RED;
+			break;
 		case 'g':
 			result = Color.GREEN;
+			break;
 		case 'b':
 			result = Color.BLUE;
+			break;
 		case 'm':
 			result = Color.MAGENTA;
+			break;
 		case 'c':
 			result = Color.CYAN;
+			break;
 		case 'y':
 			result = Color.YELLOW;
+			break;
 		default:
 			result = Color.RED;
+			break;
 		}
 		
 		return result;
@@ -80,7 +87,7 @@ public class Player {
 	public static void main(String[] args) {
 		Player player = new Player();
 		
-		System.out.print(player.inputToCombination("ycmg").toString());
+		System.out.print(player.inputToCombination("ymmg").toString());
 		
 	}
 }
