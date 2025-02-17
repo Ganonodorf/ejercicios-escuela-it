@@ -11,6 +11,16 @@ public class Combination {
 		combination[3] = fourth;
 	}
 	
+	public String toString() {
+		String result = "";
+		
+		for(int i = 0; i < this.combination.length; i++) {
+			result += this.combination[i].toString().toLowerCase().charAt(0);
+		}
+		
+		return result;
+	}
+	
 	public int numberOfEqualColors(Combination combination) {
 		int result = 0;
 		boolean[] checkedColors = new boolean[4];
