@@ -24,9 +24,43 @@ public class Combination {
 					checkedColors[j] = true;
 					out = true;
 				}
+				j++;
 			}while(j < 4 && out == false);
 		}
 		
 		return result;
+	}
+	
+	public static void main(String[] args) {
+		Combination primeCombi = new Combination(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW);
+		Combination comparisonCombi = new Combination(Color.CYAN, Color.MAGENTA, Color.RED, Color.GREEN);
+		
+		int numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+		
+		System.out.println(numEqualColors);
+	
+		
+		primeCombi = new Combination(Color.RED, Color.RED, Color.BLUE, Color.YELLOW);
+		comparisonCombi = new Combination(Color.BLUE, Color.RED, Color.RED, Color.RED);
+		
+		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+		
+		System.out.println(numEqualColors);
+	
+		
+		primeCombi = new Combination(Color.RED, Color.RED, Color.RED, Color.YELLOW);
+		comparisonCombi = new Combination(Color.BLUE, Color.MAGENTA, Color.BLUE, Color.GREEN);
+		
+		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+		
+		System.out.println(numEqualColors);
+	
+		
+		primeCombi = new Combination(Color.RED, Color.RED, Color.RED, Color.YELLOW);
+		comparisonCombi = new Combination(Color.RED, Color.RED, Color.RED, Color.YELLOW);
+		
+		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+		
+		System.out.println(numEqualColors);
 	}
 }
