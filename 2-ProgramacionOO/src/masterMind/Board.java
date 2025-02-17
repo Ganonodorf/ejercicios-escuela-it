@@ -30,6 +30,14 @@ public class Board {
 		attemps++;
 	}
 	
+	public boolean isWinnerResult() {
+		return winnerResult;
+	}
+	
+	public int numberOfAttemps() {
+		return attemps;
+	}
+	
 	private void saveResult(Combination combination, int numberOfBlacks, int numberOfWhites) {
 		result[attemps] = combination.toString() + " --> " + numberOfBlacks + " blacks and " + numberOfWhites + " whites";
 	}
