@@ -23,7 +23,7 @@ public class Player {
 			
 	        input = scanner.nextLine();
 	        
-	        error = checkErrorInCombination(input);
+	        error = checkErrorInInput(input);
 	        
 	        if(error.length() > 0) {
 	        	System.out.println(error);
@@ -31,6 +31,17 @@ public class Player {
 		}while(error.length() > 0);
 		
 		return inputToCombination(input);
+	}
+
+	private String checkErrorInInput(String input) {
+		if(input.length() != 4) {
+			return "Wrong moved combination length";
+		}
+		if(!input.matches(COMBINATION_REGEX)) {
+			return "Wrong colors, they must be: rgybmc";
+		}
+		
+		return "";
 	}
 
 	private Combination inputToCombination(String input) {
@@ -71,17 +82,6 @@ public class Player {
 		}
 		
 		return result;
-	}
-
-	private String checkErrorInCombination(String input) {
-		if(input.length() != 4) {
-			return "Wrong moved combination length";
-		}
-		if(!input.matches(COMBINATION_REGEX)) {
-			return "Wrong colors, they must be: rgybmc";
-		}
-		
-		return "";
 	}
 	
 	public static void main(String[] args) {
