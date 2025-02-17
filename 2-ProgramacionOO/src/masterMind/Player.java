@@ -76,4 +76,10 @@ public class Player {
 		
 		return "";
 	}
+	
+	public static void main(String[] args) {
+		Player player = new Player();
+		
+		System.out.print(player.inputToCombination("ycmg").toString());
+	}
 }

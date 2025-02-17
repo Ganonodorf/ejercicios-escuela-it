@@ -58,6 +58,9 @@ public class Combination {
 		Combination comparisonCombi = new Combination(Color.CYAN, Color.MAGENTA, Color.RED, Color.GREEN);
 		
 		int numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+
+		System.out.println(primeCombi.toString());
+		System.out.println(comparisonCombi.toString());
 		
 		System.out.println(numEqualColors);
 	
@@ -66,6 +69,9 @@ public class Combination {
 		comparisonCombi = new Combination(Color.BLUE, Color.RED, Color.RED, Color.RED);
 		
 		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+
+		System.out.println(primeCombi.toString());
+		System.out.println(comparisonCombi.toString());
 		
 		System.out.println(numEqualColors);
 	
@@ -74,6 +80,9 @@ public class Combination {
 		comparisonCombi = new Combination(Color.BLUE, Color.MAGENTA, Color.BLUE, Color.GREEN);
 		
 		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+
+		System.out.println(primeCombi.toString());
+		System.out.println(comparisonCombi.toString());
 		
 		System.out.println(numEqualColors);
 	
@@ -82,6 +91,9 @@ public class Combination {
 		comparisonCombi = new Combination(Color.RED, Color.RED, Color.RED, Color.YELLOW);
 		
 		numEqualColors = primeCombi.numberOfEqualColors(comparisonCombi);
+
+		System.out.println(primeCombi.toString());
+		System.out.println(comparisonCombi.toString());
 		
 		System.out.println(numEqualColors);
 	}
