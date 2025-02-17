@@ -16,16 +16,19 @@ public class Player {
 		
 		boolean goodCombination;
 
+		String error;
+
 		do {
+			System.out.println("move a combination: rybgmc");
+			
 	        input = scanner.nextLine();
 	        
-	        goodCombination = isGoodCombination(input);
+	        error = checkErrorInCombination(input);
 	        
-	        if(!goodCombination) {
-	        	System.out.println("Not a valid combination.");
+	        if(error.length() > 0) {
+	        	System.out.println(error);
 	        }
-	        
-		}while(!goodCombination);
+		}while(error.length() > 0);
 		
 		return inputToCombination(input);
 	}
