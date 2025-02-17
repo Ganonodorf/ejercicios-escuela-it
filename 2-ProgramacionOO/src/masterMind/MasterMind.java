@@ -47,7 +47,7 @@ public class MasterMind {
 	        
 	        goodAnswer = isGoodAnswer(input);
 	        
-	        if(goodAnswer) {
+	        if(!goodAnswer) {
 	        	System.out.println("Not a valid answer. Try again.");
 	        }
 	        
@@ -57,7 +57,7 @@ public class MasterMind {
 	}
 	
 	private boolean isPlayingAgain(String input) {
-		if(input == "y") {
+		if(input.matches("y")) {
 			return true;
 		}
 		return false;
