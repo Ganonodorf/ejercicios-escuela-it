@@ -7,113 +7,43 @@ class MasterMind{
 {static} main()
 }
 
-class Turn{
-+ switchTurn()
+class BreakerPlayer{
++ createCombination()
 }
 
-class CodeBreaker{
-+ guess()
-}
-
-class CodeMaker{
-+ checkGuess()
-+ createGoal()
-}
-
-class Action{
-+ act()
-}
-
-class Guess{
-+ placePieces()
-}
-
-class CheckGuess{
-+ checkPieces()
-}
-
-class CreateGoal{
-+ placeCodePieces()
-}
-
-class GiveHint{
-+ placeHintPieces()
+class Combination{
+- Color[4]
 }
 
 class Board{
-+ placeBig()
-+ placeSmall()
-+ placeCode()
+- attemps
+- secretCombination
+- proposedCombination[8]
+- comparisonWithSecretComination()
+- result
+- winnerResult
++ proposeCombination()
++ isWinnerResult()
 }
 
-class Square{
-+ haveBig()
-}
-
-class Code{
-+ matchesCode()
-+ getDifferencesWith()
-}
-
-class Piece{
-+ place()
-}
-
-class Big{
-+ matchesColor()
+enum Color{
+RED,
+GREEN,
+BLUE,
+YELLOW,
+CYAN,
+MAGENTA
 }
 
 MasterMind *--> Board
-MasterMind *--> "2" Player
-MasterMind *--> Turn
+MasterMind *--> BreakerPlayer
 
-    Board *--> "4x8" Square 
-    Board *--> "4x1" Code 
-    Board *--> "4x8" Hint
-            
-            Square o--> Big
-            Square *--> Position
-            
-            Hint o--> Small
-        
-        Piece <|-- Big
-        Piece <|-- Small
-        
-            Big <|-- Orange
-            Big <|-- Yellow
-            Big <|-- Green
-            Big <|-- Blue
-            Big <|-- Purple
-            Big <|-- Pink
-            
-            Small <|-- Red
-            Small <|-- White
-    
-    Player <|-- CodeMaker
-    Player <|-- CodeBreaker
-        
-            CodeMaker ..> CreateGoal : beggining
-            CodeMaker --> "8" CheckGuess
-            CodeMaker --> GiveHint
-            
-                CreateGoal ..> Square
-                CreateGoal ..> Board
-                
-                CheckGuess ..> Board
-            
-                GiveHint ..> Hint
-                GiveHint ..> Board
-                
-            CodeBreaker --> "8" Guess
-            
-                Guess ..> Big
-                Guess ..> Board
-                
-    Turn --> Player
-    
-Action <|-- CreateGoal
-Action <|-- Guess
-Action <|-- CheckGuess
-Action <|-- GiveHint
+    BreakerPlayer --> Board
+    BreakerPlayer ..> Combination
 
-@enduml
+    Board *--> Combination
+    
+        Combination *--> Color
+
+@enduml}
+
