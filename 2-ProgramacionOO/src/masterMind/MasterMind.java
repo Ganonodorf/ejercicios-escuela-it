@@ -7,18 +7,21 @@ public class MasterMind {
 	private Player player;
 	private Board board;
 	private final String ANSWER_REGEX = "^[yn]$";
+	private final int NUMBER_OF_ATTEMPS = 8;
 	
 	public MasterMind() {
 		player = new Player();
 	}
 	
-	public void Play() {
+	public void play() {
 		do {
-			board = new Board();
+			board = new Board(NUMBER_OF_ATTEMPS);
 			
 			do {
+				board.showInformation();
+				
 				board.proposeCombination(player.createCombination());
-			}while(board.numberOfAttemps() < 8 && board.isWinnerResult() == false);
+			}while(board.numberOfAttemps() < NUMBER_OF_ATTEMPS && board.isWinnerResult() == false);
 			
 			if(board.isWinnerResult()) {
 				System.out.println("You've won!!! ;-)");
@@ -70,6 +73,6 @@ public class MasterMind {
 	public static void main(String[] args) {
 		MasterMind masterMind = new MasterMind();
 		
-		masterMind.Play();
+		masterMind.play();
 	}
 }

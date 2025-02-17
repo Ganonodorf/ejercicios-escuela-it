@@ -12,8 +12,10 @@ public class Board {
 	
 	private boolean winnerResult = false;
 	
-	public Board() {
+	public Board(int numberOfAttemps) {
 		createSecretCombination();
+		
+		result = new String[numberOfAttemps];
 	}
 	
 	public void proposeCombination(Combination combination) {
