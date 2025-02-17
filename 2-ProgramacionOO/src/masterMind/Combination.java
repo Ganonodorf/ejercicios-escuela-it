@@ -31,6 +31,18 @@ public class Combination {
 		return result;
 	}
 	
+	public int numberOfExactMatches(Combination combination) {
+		int result = 0;
+		
+		for(int i = 0; i < 4; i++) {
+			if(this.combination[i] == combination.combination[i]) {
+				result++;
+			}
+		}
+		
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		Combination primeCombi = new Combination(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW);
 		Combination comparisonCombi = new Combination(Color.CYAN, Color.MAGENTA, Color.RED, Color.GREEN);
