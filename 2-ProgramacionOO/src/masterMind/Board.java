@@ -55,7 +55,7 @@ public class Board {
 	}
 
 	public void showInformation() {
-		System.out.println(attemps + " attemp(s):");
+		System.out.println("\n" + attemps + " attemp(s):");
 		System.out.println("****");
 		for(int i = 0; i < attemps; i++) {
 			System.out.print(result[i]);
