@@ -81,5 +81,6 @@ public class Player {
 		Player player = new Player();
 		
 		System.out.print(player.inputToCombination("ycmg").toString());
+		
 	}
 }
