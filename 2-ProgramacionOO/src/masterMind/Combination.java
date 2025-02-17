@@ -15,7 +15,7 @@ public class Combination {
 		int result = 0;
 		boolean[] checkedColors = new boolean[4];
 		
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < this.combination.length; i++) {
 			int j = 0;
 			boolean out = false;
 			do {
@@ -25,7 +25,7 @@ public class Combination {
 					out = true;
 				}
 				j++;
-			}while(j < 4 && out == false);
+			}while(j < this.combination.length && out == false);
 		}
 		
 		return result;
@@ -34,7 +34,7 @@ public class Combination {
 	public int numberOfExactMatches(Combination combination) {
 		int result = 0;
 		
-		for(int i = 0; i < 4; i++) {
+		for(int i = 0; i < this.combination.length; i++) {
 			if(this.combination[i] == combination.combination[i]) {
 				result++;
 			}
