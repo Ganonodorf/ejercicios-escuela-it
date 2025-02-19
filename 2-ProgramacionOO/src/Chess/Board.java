@@ -14,12 +14,75 @@ public class Board {
 		this.createPieces();
 	}
 	
-	public boolean canMovePiece(Piece piece, Coordinate coordinate) {
-		return false;
+	private Piece pieceIn(Coordinate coordinate) {
+		return pieces[coordinate.getX()][coordinate.getY()];
 	}
 	
-	public void movePiece(Piece piece, Coordinate coordinate) {
+	public boolean isPiece(Coordinate coordinate) {
+		return pieceIn(coordinate) != null;
+	}
+	
+	public boolean canMovePiece(Coordinate origin, Coordinate destiny) {
+		return pieceIn(origin).canMove(destiny) &&
+				!isAPieceOnTheWay(origin, destiny);
+	}
+	
+	public boolean canCapturePiece(Coordinate origin, Coordinate destiny) {
+		return pieceIn(origin).canMove(destiny) &&
+				!isAPieceOnTheWay(origin, destiny) &&
+				!pieceIn(origin).shareColor(pieceIn(destiny));
+	}
+	
+	private boolean isAPieceOnTheWay(Coordinate origin, Coordinate destiny) {
+		int distance = origin.distance(destiny);
 		
+		int initialNumber;
+		int finalNumber;
+		
+		if(origin.isInSameColumn(destiny)) {
+			initialNumber = origin.getY() < destiny.getY() ? origin.getY() : destiny.getY();
+			finalNumber = origin.getY() > destiny.getY() ? origin.getY() : destiny.getY();
+			
+			for(int i = initialNumber; i <= finalNumber; i++) {
+				if(pieces[origin.getX()][i] != null) {
+					return true;
+				}
+			}
+		}
+		else if(origin.isInSameRow(destiny)) {
+			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
+			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
+			
+			for(int i = initialNumber; i <= finalNumber; i++) {
+				if(pieces[origin.getY()][i] != null) {
+					return true;
+				}
+			}
+		}
+		else if(origin.isInPrimaryDiagonal(destiny)) {
+			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
+			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
+			
+			for(int i = initialNumber; i <= finalNumber; i++) {
+				int paso = initialNumber + (initialNumber - i);
+				if(pieces[][i] != null) {
+					return true;
+				}
+			}
+		}
+		else {
+			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
+			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
+		}
+		
+		for(int i = initialNumber; i <= finalNumber; i++) {
+			
+		}
+		return false;
+	}
+
+	public void movePiece(Coordinate origin, Coordinate destiny) {
+		pieceIn(origin).move(destiny);
 	}
 	
 	public boolean isGameOver() {
