@@ -2,8 +2,8 @@ package Chess;
 
 public class Knight extends Piece{
 
-	public Knight(Coordinate coordinate) {
-		super(coordinate);
+	public Knight(Coordinate coordinate, Color color) {
+		super(coordinate, color);
 		// TODO Auto-generated constructor stub
 	}
 

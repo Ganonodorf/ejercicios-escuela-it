@@ -2,8 +2,8 @@ package Chess;
 
 public class Rook extends Piece{
 
-	public Rook(Coordinate coordinate) {
-		super(coordinate);
+	public Rook(Coordinate coordinate, Color color) {
+		super(coordinate, color);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -2,8 +2,8 @@ package Chess;
 
 public class Bishop extends Piece{
 
-	public Bishop(Coordinate coordinate) {
-		super(coordinate);
+	public Bishop(Coordinate coordinate, Color color) {
+		super(coordinate, color);
 	}
 
 	@Override
