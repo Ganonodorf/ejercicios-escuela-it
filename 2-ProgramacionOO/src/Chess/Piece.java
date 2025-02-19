@@ -20,4 +20,8 @@ public abstract class Piece {
 	public boolean isInCoordinate(Coordinate coordinate) {
 		return this.coordinate.isInSameCoordinate(coordinate);
 	}
+	
+	public boolean shareColor(Piece piece) {
+		return this.color == piece.color;
+	}
 }
