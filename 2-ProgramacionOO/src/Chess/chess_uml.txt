@@ -1,0 +1,69 @@
+@startuml
+
+skin rose
+
+class Chess{
+}
+
+class Piece{
+}
+
+class Board{
+}
+
+class Square{
+}
+
+class King{
+}
+
+class Queen{
+}
+
+class Rook{
+}
+
+class Bishop{
+}
+
+class Knight{
+}
+
+class Pawn{
+}
+
+class Player{
+}
+
+class Turn{
+}
+
+class Move{
+}
+
+enum Color{
+WHITE
+BLACK
+}
+
+Chess *-- Board
+Chess *-- "2" Player
+Chess *-- "32" Piece
+Chess *-- Turn
+
+  Board *-- "8x8" Square
+  
+  Player --> Move
+  Player --> Capture
+
+  Piece <|-- King
+  Piece <|-- Queen
+  Piece <|-- Rook
+  Piece <|-- Bishop
+  Piece <|-- Knight
+  Piece <|-- Pawn
+  
+  Piece *-- Color
+
+
+@enduml

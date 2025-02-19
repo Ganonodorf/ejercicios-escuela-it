@@ -1,0 +1,78 @@
+@startuml
+
+skin rose
+
+class Chess{
++ play()
+}
+
+class Player{
++ getInput()
+}
+
+class Piece{
++ canMove(Coordinate)
++ canCapture(Coordinate)
++ move(Coordinate)
+}
+
+class Board{
+- Piece[8][8]
+- gameOver
+- winner
++ canMovePiece(Piece, Coordinate)
++ movePiece(Piece, Coordinate)
++ isGameOver()
++ result()
+}
+
+class Coordinate{
+- x
+- y
+}
+
+class King{
+}
+
+class Queen{
+}
+
+class Rook{
+}
+
+class Bishop{
+}
+
+class Knight{
+}
+
+class Pawn{
+}
+
+enum Color{
+WHITE
+BLACK
+}
+
+Chess *-- Board
+Chess *-- "2" Player
+Chess *-- "32" Piece
+
+  Board ..> Piece
+  
+  Player *-- Color
+  Player ..> Piece
+  Player --> Board
+
+  Piece <|-- King
+  Piece <|-- Queen
+  Piece <|-- Rook
+  Piece <|-- Bishop
+  Piece <|-- Knight
+  Piece <|-- Pawn
+  
+  Piece *-- Color
+  Piece *-- Coordinate
+
+
+@enduml
