@@ -10,6 +10,10 @@ public class Coordinate {
 		this.y = y;
 	}
 	
+	public boolean isInSameCoordinate(Coordinate coordinate) {
+		return this.x == coordinate.x && this.y == coordinate.y;
+	}
+	
 	public boolean isInSameRow(Coordinate coordinate) {
 		return this.y == coordinate.y;
 	}
