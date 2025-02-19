@@ -41,4 +41,12 @@ public class Coordinate {
 		
 		return Math.abs(this.x - coordinate.x) + Math.abs(this.y - coordinate.y);
 	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
 }
