@@ -42,11 +42,20 @@ public class Coordinate {
 		return Math.abs(this.x - coordinate.x) + Math.abs(this.y - coordinate.y);
 	}
 	
+	public Coordinate clone() {
+		return new Coordinate(this.x, this.y);
+	}
+	
+	public void move(int x, int y) {
+		this.x += x;
+		this.y += y;
+	}
+	
 	public int getX() {
-		return x;
+		return this.x;
 	}
 	
 	public int getY() {
-		return y;
+		return this.y;
 	}
 }
