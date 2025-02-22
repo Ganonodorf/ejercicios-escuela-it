@@ -2,9 +2,9 @@ package Chess;
 
 public abstract class Piece {
 	
-	private Coordinate coordinate;
+	protected Coordinate coordinate;
 	
-	private Color color;
+	protected Color color;
 	
 	protected char shape;
 	
