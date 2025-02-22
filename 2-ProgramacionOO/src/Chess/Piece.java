@@ -6,7 +6,7 @@ public abstract class Piece {
 	
 	private Color color;
 	
-	private char shape;
+	protected char shape;
 	
 	public Piece(Coordinate coordinate, Color color) {
 		this.coordinate = coordinate;
