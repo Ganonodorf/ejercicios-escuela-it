@@ -2,20 +2,28 @@ package Chess;
 
 public class Board {
 	
-	private Piece[][] pieces;
+	private Piece[][] spaces;
 	
 	private boolean gameOver = false;
 	
 	private String winner = "nobody";
 	
 	public Board() {
-		pieces = new Piece[8][8];
+		spaces = new Piece[8][8];
 		
 		this.createPieces();
 	}
 	
 	private Piece pieceIn(Coordinate coordinate) {
-		return pieces[coordinate.getX()][coordinate.getY()];
+		return spaces[coordinate.getX()][coordinate.getY()];
+	}
+	
+	private void deletePieceOfBoard(Piece piece) {
+		spaces[piece.coordinate.getX()][piece.coordinate.getY()] = null;
+	}
+	
+	private void putPiece(Piece piece) {
+		spaces[piece.coordinate.getX()][piece.coordinate.getY()] = piece;
 	}
 	
 	public boolean isPiece(Coordinate coordinate) {
@@ -34,8 +42,6 @@ public class Board {
 	}
 	
 	private boolean isAPieceOnTheWay(Coordinate origin, Coordinate destiny) {
-		int distance = origin.distance(destiny);
-		
 		int initialNumber;
 		int finalNumber;
 		
@@ -44,7 +50,7 @@ public class Board {
 			finalNumber = origin.getY() > destiny.getY() ? origin.getY() : destiny.getY();
 			
 			for(int i = initialNumber; i <= finalNumber; i++) {
-				if(pieces[origin.getX()][i] != null) {
+				if(spaces[origin.getX()][i] != null) {
 					return true;
 				}
 			}
@@ -54,7 +60,7 @@ public class Board {
 			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
 			
 			for(int i = initialNumber; i <= finalNumber; i++) {
-				if(pieces[origin.getY()][i] != null) {
+				if(spaces[origin.getY()][i] != null) {
 					return true;
 				}
 			}
@@ -69,7 +75,7 @@ public class Board {
 			}
 			
 			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
-				if(pieces[countOrigin.getX() + i][countOrigin.getY() + i] != null) {
+				if(spaces[countOrigin.getX() + i][countOrigin.getY() + i] != null) {
 					return true;
 				}
 			}
@@ -84,7 +90,7 @@ public class Board {
 			}
 			
 			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
-				if(pieces[countOrigin.getX() + i][countOrigin.getY() - i] != null) {
+				if(spaces[countOrigin.getX() + i][countOrigin.getY() - i] != null) {
 					return true;
 				}
 			}
@@ -94,7 +100,13 @@ public class Board {
 	}
 
 	public void movePiece(Coordinate origin, Coordinate destiny) {
-		pieceIn(origin).move(destiny);
+		Piece piece = pieceIn(origin);
+		
+		this.deletePieceOfBoard(piece);
+		
+		piece.move(destiny);
+		
+		this.putPiece(piece);
 	}
 	
 	public boolean isGameOver() {
@@ -107,33 +119,33 @@ public class Board {
 
 	private void createPieces() {
 		for(int i = 0; i < 8; i++) {
-			pieces[1][i] = new Pawn(new Coordinate(1, i), Color.WHITE);
-			pieces[6][i] = new Pawn(new Coordinate(6, i), Color.BLACK);
+			spaces[1][i] = new Pawn(new Coordinate(1, i), Color.WHITE);
+			spaces[6][i] = new Pawn(new Coordinate(6, i), Color.BLACK);
 		}
 		
-		pieces[0][0] = new Rook(new Coordinate(0, 0), Color.WHITE);
-		pieces[0][7] = new Rook(new Coordinate(0, 7), Color.WHITE);
+		spaces[0][0] = new Rook(new Coordinate(0, 0), Color.WHITE);
+		spaces[0][7] = new Rook(new Coordinate(0, 7), Color.WHITE);
 		
-		pieces[0][1] = new Knight(new Coordinate(0, 1), Color.WHITE);
-		pieces[0][6] = new Knight(new Coordinate(0, 6), Color.WHITE);
+		spaces[0][1] = new Knight(new Coordinate(0, 1), Color.WHITE);
+		spaces[0][6] = new Knight(new Coordinate(0, 6), Color.WHITE);
 		
-		pieces[0][2] = new Bishop(new Coordinate(0, 2), Color.WHITE);
-		pieces[0][5] = new Bishop(new Coordinate(0, 5), Color.WHITE);
+		spaces[0][2] = new Bishop(new Coordinate(0, 2), Color.WHITE);
+		spaces[0][5] = new Bishop(new Coordinate(0, 5), Color.WHITE);
 		
-		pieces[0][3] = new Queen(new Coordinate(0, 3), Color.WHITE);
-		pieces[0][4] = new King(new Coordinate(0, 4), Color.WHITE);
+		spaces[0][3] = new Queen(new Coordinate(0, 3), Color.WHITE);
+		spaces[0][4] = new King(new Coordinate(0, 4), Color.WHITE);
 		
-		pieces[7][0] = new Rook(new Coordinate(0, 0), Color.BLACK);
-		pieces[7][7] = new Rook(new Coordinate(0, 7), Color.BLACK);
+		spaces[7][0] = new Rook(new Coordinate(0, 0), Color.BLACK);
+		spaces[7][7] = new Rook(new Coordinate(0, 7), Color.BLACK);
 		
-		pieces[7][1] = new Knight(new Coordinate(0, 1), Color.BLACK);
-		pieces[7][6] = new Knight(new Coordinate(0, 6), Color.BLACK);
+		spaces[7][1] = new Knight(new Coordinate(0, 1), Color.BLACK);
+		spaces[7][6] = new Knight(new Coordinate(0, 6), Color.BLACK);
 		
-		pieces[7][2] = new Bishop(new Coordinate(0, 2), Color.BLACK);
-		pieces[7][5] = new Bishop(new Coordinate(0, 5), Color.BLACK);
+		spaces[7][2] = new Bishop(new Coordinate(0, 2), Color.BLACK);
+		spaces[7][5] = new Bishop(new Coordinate(0, 5), Color.BLACK);
 		
-		pieces[7][3] = new Queen(new Coordinate(0, 3), Color.BLACK);
-		pieces[7][4] = new King(new Coordinate(0, 4), Color.BLACK);
+		spaces[7][3] = new Queen(new Coordinate(0, 3), Color.BLACK);
+		spaces[7][4] = new King(new Coordinate(0, 4), Color.BLACK);
 		
 	}
 }
