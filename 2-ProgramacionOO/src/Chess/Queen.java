@@ -10,20 +10,9 @@ public class Queen extends Piece{
 
 	@Override
 	public boolean canMove(Coordinate coordinate) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.coordinate.isInPrimaryDiagonal(coordinate) ||
+				this.coordinate.isInSecondaryDiagonal(coordinate) ||
+				this.coordinate.isInSameColumn(coordinate) ||
+				this.coordinate.isInSameRow(coordinate);
 	}
-
-	@Override
-	public boolean canCapture(Coordinate coordinate) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void move(Coordinate coordinate) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

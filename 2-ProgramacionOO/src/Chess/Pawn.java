@@ -10,20 +10,24 @@ public class Pawn extends Piece{
 
 	@Override
 	public boolean canMove(Coordinate coordinate) {
-		// TODO Auto-generated method stub
-		return false;
+		int movement = color == Color.WHITE ? 1 : -1;
+		
+		Coordinate possibleMovement = this.coordinate.clone();
+		possibleMovement.move(0, movement);
+
+		return possibleMovement == coordinate;
 	}
 
 	@Override
 	public boolean canCapture(Coordinate coordinate) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void move(Coordinate coordinate) {
-		// TODO Auto-generated method stub
+		int movement = color == Color.WHITE ? 1 : -1;
 		
+		Coordinate possibleMovement = this.coordinate.clone();
+		possibleMovement.move(1, movement);
+		Coordinate possibleMovement2 = this.coordinate.clone();
+		possibleMovement2.move(-1, movement);
+		
+		return possibleMovement == coordinate ||
+				possibleMovement2 == coordinate;
 	}
-
 }
