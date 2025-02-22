@@ -17,7 +17,9 @@ public abstract class Piece {
 	
 	public abstract boolean canCapture(Coordinate coordinate);
 	
-	public abstract void move(Coordinate coordinate);
+	public void move(Coordinate coordinate) {
+		this.coordinate = coordinate;
+	}
 	
 	public boolean isInCoordinate(Coordinate coordinate) {
 		return this.coordinate.isInSameCoordinate(coordinate);
