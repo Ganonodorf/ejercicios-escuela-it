@@ -6,6 +6,8 @@ public abstract class Piece {
 	
 	private Color color;
 	
+	private char shape;
+	
 	public Piece(Coordinate coordinate, Color color) {
 		this.coordinate = coordinate;
 		this.color = color;
@@ -23,5 +25,9 @@ public abstract class Piece {
 	
 	public boolean shareColor(Piece piece) {
 		return this.color == piece.color;
+	}
+	
+	public void Show() {
+		System.out.print(shape);
 	}
 }
