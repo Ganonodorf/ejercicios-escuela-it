@@ -146,6 +146,5 @@ public class Board {
 		
 		spaces[7][3] = new Queen(new Coordinate(0, 3), Color.BLACK);
 		spaces[7][4] = new King(new Coordinate(0, 4), Color.BLACK);
-		
 	}
 }
