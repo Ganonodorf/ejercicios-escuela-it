@@ -60,24 +60,36 @@ public class Board {
 			}
 		}
 		else if(origin.isInPrimaryDiagonal(destiny)) {
-			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
-			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
+			Coordinate countOrigin = origin;
+			Coordinate countDestiny = destiny;
 			
-			for(int i = initialNumber; i <= finalNumber; i++) {
-				int paso = initialNumber + (initialNumber - i);
-				if(pieces[][i] != null) {
+			if(origin.getX() > destiny.getX()) {
+				countOrigin = destiny;
+				countDestiny = origin;
+			}
+			
+			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
+				if(pieces[countOrigin.getX() + i][countOrigin.getY() + i] != null) {
 					return true;
 				}
 			}
 		}
-		else {
-			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
-			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
+		else if(origin.isInSecondaryDiagonal(destiny)) {
+			Coordinate countOrigin = origin;
+			Coordinate countDestiny = destiny;
+			
+			if(origin.getX() > destiny.getX()) {
+				countOrigin = destiny;
+				countDestiny = origin;
+			}
+			
+			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
+				if(pieces[countOrigin.getX() + i][countOrigin.getY() - i] != null) {
+					return true;
+				}
+			}
 		}
 		
-		for(int i = initialNumber; i <= finalNumber; i++) {
-			
-		}
 		return false;
 	}
 
