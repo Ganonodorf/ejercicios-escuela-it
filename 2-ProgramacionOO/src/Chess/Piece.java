@@ -15,7 +15,9 @@ public abstract class Piece {
 
 	public abstract boolean canMove(Coordinate coordinate);
 	
-	public abstract boolean canCapture(Coordinate coordinate);
+	public boolean canCapture(Coordinate coordinate) {
+		return this.canMove(coordinate);
+	}
 	
 	public void move(Coordinate coordinate) {
 		this.coordinate = coordinate;
