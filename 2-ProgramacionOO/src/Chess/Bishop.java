@@ -4,6 +4,8 @@ public class Bishop extends Piece{
 
 	public Bishop(Coordinate coordinate, Color color) {
 		super(coordinate, color);
+		
+		this.shape = color == Color.WHITE ? '♗' : '♝';
 	}
 
 	@Override

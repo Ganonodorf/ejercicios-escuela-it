@@ -4,7 +4,8 @@ public class Queen extends Piece{
 
 	public Queen(Coordinate coordinate, Color color) {
 		super(coordinate, color);
-		// TODO Auto-generated constructor stub
+		
+		this.shape = color == Color.WHITE ? '♕' : '♛';
 	}
 
 	@Override
