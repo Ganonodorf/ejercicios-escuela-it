@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class Chess {
 	
-	Board board = new Board();
+	private final String ANSWER_REGEX = "[yn]";
 	
-	Player playerWhite = new Player();
+	private Board board = new Board();
 	
-	Player playerBlack = new Player();
+	private Player playerWhite = new Player(Color.WHITE);
+	
+	private Player playerBlack = new Player(Color.BLACK);
 	
 	public Chess(){
 		
@@ -18,20 +20,22 @@ public class Chess {
 		do {
 			board = new Board();
 			
+			Player activePlayer = playerWhite;
+			
 			do {
 				board.showInformation();
 				
-				board.proposeCombination(player.createCombination());
-			}while(board.numberOfAttemps() < NUMBER_OF_ATTEMPS && board.isWinnerResult() == false);
+				Move move;
+				do {
+					move = activePlayer.createMove();
+				}while(!board.canMove(move));
+				
+				activePlayer = activePlayer == playerWhite ? playerBlack : playerWhite;
+			}while(!board.isGameOver());
 
 			board.showInformation();
 			
-			if(board.isWinnerResult()) {
-				System.out.println("You've won!!! ;-)");
-			}
-			else {
-				System.out.println("You've lost!!! :-(");
-			}
+			System.out.println(board.getWinner() + " has won!!! ;-)");
 			
 		}while(playAgain() == true);
 	}
@@ -60,22 +64,16 @@ public class Chess {
 	}
 	
 	private boolean isPlayingAgain(String input) {
-		if(input.matches("y")) {
-			return true;
-		}
-		return false;
+		return input.matches("y");
 	}
 
 	private boolean isGoodAnswer(String input) {
-		if(input.matches(ANSWER_REGEX)) {
-			return true;
-		}
-		return false;
+		return input.matches(ANSWER_REGEX);
 	}
 
 	public static void main(String[] args) {
-		MasterMind masterMind = new MasterMind();
+		Chess chess = new Chess();
 		
-		masterMind.play();
+		chess.play();
 	}
 }
