@@ -24,17 +24,27 @@ public class Chess {
 			Player activePlayer = playerWhite;
 			
 			do {
+				this.showTurn(activePlayer);
+				
 				board.showInformation();
 				
 				Movement movement;
 				
 				do {
-					movement = activePlayer.createMove();
+					movement = activePlayer.createMovement();
 				}while(!board.canMakeMovement(movement));
 				
 				board.makeMovement(movement);
 				
-				activePlayer = activePlayer == playerWhite ? playerBlack : playerWhite;
+				if(activePlayer == playerWhite) {
+					activePlayer = playerBlack;
+				}
+				else {
+					activePlayer = playerWhite;
+				}
+				
+				//activePlayer = activePlayer == playerWhite ? playerBlack : playerWhite;
+				
 			}while(!board.isGameOver());
 
 			board.showInformation();
@@ -42,6 +52,11 @@ public class Chess {
 			System.out.println(board.getWinner() + " has won!!! ;-)");
 			
 		}while(playAgain() == true);
+	}
+
+	private void showTurn(Player player) {
+		System.out.print("Player turn ");
+		player.show();
 	}
 
 	private boolean playAgain() {
