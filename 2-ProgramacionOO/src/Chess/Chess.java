@@ -25,7 +25,7 @@ public class Chess {
 			do {
 				board.showInformation();
 				
-				Move move;
+				Movement move;
 				do {
 					move = activePlayer.createMove();
 				}while(!board.canMove(move));

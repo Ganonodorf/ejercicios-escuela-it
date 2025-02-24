@@ -12,7 +12,7 @@ public class Player {
 		this.color = color;
 	}
 	
-	public Move createMove() {
+	public Movement createMove() {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
@@ -33,7 +33,7 @@ public class Player {
 	        }
 		}while(error.length() > 0);
 		
-		return new Move(input, color);
+		return new Movement(input, color);
 	}
 
 	private String checkErrorInInput(String input) {

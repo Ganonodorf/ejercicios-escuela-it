@@ -168,7 +168,7 @@ public class Board {
 		System.out.print("  a b c d e f g h\n\n");
 	}
 
-	public boolean canMove(Move move) {
+	public boolean canMove(Movement move) {
 		Coordinate origin = move.piece.coordinate;
 		Coordinate destiny = move.destiny;
 		
@@ -186,18 +186,16 @@ public class Board {
 
 		Player player = new Player(Color.WHITE);
 		
-		Move move = new Move("pc2c3", Color.WHITE);
+		Movement movement = new Movement("pc2c3", Color.WHITE);
 		
-
-		System.out.println("Spaces: " + board.spaces[2][1]);
-		System.out.println("Is piece: " + board.isPiece(move.piece.coordinate));
-		System.out.println("Piece in: " + board.pieceIn(move.piece.coordinate));
-		System.out.println("move.piece.coordinate: " + move.piece.coordinate.getX() + " " + move.piece.coordinate.getY());
-		System.out.println("move.destiny: " + move.destiny.getX() + " " + move.destiny.getY());
-		System.out.println("Piece in can move: " + board.pieceIn(move.piece.coordinate).canMove(move.destiny));
-		System.out.println("Is a p on the way: " + board.isAPieceOnTheWay(move.piece.coordinate, move.destiny));
-		System.out.println("Can move p: " + board.canMovePiece(move.piece.coordinate, move.destiny));
-		System.out.println("Can move: " + board.canMove(move));
+		System.out.println("Is piece: " + board.isPiece(movement.piece.coordinate));
+		System.out.println("Piece in: " + board.pieceIn(movement.piece.coordinate));
+		System.out.println("move.piece.coordinate: " + movement.piece.coordinate.getX() + " " + movement.piece.coordinate.getY());
+		System.out.println("move.destiny: " + movement.destiny.getX() + " " + movement.destiny.getY());
+		System.out.println("Piece in can move: " + board.pieceIn(movement.piece.coordinate).canMove(movement.destiny));
+		System.out.println("Is a p on the way: " + board.isAPieceOnTheWay(movement.piece.coordinate, movement.destiny));
+		System.out.println("Can move p: " + board.canMovePiece(movement.piece.coordinate, movement.destiny));
+		System.out.println("Can move: " + board.canMove(movement));
 
 		//System.out.println(board.canMovePiece(move.piece.coordinate, move.destiny));
 	}
