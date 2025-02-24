@@ -8,9 +8,9 @@ public class Move {
 	boolean isCapture;
 	
 	public Move(String move, Color color) {
-		Coordinate origin = new Coordinate(move.charAt(1), move.charAt(2));
+		Coordinate origin = new Coordinate(move.charAt(1), Character.getNumericValue(move.charAt(2)) - 1);
 		
-		destiny = new Coordinate(move.charAt(move.length() - 2), move.charAt(move.length() - 1));
+		destiny = new Coordinate(move.charAt(move.length() - 2), Character.getNumericValue(move.charAt(move.length() - 1)) - 1);
 		
 		piece = PieceToMove(move.charAt(0), origin, color);
 		

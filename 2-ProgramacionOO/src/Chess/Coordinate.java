@@ -20,31 +20,31 @@ public class Coordinate {
 		
 		switch(letter) {
 		case 'a':
-			number = 1;
+			number = 0;
 			break;
 		case 'b':
-			number = 2;
+			number = 1;
 			break;
 		case 'c':
-			number = 3;
+			number = 2;
 			break;
 		case 'd':
-			number = 4;
+			number = 3;
 			break;
 		case 'e':
-			number = 5;
+			number = 4;
 			break;
 		case 'f':
-			number = 6;
+			number = 5;
 			break;
 		case 'g':
-			number = 7;
+			number = 6;
 			break;
 		case 'h':
-			number = 8;
+			number = 7;
 			break;
 		default:
-			number = 1;
+			number = 0;
 			break;
 		}
 		
