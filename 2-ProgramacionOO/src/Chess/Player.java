@@ -12,7 +12,7 @@ public class Player {
 		this.color = color;
 	}
 	
-	public Movement createMove() {
+	public Movement createMovement() {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class Player {
 		String error;
 
 		do {
-			System.out.println("move a piece, ex: qh4xe1");
+			System.out.println("\nMove a piece, ex: qh4xe1");
 			
 	        input = scanner.nextLine();
 	        
@@ -30,26 +30,28 @@ public class Player {
 	        	System.out.println(error);
 	        }
 		}while(error.length() > 0);
-        
-        scanner.close();
 		
 		return new Movement(input, color);
 	}
 
 	private String checkErrorInInput(String input) {
 		if(input.length() > 6) {
-			return "Wrong moved combination length";
+			return "\nWrong moved combination length";
 		}
 		if(!input.matches(MOVE_REGEX)) {
-			return "Wrong move, it must be like: qh4xe1";
+			return "\nWrong move, it must be like: qh4xe1";
 		}
 		
 		return "";
 	}
 	
+	public void show() {
+		System.out.println(this.color);
+	}
+	
 	public static void main(String[] args) {
 		Player player = new Player(Color.WHITE);
 		
-		player.createMove();
+		player.createMovement();
 	}
 }
