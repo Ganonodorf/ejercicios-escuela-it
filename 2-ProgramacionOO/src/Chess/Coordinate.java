@@ -10,6 +10,47 @@ public class Coordinate {
 		this.y = y;
 	}
 	
+	public Coordinate(char letter, int y) {
+		this.x = letterToNumber(letter);
+		this.y = y;
+	}
+	
+	private int letterToNumber(char letter) {
+		int number;
+		
+		switch(letter) {
+		case 'a':
+			number = 1;
+			break;
+		case 'b':
+			number = 2;
+			break;
+		case 'c':
+			number = 3;
+			break;
+		case 'd':
+			number = 4;
+			break;
+		case 'e':
+			number = 5;
+			break;
+		case 'f':
+			number = 6;
+			break;
+		case 'g':
+			number = 7;
+			break;
+		case 'h':
+			number = 8;
+			break;
+		default:
+			number = 1;
+			break;
+		}
+		
+		return number;
+	}
+	
 	public boolean isInSameCoordinate(Coordinate coordinate) {
 		return this.x == coordinate.x && this.y == coordinate.y;
 	}
