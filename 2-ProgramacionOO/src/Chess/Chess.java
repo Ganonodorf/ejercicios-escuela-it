@@ -6,14 +6,15 @@ public class Chess {
 	
 	private final String ANSWER_REGEX = "[yn]";
 	
-	private Board board = new Board();
+	private Board board;
 	
-	private Player playerWhite = new Player(Color.WHITE);
+	private Player playerWhite;
 	
-	private Player playerBlack = new Player(Color.BLACK);
+	private Player playerBlack;
 	
 	public Chess(){
-		
+		playerWhite = new Player(Color.WHITE);
+		playerBlack = new Player(Color.BLACK);
 	}
 	
 	public void play() {
@@ -25,10 +26,13 @@ public class Chess {
 			do {
 				board.showInformation();
 				
-				Movement move;
+				Movement movement;
+				
 				do {
-					move = activePlayer.createMove();
-				}while(!board.canMove(move));
+					movement = activePlayer.createMove();
+				}while(!board.canMakeMovement(movement));
+				
+				board.makeMovement(movement);
 				
 				activePlayer = activePlayer == playerWhite ? playerBlack : playerWhite;
 			}while(!board.isGameOver());
@@ -59,6 +63,8 @@ public class Chess {
 	        }
 	        
 		}while(!goodAnswer);
+        
+        scanner.close();
 		
 		return isPlayingAgain(input);
 	}

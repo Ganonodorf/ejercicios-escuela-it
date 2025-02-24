@@ -54,6 +54,8 @@ public class MasterMind {
 	        }
 	        
 		}while(!goodAnswer);
+        
+        scanner.close();
 		
 		return isPlayingAgain(input);
 	}

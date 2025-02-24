@@ -35,11 +35,13 @@ public class Board {
 				!isAPieceOnTheWay(origin, destiny);
 	}
 	
+	/*
 	private boolean canCapturePiece(Coordinate origin, Coordinate destiny) {
 		return pieceIn(origin).canMove(destiny) &&
 				!isAPieceOnTheWay(origin, destiny) &&
 				!pieceIn(origin).shareColor(pieceIn(destiny));
 	}
+	*/
 	
 	private boolean isAPieceOnTheWay(Coordinate origin, Coordinate destiny) {
 		int initialNumber;
@@ -168,11 +170,18 @@ public class Board {
 		System.out.print("  a b c d e f g h\n\n");
 	}
 
-	public boolean canMove(Movement move) {
+	public boolean canMakeMovement(Movement move) {
 		Coordinate origin = move.piece.coordinate;
 		Coordinate destiny = move.destiny;
 		
 		return isPiece(origin) && canMovePiece(origin, destiny);
+	}
+
+	public void makeMovement(Movement movement) {
+		Coordinate origin = movement.piece.coordinate;
+		Coordinate destiny = movement.destiny;
+		
+		this.movePiece(origin, destiny);
 	}
 
 	public String getWinner() {
@@ -183,8 +192,6 @@ public class Board {
 		Board board = new Board();
 		
 		board.showInformation();
-
-		Player player = new Player(Color.WHITE);
 		
 		Movement movement = new Movement("pc2c3", Color.WHITE);
 		
@@ -195,8 +202,6 @@ public class Board {
 		System.out.println("Piece in can move: " + board.pieceIn(movement.piece.coordinate).canMove(movement.destiny));
 		System.out.println("Is a p on the way: " + board.isAPieceOnTheWay(movement.piece.coordinate, movement.destiny));
 		System.out.println("Can move p: " + board.canMovePiece(movement.piece.coordinate, movement.destiny));
-		System.out.println("Can move: " + board.canMove(movement));
-
-		//System.out.println(board.canMovePiece(move.piece.coordinate, move.destiny));
+		System.out.println("Can move: " + board.canMakeMovement(movement));
 	}
 }

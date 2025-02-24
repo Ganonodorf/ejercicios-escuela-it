@@ -119,7 +119,5 @@ public class Intervalo_PM {
 		for(int i = 0; i < intervaloTroceado.length; i++) {
 			intervaloTroceado[i].mostrar();
 		}
-		
-		Intervalo a = new Intervalo(0,5);
 	}
 }

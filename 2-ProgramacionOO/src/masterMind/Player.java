@@ -13,8 +13,6 @@ public class Player {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
-		
-		boolean goodCombination;
 
 		String error;
 
@@ -29,6 +27,8 @@ public class Player {
 	        	System.out.println(error);
 	        }
 		}while(error.length() > 0);
+        
+        scanner.close();
 		
 		return inputToCombination(input);
 	}

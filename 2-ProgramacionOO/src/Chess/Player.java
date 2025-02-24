@@ -16,8 +16,6 @@ public class Player {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
-		
-		boolean goodMove;
 
 		String error;
 
@@ -32,6 +30,8 @@ public class Player {
 	        	System.out.println(error);
 	        }
 		}while(error.length() > 0);
+        
+        scanner.close();
 		
 		return new Movement(input, color);
 	}
