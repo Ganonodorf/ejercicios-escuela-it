@@ -35,5 +35,17 @@ public class Pawn extends Piece{
 		Pawn pawn = new Pawn(new Coordinate(2, 2), Color.WHITE);
 		
 		System.out.println(pawn.canMove(new Coordinate(2, 3)));
+		
+		pawn = new Pawn(new Coordinate(2, 2), Color.WHITE);
+		
+		System.out.println(pawn.canCapture(new Coordinate(3, 3)));
+		
+		pawn = new Pawn(new Coordinate(2, 2), Color.WHITE);
+		
+		System.out.println(pawn.canCapture(new Coordinate(1, 3)));
+		
+		pawn = new Pawn(new Coordinate(2, 2), Color.WHITE);
+		
+		System.out.println(pawn.canCapture(new Coordinate(2, 3)));
 	}
 }
