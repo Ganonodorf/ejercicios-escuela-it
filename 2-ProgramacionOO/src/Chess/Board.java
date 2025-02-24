@@ -149,7 +149,9 @@ public class Board {
 	}
 
 	public void showInformation() {
-		for(int i = 0; i < 8; i++) {
+		for(int i = 7; i >= 0; i--) {
+			System.out.print(i + 1 + " ");
+			
 			for(int j = 0; j < 8; j++) {
 				if(spaces[i][j] == null) {
 					System.out.print("_");
@@ -157,9 +159,13 @@ public class Board {
 				else {
 					spaces[i][j].Show();
 				}
+				System.out.print(" ");
 			}
+			
+			System.out.print("\n");
 		}
 		
+		System.out.print("  a b c d e f g h\n\n");
 	}
 
 	public boolean canMove(Move move) {
@@ -171,5 +177,17 @@ public class Board {
 
 	public String getWinner() {
 		return winner;
+	}
+	
+	public static void main(String[] args) {
+		Board board = new Board();
+		
+		board.showInformation();
+
+		Player player = new Player(Color.WHITE);
+		
+		Move move = player.createMove();
+		
+		System.out.print(board.canMove(move));
 	}
 }

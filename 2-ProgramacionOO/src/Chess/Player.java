@@ -46,4 +46,10 @@ public class Player {
 		
 		return "";
 	}
+	
+	public static void main(String[] args) {
+		Player player = new Player(Color.WHITE);
+		
+		player.createMove();
+	}
 }
