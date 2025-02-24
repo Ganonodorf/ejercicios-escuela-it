@@ -30,13 +30,13 @@ public class Knight extends Piece{
 		Coordinate left2 = this.coordinate.clone();
 		right2.move(-2, -1);
 		
-		return coordinate == up1 || 
-				coordinate == up2 ||
-				coordinate == right1 ||
-				coordinate == right2 ||
-				coordinate == left1 ||
-				coordinate == left2 ||
-				coordinate == down1 ||
-				coordinate == down2;
+		return coordinate.isInSameCoordinate(up1) || 
+				coordinate.isInSameCoordinate(up2) ||
+				coordinate.isInSameCoordinate(right1) ||
+				coordinate.isInSameCoordinate(right2) ||
+				coordinate.isInSameCoordinate(left1) ||
+				coordinate.isInSameCoordinate(left2) ||
+				coordinate.isInSameCoordinate(down1) ||
+				coordinate.isInSameCoordinate(down2);
 	}
 }

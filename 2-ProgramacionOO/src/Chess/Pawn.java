@@ -15,7 +15,7 @@ public class Pawn extends Piece{
 		Coordinate possibleMovement = this.coordinate.clone();
 		possibleMovement.move(0, movement);
 
-		return possibleMovement == coordinate;
+		return possibleMovement.isInSameCoordinate(coordinate);
 	}
 
 	@Override
@@ -27,7 +27,13 @@ public class Pawn extends Piece{
 		Coordinate possibleMovement2 = this.coordinate.clone();
 		possibleMovement2.move(-1, movement);
 		
-		return possibleMovement == coordinate ||
-				possibleMovement2 == coordinate;
+		return possibleMovement.isInSameCoordinate(coordinate) ||
+				possibleMovement2.isInSameCoordinate(coordinate);
+	}
+	
+	public static void main(String[] args) {
+		Pawn pawn = new Pawn(new Coordinate(2, 2), Color.WHITE);
+		
+		System.out.println(pawn.canMove(new Coordinate(2, 3)));
 	}
 }
