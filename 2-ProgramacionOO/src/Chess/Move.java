@@ -46,4 +46,22 @@ public class Move {
 		
 		return piece;
 	}
+	
+	public static void main(String[] args) {
+		Move move = new Move("pc2c3", Color.WHITE);
+		
+		System.out.println(move.piece.coordinate.getX());
+		System.out.println(move.piece.coordinate.getY());
+		
+		System.out.println(move.destiny.getX());
+		System.out.println(move.destiny.getY());
+		
+		Move move2 = new Move("ph8a1", Color.WHITE);
+		
+		System.out.println(move2.piece.coordinate.getX());
+		System.out.println(move2.piece.coordinate.getY());
+		
+		System.out.println(move2.destiny.getX());
+		System.out.println(move2.destiny.getY());
+	}
 }
