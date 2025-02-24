@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class Player {
 	
+	private Color color;
+	
 	private String MOVE_REGEX = "^[kqrnbp][abcdefgh][1-8]x?[abcdefgh][1-8]$";
 	
-	public Player() {
-		
+	public Player(Color color) {
+		this.color = color;
 	}
 	
 	public Move createMove() {
@@ -31,7 +33,7 @@ public class Player {
 	        }
 		}while(error.length() > 0);
 		
-		return inputToMove(input);
+		return new Move(input, color);
 	}
 
 	private String checkErrorInInput(String input) {
