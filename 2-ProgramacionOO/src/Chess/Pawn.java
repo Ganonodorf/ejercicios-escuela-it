@@ -13,7 +13,7 @@ public class Pawn extends Piece{
 		int movement = color == Color.WHITE ? 1 : -1;
 		
 		Coordinate possibleMovement = this.coordinate.clone();
-		possibleMovement.move(0, movement);
+		possibleMovement.displace(0, movement);
 
 		return possibleMovement.isInSameCoordinate(coordinate);
 	}
@@ -23,9 +23,9 @@ public class Pawn extends Piece{
 		int movement = color == Color.WHITE ? 1 : -1;
 		
 		Coordinate possibleMovement = this.coordinate.clone();
-		possibleMovement.move(1, movement);
+		possibleMovement.displace(1, movement);
 		Coordinate possibleMovement2 = this.coordinate.clone();
-		possibleMovement2.move(-1, movement);
+		possibleMovement2.displace(-1, movement);
 		
 		return possibleMovement.isInSameCoordinate(coordinate) ||
 				possibleMovement2.isInSameCoordinate(coordinate);

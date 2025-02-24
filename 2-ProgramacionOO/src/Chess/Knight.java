@@ -11,24 +11,24 @@ public class Knight extends Piece{
 	@Override
 	public boolean canMove(Coordinate coordinate) {
 		Coordinate up1 = this.coordinate.clone();
-		up1.move(1, 2);
+		up1.displace(1, 2);
 		Coordinate up2 = this.coordinate.clone();
-		up2.move(-1, 2);
+		up2.displace(-1, 2);
 
 		Coordinate right1 = this.coordinate.clone();
-		right1.move(2, 1);
+		right1.displace(2, 1);
 		Coordinate right2 = this.coordinate.clone();
-		right2.move(2, -1);
+		right2.displace(2, -1);
 		
 		Coordinate down1 = this.coordinate.clone();
-		up1.move(1, -2);
+		up1.displace(1, -2);
 		Coordinate down2 = this.coordinate.clone();
-		up2.move(-1, -2);
+		up2.displace(-1, -2);
 
 		Coordinate left1 = this.coordinate.clone();
-		right1.move(-2, 1);
+		right1.displace(-2, 1);
 		Coordinate left2 = this.coordinate.clone();
-		right2.move(-2, -1);
+		right2.displace(-2, -1);
 		
 		return coordinate.isInSameCoordinate(up1) || 
 				coordinate.isInSameCoordinate(up2) ||

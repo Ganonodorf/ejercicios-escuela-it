@@ -87,9 +87,9 @@ public class Coordinate {
 		return new Coordinate(this.x, this.y);
 	}
 	
-	public void move(int x, int y) {
-		this.x += x;
-		this.y += y;
+	public void displace(int xMovement, int yMovement) {
+		this.x += xMovement;
+		this.y += yMovement;
 	}
 	
 	public int getX() {
