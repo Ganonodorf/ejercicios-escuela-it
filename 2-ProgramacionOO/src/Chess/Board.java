@@ -26,16 +26,16 @@ public class Board {
 		spaces[piece.coordinate.getX()][piece.coordinate.getY()] = piece;
 	}
 	
-	public boolean isPiece(Coordinate coordinate) {
+	private boolean isPiece(Coordinate coordinate) {
 		return pieceIn(coordinate) != null;
 	}
 	
-	public boolean canMovePiece(Coordinate origin, Coordinate destiny) {
+	private boolean canMovePiece(Coordinate origin, Coordinate destiny) {
 		return pieceIn(origin).canMove(destiny) &&
 				!isAPieceOnTheWay(origin, destiny);
 	}
 	
-	public boolean canCapturePiece(Coordinate origin, Coordinate destiny) {
+	private boolean canCapturePiece(Coordinate origin, Coordinate destiny) {
 		return pieceIn(origin).canMove(destiny) &&
 				!isAPieceOnTheWay(origin, destiny) &&
 				!pieceIn(origin).shareColor(pieceIn(destiny));
@@ -99,7 +99,7 @@ public class Board {
 		return false;
 	}
 
-	public void movePiece(Coordinate origin, Coordinate destiny) {
+	private void movePiece(Coordinate origin, Coordinate destiny) {
 		Piece piece = pieceIn(origin);
 		
 		this.deletePieceOfBoard(piece);
@@ -146,5 +146,30 @@ public class Board {
 		
 		spaces[7][3] = new Queen(new Coordinate(0, 3), Color.BLACK);
 		spaces[7][4] = new King(new Coordinate(0, 4), Color.BLACK);
+	}
+
+	public void showInformation() {
+		for(int i = 0; i < 8; i++) {
+			for(int j = 0; j < 8; j++) {
+				if(spaces[i][j] == null) {
+					System.out.print("_");
+				}
+				else {
+					spaces[i][j].Show();
+				}
+			}
+		}
+		
+	}
+
+	public boolean canMove(Move move) {
+		Coordinate origin = move.piece.coordinate;
+		Coordinate destiny = move.destiny;
+		
+		return isPiece(origin) && canMovePiece(origin, destiny);
+	}
+
+	public String getWinner() {
+		return winner;
 	}
 }
