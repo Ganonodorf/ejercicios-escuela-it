@@ -119,8 +119,8 @@ public class Board {
 
 	private void createPieces() {
 		for(int i = 0; i < 8; i++) {
-			spaces[i][1] = new Pawn(new Coordinate(1, i), Color.WHITE);
-			spaces[i][6] = new Pawn(new Coordinate(6, i), Color.BLACK);
+			spaces[i][1] = new Pawn(new Coordinate(i, 1), Color.WHITE);
+			spaces[i][6] = new Pawn(new Coordinate(i, 6), Color.BLACK);
 		}
 		
 		spaces[0][0] = new Rook(new Coordinate(0, 0), Color.WHITE);
