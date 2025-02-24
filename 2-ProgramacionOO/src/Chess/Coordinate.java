@@ -83,6 +83,93 @@ public class Coordinate {
 		return Math.abs(this.x - coordinate.x) + Math.abs(this.y - coordinate.y);
 	}
 	
+	public Coordinate[] coordinatesTo(Coordinate coordinate) {
+		Coordinate[] coordinatesBetween = null;
+		
+		if(isInSameColumn(coordinate)){
+			int xDistanceTo = this.xDistanceTo(coordinate);
+			
+			if(xDistanceTo < 0) {
+				coordinatesBetween = new Coordinate[-xDistanceTo];
+				
+				for(int i = 0; i < -xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x, coordinate.y + i);
+				}
+			}
+			else {
+				coordinatesBetween = new Coordinate[-xDistanceTo];
+				
+				for(int i = 0; i < xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x, coordinate.y - i);
+				}
+			}
+		}
+		else if(isInSameRow(coordinate)) {
+			int yDistanceTo = this.yDistanceTo(coordinate);
+			
+			if(yDistanceTo < 0) {
+				coordinatesBetween = new Coordinate[-yDistanceTo];
+				
+				for(int i = 0; i < -yDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x + i, coordinate.y);
+				}
+			}
+			else {
+				coordinatesBetween = new Coordinate[-yDistanceTo];
+				
+				for(int i = 0; i < yDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x - i, coordinate.y);
+				}
+			}
+		}
+		else if(this.isInPrimaryDiagonal(coordinate)) {
+			int xDistanceTo = this.xDistanceTo(coordinate);
+			
+			if(xDistanceTo < 0) {
+				coordinatesBetween = new Coordinate[-xDistanceTo];
+				
+				for(int i = 0; i < -xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x + i, coordinate.y + i);
+				}
+			}
+			else {
+				coordinatesBetween = new Coordinate[xDistanceTo];
+				
+				for(int i = 0; i < xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x - i, coordinate.y - i);
+				}
+			}
+		}
+		else if(this.isInSecondaryDiagonal(coordinate)) {
+			int xDistanceTo = this.xDistanceTo(coordinate);
+			
+			if(xDistanceTo < 0) {
+				coordinatesBetween = new Coordinate[-xDistanceTo];
+				
+				for(int i = 0; i < -xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x + i, coordinate.y - i);
+				}
+			}
+			else {
+				coordinatesBetween = new Coordinate[-xDistanceTo];
+				
+				for(int i = 0; i < xDistanceTo; i++) {
+					coordinatesBetween[i] = new Coordinate(coordinate.x - i, coordinate.y + i);
+				}
+			}
+		}
+		
+		return coordinatesBetween;
+	}
+	
+	private int yDistanceTo(Coordinate coordinate) {
+		return coordinate.y - this.y;
+	}
+
+	private int xDistanceTo(Coordinate coordinate) {
+		return coordinate.x - this.x;
+	}
+
 	public Coordinate clone() {
 		return new Coordinate(this.x, this.y);
 	}

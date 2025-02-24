@@ -44,57 +44,11 @@ public class Board {
 	*/
 	
 	private boolean isAPieceOnTheWay(Coordinate origin, Coordinate destiny) {
-		int initialNumber;
-		int finalNumber;
+		Coordinate[] coordinatesOnTheWay = origin.coordinatesTo(destiny);
 		
-		if(origin.isInSameColumn(destiny)) {
-			initialNumber = origin.getY() < destiny.getY() ? origin.getY() : destiny.getY();
-			finalNumber = origin.getY() > destiny.getY() ? origin.getY() : destiny.getY();
-			
-			for(int i = initialNumber + 1; i <= finalNumber; i++) {
-				if(spaces[origin.getX()][i] != null) {
-					return true;
-				}
-			}
-		}
-		else if(origin.isInSameRow(destiny)) {
-			initialNumber = origin.getX() < destiny.getX() ? origin.getX() : destiny.getX();
-			finalNumber = origin.getX() > destiny.getX() ? origin.getX() : destiny.getX();
-			
-			for(int i = initialNumber + 1; i <= finalNumber; i++) {
-				if(spaces[origin.getY()][i] != null) {
-					return true;
-				}
-			}
-		}
-		else if(origin.isInPrimaryDiagonal(destiny)) {
-			Coordinate countOrigin = origin;
-			Coordinate countDestiny = destiny;
-			
-			if(origin.getX() > destiny.getX()) {
-				countOrigin = destiny;
-				countDestiny = origin;
-			}
-			
-			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
-				if(spaces[countOrigin.getX() + i][countOrigin.getY() + i] != null) {
-					return true;
-				}
-			}
-		}
-		else if(origin.isInSecondaryDiagonal(destiny)) {
-			Coordinate countOrigin = origin;
-			Coordinate countDestiny = destiny;
-			
-			if(origin.getX() > destiny.getX()) {
-				countOrigin = destiny;
-				countDestiny = origin;
-			}
-			
-			for(int i = 0; i <= countDestiny.getX() - countOrigin.getX(); i++) {
-				if(spaces[countOrigin.getX() + i][countOrigin.getY() - i] != null) {
-					return true;
-				}
+		for(Coordinate coordinate : coordinatesOnTheWay) {
+			if(coordinate != null) {
+				return true;
 			}
 		}
 		
