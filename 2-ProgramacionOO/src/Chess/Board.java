@@ -174,6 +174,13 @@ public class Board {
 		Coordinate origin = move.piece.coordinate;
 		Coordinate destiny = move.destiny;
 		
+		if(!isPiece(origin)) {
+			System.out.println("\nThere is no piece there.");
+		}
+		if(isPiece(origin) && !canMovePiece(origin, destiny)) {
+			System.out.println("\nPiece can't be moved there.");
+		}
+		
 		return isPiece(origin) && canMovePiece(origin, destiny);
 	}
 
