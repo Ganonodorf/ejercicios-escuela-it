@@ -31,6 +31,10 @@ public class Board {
 	}
 	
 	private boolean canMovePiece(Coordinate origin, Coordinate destiny) {
+		if(pieceIn(origin).shareType(new Knight(new Coordinate(0, 0), Color.WHITE))) {
+			return pieceIn(origin).canMove(destiny) && pieceIn(destiny) == null;
+		}
+		
 		return pieceIn(origin).canMove(destiny) &&
 				!isAPieceOnTheWay(origin, destiny);
 	}
@@ -124,9 +128,9 @@ public class Board {
 		System.out.print("  a b c d e f g h\n\n");
 	}
 
-	public boolean canMakeMovement(Movement move) {
-		Coordinate origin = move.piece.coordinate;
-		Coordinate destiny = move.destiny;
+	public boolean canMakeMovement(Movement movement) {
+		Coordinate origin = movement.piece.coordinate;
+		Coordinate destiny = movement.destiny;
 		
 		if(!isPiece(origin)) {
 			System.out.println("\nThere is no piece there.");
