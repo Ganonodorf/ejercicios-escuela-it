@@ -8,6 +8,8 @@ public abstract class Piece {
 	
 	protected char shape;
 	
+	protected char type;
+	
 	public Piece(Coordinate coordinate, Color color) {
 		this.coordinate = coordinate;
 		this.color = color;
@@ -29,6 +31,10 @@ public abstract class Piece {
 	
 	public boolean shareColor(Piece piece) {
 		return this.color == piece.color;
+	}
+	
+	public boolean shareType(Piece piece) {
+		return this.type == piece.type;
 	}
 	
 	public void Show() {

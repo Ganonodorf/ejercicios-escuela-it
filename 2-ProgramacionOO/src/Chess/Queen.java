@@ -6,6 +6,8 @@ public class Queen extends Piece{
 		super(coordinate, color);
 		
 		this.shape = color == Color.WHITE ? '♕' : '♛';
+		
+		this.type = 'q';
 	}
 
 	@Override

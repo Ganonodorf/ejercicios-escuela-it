@@ -6,6 +6,8 @@ public class Knight extends Piece{
 		super(coordinate, color);
 		
 		this.shape = color == Color.WHITE ? '♘' : '♞';
+		
+		this.type = 'n';
 	}
 
 	@Override
@@ -30,13 +32,21 @@ public class Knight extends Piece{
 		Coordinate left2 = this.coordinate.clone();
 		right2.displace(-2, -1);
 		
-		return coordinate.isInSameCoordinate(up1) || 
-				coordinate.isInSameCoordinate(up2) ||
-				coordinate.isInSameCoordinate(right1) ||
-				coordinate.isInSameCoordinate(right2) ||
-				coordinate.isInSameCoordinate(left1) ||
-				coordinate.isInSameCoordinate(left2) ||
-				coordinate.isInSameCoordinate(down1) ||
-				coordinate.isInSameCoordinate(down2);
+		return this.coordinate.isInSameCoordinate(up1) || 
+				this.coordinate.isInSameCoordinate(up2) ||
+				this.coordinate.isInSameCoordinate(right1) ||
+				this.coordinate.isInSameCoordinate(right2) ||
+				this.coordinate.isInSameCoordinate(left1) ||
+				this.coordinate.isInSameCoordinate(left2) ||
+				this.coordinate.isInSameCoordinate(down1) ||
+				this.coordinate.isInSameCoordinate(down2);
+	}
+	
+	public static void main(String[] args) {
+		Knight knight = new Knight(new Coordinate(2, 2), Color.WHITE);
+		
+		Coordinate destiny = new Coordinate(3, 4);
+		
+		System.out.println(knight.canMove(destiny));
 	}
 }

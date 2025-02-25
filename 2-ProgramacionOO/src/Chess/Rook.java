@@ -6,6 +6,8 @@ public class Rook extends Piece{
 		super(coordinate, color);
 		
 		this.shape = color == Color.WHITE ? '♖' : '♜';
+		
+		this.type = 'r';
 	}
 
 	@Override

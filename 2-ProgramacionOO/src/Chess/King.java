@@ -6,6 +6,8 @@ public class King extends Piece{
 		super(coordinate, color);
 		
 		this.shape = color == Color.WHITE ? '♔' : '♚';
+		
+		this.type = 'k';
 	}
 
 	@Override
