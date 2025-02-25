@@ -186,4 +186,18 @@ public class Coordinate {
 	public int getY() {
 		return this.y;
 	}
+	
+	public static void main(String[] args) {
+		Coordinate origin = new Coordinate(4, 4);
+		
+		Coordinate destiny = new Coordinate(1, 1);
+		
+		System.out.println(origin.isInPrimaryDiagonal(destiny));
+		System.out.println(origin.isInSecondaryDiagonal(destiny));
+		
+		destiny = new Coordinate(2, 6);
+		
+		System.out.println(origin.isInPrimaryDiagonal(destiny));
+		System.out.println(origin.isInSecondaryDiagonal(destiny));
+	}
 }
