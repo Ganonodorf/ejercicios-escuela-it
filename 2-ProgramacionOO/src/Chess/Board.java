@@ -51,7 +51,7 @@ public class Board {
 		Coordinate[] coordinatesOnTheWay = origin.coordinatesTo(destiny);
 		
 		for(Coordinate coordinate : coordinatesOnTheWay) {
-			if(coordinate != null) {
+			if(this.pieceIn(coordinate) != null) {
 				return true;
 			}
 		}
@@ -158,15 +158,15 @@ public class Board {
 		
 		board.showInformation();
 		
-		Movement movement = new Movement("pc2c3", Color.WHITE);
+		Movement movement = new Movement("pd2d3", Color.WHITE);
 		
-		System.out.println("Is piece: " + board.isPiece(movement.piece.coordinate));
-		System.out.println("Piece in: " + board.pieceIn(movement.piece.coordinate));
-		System.out.println("move.piece.coordinate: " + movement.piece.coordinate.getX() + " " + movement.piece.coordinate.getY());
-		System.out.println("move.destiny: " + movement.destiny.getX() + " " + movement.destiny.getY());
-		System.out.println("Piece in can move: " + board.pieceIn(movement.piece.coordinate).canMove(movement.destiny));
-		System.out.println("Is a p on the way: " + board.isAPieceOnTheWay(movement.piece.coordinate, movement.destiny));
-		System.out.println("Can move p: " + board.canMovePiece(movement.piece.coordinate, movement.destiny));
-		System.out.println("Can move: " + board.canMakeMovement(movement));
+		board.makeMovement(movement);
+		
+		board.showInformation();
+		
+
+		movement = new Movement("bc1e3", Color.WHITE);
+		
+		System.out.println(board.canMakeMovement(movement));
 	}
 }
