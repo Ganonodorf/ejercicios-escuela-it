@@ -78,8 +78,6 @@ public class Chess {
 	        }
 	        
 		}while(!goodAnswer);
-        
-        scanner.close();
 		
 		return isPlayingAgain(input);
 	}

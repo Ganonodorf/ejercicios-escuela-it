@@ -15,8 +15,6 @@ public class MoverCartasEntreMontones extends Accion{
 		
         String input = scanner.nextLine();
         
-        scanner.close();
-        
         if(!input.matches("^[1-7]-[1-9][0-9]-[1-7]?")) {
         	System.out.println("Input inválido, acción detenida.");
         	return;

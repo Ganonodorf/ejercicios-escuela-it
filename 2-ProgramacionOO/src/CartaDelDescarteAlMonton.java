@@ -21,8 +21,6 @@ public class CartaDelDescarteAlMonton extends Accion {
 		
         String input = scanner.nextLine();
         
-        scanner.close();
-        
         if(input.matches("^[1-7]") && montones[Integer.parseInt(input)].SePuedeAnadirCarta(descarte.VerCarta())) {
         	montones[Integer.parseInt(input)].AnadirCarta(descarte.CogerCarta());
         	return;

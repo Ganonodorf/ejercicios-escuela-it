@@ -38,8 +38,6 @@ public class Jugador {
 	        }
 	        
 		}while(!matchea);
-        
-        scanner.close();
 		
 		return DevolverAccion(input);
 	}

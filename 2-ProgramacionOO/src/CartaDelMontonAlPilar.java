@@ -21,8 +21,6 @@ public class CartaDelMontonAlPilar extends Accion {
 		
         String input = scanner.nextLine();
         
-        scanner.close();
-        
         
         if(!input.matches("^[1-7]")) {
         	System.out.println("Montón inválido, acción detenida.");
