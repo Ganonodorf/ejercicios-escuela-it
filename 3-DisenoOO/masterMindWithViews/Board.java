@@ -4,18 +4,18 @@ import java.util.Random;
 
 public class Board {
 	
-	private int attemps = 0;
+	private int numAttempts = 0;
 	
 	private Combination secretCombination;
 	
-	private String[] result;
+	private Play[] plays;
 	
 	private boolean winnerResult = false;
 	
 	public Board(int numberOfAttemps) {
 		createSecretCombination();
 		
-		result = new String[numberOfAttemps];
+		plays = new Play[numberOfAttemps];
 	}
 	
 	public void proposeCombination(Combination combination) {
@@ -27,21 +27,21 @@ public class Board {
 		
 		int numberOfWhites = secretCombination.numberOfEqualColors(combination) - numberOfBlacks;
 		
-		saveResult(combination, numberOfBlacks, numberOfWhites);
+		savePlay(new Play(combination, new Result(numberOfBlacks, numberOfWhites)));
 		
-		attemps++;
+		numAttempts++;
+	}
+	
+	private void savePlay(Play play) {
+		this.plays[numAttempts] = play;
 	}
 	
 	public boolean isWinnerResult() {
 		return winnerResult;
 	}
 	
-	public int numberOfAttemps() {
-		return attemps;
-	}
-	
-	private void saveResult(Combination combination, int numberOfBlacks, int numberOfWhites) {
-		result[attemps] = combination.toString() + " --> " + numberOfBlacks + " blacks and " + numberOfWhites + " whites\n";
+	public int numberOfAttempts() {
+		return numAttempts;
 	}
 
 	private void createSecretCombination() {
@@ -53,12 +53,8 @@ public class Board {
 											colors[rand.nextInt(colors.length)], 
 											colors[rand.nextInt(colors.length)]);
 	}
-
-	public void showInformation() {
-		System.out.println("\n" + attemps + " attemp(s):");
-		System.out.println("****");
-		for(int i = 0; i < attemps; i++) {
-			System.out.print(result[i]);
-		}
+	
+	public Play[] getPlays() {
+		return plays;
 	}
 }
