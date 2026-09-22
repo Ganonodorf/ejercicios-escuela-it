@@ -1,0 +1,119 @@
+@startuml
+
+' package View <<Folder>>{
+' 	class MasterMindView
+' 	class BoardView
+' 	class PlayerView
+' }
+
+' package Model <<Folder>>{
+' 	class MasterMind
+' 	class Board
+' 	class Combination
+' 	class Play
+' 	class Player
+' 	class Result
+' 	enum Color
+' }
+
+enum Color{
+red,
+green,
+blue,
+yellow,
+cyan,
+magenta
+}
+
+class Board{
+	int numAttemps
+	Combination secretCombination
+	Play[] plays
+	boolean winnerResult()
+	Board(int numberOfAttemps)
+	void proposeCombination(Combination combination)
+	void savePlay(Play play)
+	boolean isWinnerResult()
+	int numberOfAttempts()
+	void createSecretCombination()
+	Play[] getPlays()
+}
+
+class BoardView{
+	Board board
+	BoardView(Board board)
+	void ShowInformation()
+}
+
+class Combination{
+	Color[] combination
+	Combination(Color first, Color second, Color third, Color fourth)
+	String toString()
+	int numberOfEqualColors(Combination combination)
+	int numberOfExactMatches(Combination combination)
+}
+
+class MasterMind{
+	PlayerView playerView
+	Board board
+	BoardView boardView
+	MasterMindView masterMindView
+	final int NUMBER_OF_ATTEMPS = 8
+	MasterMind()
+	void play()
+	static void main(String[] args)
+}
+
+class MasterMindView{
+	final String ANSWER_REGEX = "^[yn]$"
+	MasterMindView()
+	void winMessage()
+	void loseMessage()
+	boolean askUserPlayAgain()
+	boolean isPlayingAgain(String input)
+	isGoodAnswer(String input)
+}
+
+class Play{
+	Combination combination
+	Result result
+	Play(Combination combination, Result result)
+	String toString()
+}
+
+class Player{
+	Combination combination
+	Player()
+	void setCombination(Combination combination)
+	Combination getCombination()
+}
+
+class Result{
+	int blacks
+	int whites
+	Result(int blacks, int whites)
+	String toString()
+}
+
+class PlayerView{
+	final String COMBINATION_REGEX = "^[rgbycm][rgbycm][rgbycm][rgbycm]$"
+	PlayerView()
+	Combination askUserCombination()
+	String checkErrorInInput(String input)
+	Combination inputToCombination(String input)
+	Color charToColor(char colorChar)
+}
+
+MasterMind *-- PlayerView
+MasterMind *-- Board
+MasterMind *-- BoardView
+MasterMind *-- MasterMindView
+BoardView *-down- Board
+PlayerView ..> Combination
+Board *-- Combination
+Board *-- "8" Play
+Play *-- "1" Combination
+Play *-- "1" Result
+Combination *-- "4" Color
+
+@enduml
