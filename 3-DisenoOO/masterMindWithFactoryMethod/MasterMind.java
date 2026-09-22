@@ -1,6 +1,6 @@
 package masterMindWithFactoryMethod;
 
-public class MasterMind {
+public abstract class MasterMind {
 	private PlayerView playerView;
 	private Board board;
 	private BoardView boardView;
@@ -9,8 +9,10 @@ public class MasterMind {
 	
 	public MasterMind() {
 		playerView = new PlayerView();
-		masterMindView = new MasterMindView();
+		masterMindView = createView();
 	}
+	
+	abstract MasterMindView createView();
 	
 	public void play() {
 		do {
@@ -36,11 +38,5 @@ public class MasterMind {
 			}
 			
 		}while(masterMindView.askUserPlayAgain() == true);
-	}
-
-	public static void main(String[] args) {
-		MasterMind masterMind = new MasterMind();
-		
-		masterMind.play();
 	}
 }
