@@ -16,30 +16,32 @@ public class ConsoleView extends MasterMindView {
 	
 	@Override
 	public void play() {
+		board.initializeBoard();
+		
+		boardView = new BoardView(board);
+		
 		do {
-			board.initializeBoard();
-			
-			boardView = new BoardView(board);
-			
-			do {
-				boardView.showInformation();
-				
-				Combination proposedCombination = playerView.askUserCombination();
-				
-				board.proposeCombination(proposedCombination);
-				
-			}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
-
 			boardView.showInformation();
 			
-			if(board.isWinnerResult()) {
-				this.winMessage();
-			}
-			else {
-				this.loseMessage();
-			}
+			Combination proposedCombination = playerView.askUserCombination();
 			
-		}while(this.askUserPlayAgain());
+			board.proposeCombination(proposedCombination);
+			
+		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
+
+		boardView.showInformation();
+		
+		if(board.isWinnerResult()) {
+			this.winMessage();
+		}
+		else {
+			this.loseMessage();
+		}
+	}
+
+	@Override
+	public boolean resume() {
+		return this.askUserPlayAgain();
 	}
 	
 	@Override

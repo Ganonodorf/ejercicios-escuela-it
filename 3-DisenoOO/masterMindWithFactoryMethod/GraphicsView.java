@@ -15,6 +15,12 @@ public class GraphicsView extends MasterMindView {
 	public void play() {
 		// TODO
 	}
+
+	@Override
+	public boolean resume() {
+		//TODO
+		return false;
+	}
 	
 	@Override
 	public void winMessage() {

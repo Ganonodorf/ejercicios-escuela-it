@@ -19,6 +19,8 @@ public abstract class MasterMindView {
 	
 	public abstract void play();
 	
+	public abstract boolean resume();
+	
 	public abstract void winMessage();
 
 	public abstract void loseMessage();

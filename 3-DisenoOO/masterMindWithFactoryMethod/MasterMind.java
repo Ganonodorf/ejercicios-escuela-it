@@ -13,8 +13,9 @@ public abstract class MasterMind {
 	abstract MasterMindView createView(Board board);
 	
 	public void play() {
-		masterMindView.start();
-		
-		masterMindView.play();
+		do {
+			masterMindView.start();
+			masterMindView.play();
+		}while(masterMindView.resume());
 	}
 }
