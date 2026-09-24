@@ -3,9 +3,21 @@ package masterMindWithFactoryMethod;
 public abstract class MasterMindView {
 	protected final String ANSWER_REGEX = "^[yn]$";
 	
-	public MasterMindView() {
-		
+	protected Board board;
+	
+	protected BoardView boardView;
+	
+	protected PlayerView playerView;
+	
+	public MasterMindView(Board board) {
+		this.board = board;
+		boardView = new BoardView(board);
+		playerView = new PlayerView();
 	}
+	
+	public abstract void start();
+	
+	public abstract void play();
 	
 	public abstract void winMessage();
 

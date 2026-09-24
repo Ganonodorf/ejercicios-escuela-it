@@ -4,8 +4,39 @@ import java.util.Scanner;
 
 public class ConsoleView extends MasterMindView {
 	
-	public ConsoleView(){
-		
+	public ConsoleView(Board board){
+		super(board);
+	}
+	
+	@Override
+	public void start() {
+		//TODO
+	}
+	
+	@Override
+	public void play() {
+		do {
+			boardView = new BoardView(board);
+			
+			do {
+				boardView.showInformation();
+				
+				Combination proposedCombination = playerView.askUserCombination();
+				
+				board.proposeCombination(proposedCombination);
+				
+			}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
+
+			boardView.showInformation();
+			
+			if(board.isWinnerResult()) {
+				this.winMessage();
+			}
+			else {
+				this.loseMessage();
+			}
+			
+		}while(this.askUserPlayAgain() == true);
 	}
 	
 	@Override

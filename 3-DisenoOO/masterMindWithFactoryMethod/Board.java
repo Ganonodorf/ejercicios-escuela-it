@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Board {
 	
+	private int maxNumberOfAttempts;
+	
 	private int numAttempts = 0;
 	
 	private Combination secretCombination;
@@ -12,10 +14,12 @@ public class Board {
 	
 	private boolean winnerResult = false;
 	
-	public Board(int numberOfAttemps) {
+	public Board(int maxNumberOfAttempts) {
+		this.maxNumberOfAttempts = maxNumberOfAttempts;
+		
 		createSecretCombination();
 		
-		plays = new Play[numberOfAttemps];
+		plays = new Play[this.maxNumberOfAttempts];
 	}
 	
 	public void proposeCombination(Combination combination) {
@@ -56,5 +60,9 @@ public class Board {
 	
 	public Play[] getPlays() {
 		return plays;
+	}
+	
+	public boolean hasMoreAttempts() {
+		return numAttempts < maxNumberOfAttempts;
 	}
 }

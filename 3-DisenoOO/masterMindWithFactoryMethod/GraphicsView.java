@@ -2,8 +2,18 @@ package masterMindWithFactoryMethod;
 
 public class GraphicsView extends MasterMindView {
 	
-	public GraphicsView() {
-		
+	public GraphicsView(Board board) {
+		super(board);
+	}
+
+	@Override
+	public void start() {
+		// TODO
+	}
+
+	@Override
+	public void play() {
+		// TODO
 	}
 	
 	@Override

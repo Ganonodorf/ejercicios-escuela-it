@@ -3,8 +3,8 @@ package masterMindWithFactoryMethod;
 public class GraphicsMasterMind extends MasterMind {
 	
 	@Override
-	public MasterMindView createView() {
-		return new GraphicsView();
+	public MasterMindView createView(Board board) {
+		return new GraphicsView(board);
 	}
 
 	public static void main(String[] args) {
