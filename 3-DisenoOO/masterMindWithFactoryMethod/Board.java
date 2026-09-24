@@ -6,20 +6,16 @@ public class Board {
 	
 	private int maxNumberOfAttempts;
 	
-	private int numAttempts = 0;
+	private int numAttempts;
 	
 	private Combination secretCombination;
 	
 	private Play[] plays;
 	
-	private boolean winnerResult = false;
+	private boolean winnerResult;
 	
 	public Board(int maxNumberOfAttempts) {
 		this.maxNumberOfAttempts = maxNumberOfAttempts;
-		
-		createSecretCombination();
-		
-		plays = new Play[this.maxNumberOfAttempts];
 	}
 	
 	public void proposeCombination(Combination combination) {
@@ -64,5 +60,15 @@ public class Board {
 	
 	public boolean hasMoreAttempts() {
 		return numAttempts < maxNumberOfAttempts;
+	}
+	
+	public void initializeBoard() {
+		numAttempts = 0;
+		
+		winnerResult = false;
+		
+		createSecretCombination();
+		
+		plays = new Play[this.maxNumberOfAttempts];
 	}
 }

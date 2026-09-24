@@ -16,6 +16,8 @@ public class ConsoleView extends MasterMindView {
 	@Override
 	public void play() {
 		do {
+			board.initializeBoard();
+			
 			boardView = new BoardView(board);
 			
 			do {
@@ -36,7 +38,7 @@ public class ConsoleView extends MasterMindView {
 				this.loseMessage();
 			}
 			
-		}while(this.askUserPlayAgain() == true);
+		}while(this.askUserPlayAgain());
 	}
 	
 	@Override

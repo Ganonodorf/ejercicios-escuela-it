@@ -7,7 +7,6 @@ public class ConsoleMasterMind extends MasterMind {
 		return new ConsoleView(board);
 	}
 	
-	
 	public static void main(String[] args) {
 		MasterMind masterMind = new ConsoleMasterMind();
 		

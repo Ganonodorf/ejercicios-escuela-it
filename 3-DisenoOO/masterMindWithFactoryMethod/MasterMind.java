@@ -2,7 +2,6 @@ package masterMindWithFactoryMethod;
 
 public abstract class MasterMind {
 	private Board board;
-	private BoardView boardView;
 	private MasterMindView masterMindView;
 	private final int MAX_NUMBER_OF_ATTEMPS = 8;
 	
