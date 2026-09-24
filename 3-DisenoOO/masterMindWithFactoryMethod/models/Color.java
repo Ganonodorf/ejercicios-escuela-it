@@ -1,4 +1,4 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.models;
 
 public enum Color {
 	RED,

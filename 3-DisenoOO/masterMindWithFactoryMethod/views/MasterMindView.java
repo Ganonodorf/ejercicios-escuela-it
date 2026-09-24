@@ -1,4 +1,8 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.views;
+
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.views.console.BoardView;
+import masterMindWithFactoryMethod.views.console.PlayerView;
 
 public abstract class MasterMindView {
 	protected final String ANSWER_REGEX = "^[yn]$";

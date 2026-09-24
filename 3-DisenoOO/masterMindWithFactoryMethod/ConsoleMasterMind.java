@@ -1,5 +1,9 @@
 package masterMindWithFactoryMethod;
 
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.views.MasterMindView;
+import masterMindWithFactoryMethod.views.console.ConsoleView;
+
 public class ConsoleMasterMind extends MasterMind {
 	
 	@Override

@@ -1,4 +1,7 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.views.graphics;
+
+import masterMindWithFactoryMethod.views.MasterMindView;
+import masterMindWithFactoryMethod.models.Board;
 
 public class GraphicsView extends MasterMindView {
 	

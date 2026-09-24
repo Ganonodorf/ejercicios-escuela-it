@@ -1,6 +1,9 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.views.console;
 
 import java.util.Scanner;
+
+import masterMindWithFactoryMethod.models.Color;
+import masterMindWithFactoryMethod.models.Combination;
 
 public class PlayerView {
 	private final String COMBINATION_REGEX = "^[rgbycm][rgbycm][rgbycm][rgbycm]$";

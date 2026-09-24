@@ -1,5 +1,9 @@
 package masterMindWithFactoryMethod;
 
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.views.MasterMindView;
+import masterMindWithFactoryMethod.views.graphics.GraphicsView;
+
 public class GraphicsMasterMind extends MasterMind {
 	
 	@Override

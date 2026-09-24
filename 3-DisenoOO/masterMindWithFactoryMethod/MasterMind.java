@@ -1,5 +1,8 @@
 package masterMindWithFactoryMethod;
 
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.views.MasterMindView;
+
 public abstract class MasterMind {
 	private Board board;
 	private MasterMindView masterMindView;

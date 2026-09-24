@@ -1,4 +1,7 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.views.console;
+
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.models.Play;
 
 public class BoardView {
 	

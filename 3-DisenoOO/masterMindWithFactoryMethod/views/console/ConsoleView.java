@@ -1,6 +1,10 @@
-package masterMindWithFactoryMethod;
+package masterMindWithFactoryMethod.views.console;
 
 import java.util.Scanner;
+
+import masterMindWithFactoryMethod.views.MasterMindView;
+import masterMindWithFactoryMethod.models.Board;
+import masterMindWithFactoryMethod.models.Combination;
 
 public class ConsoleView extends MasterMindView {
 	
