@@ -80,17 +80,11 @@ public class ConsoleView extends MasterMindView {
 	
 	@Override
 	protected boolean isPlayingAgain(String input) {
-		if(input.matches("y")) {
-			return true;
-		}
-		return false;
+		return input.matches("y");
 	}
 	
 	@Override
 	protected boolean isGoodAnswer(String input) {
-		if(input.matches(ANSWER_REGEX)) {
-			return true;
-		}
-		return false;
+		return input.matches(ANSWER_REGEX);
 	}
 }
