@@ -10,7 +10,8 @@ public class ConsoleView extends MasterMindView {
 	
 	@Override
 	public void start() {
-		//TODO
+		System.out.println("Welcome to MasterMind!");
+		System.out.println("Try to guess the combination with rybgmc colors.");
 	}
 	
 	@Override
