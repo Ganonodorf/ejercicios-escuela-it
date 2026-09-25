@@ -4,16 +4,20 @@ import java.util.Scanner;
 
 import masterMindWithFactoryMethod.models.Color;
 import masterMindWithFactoryMethod.models.Combination;
+import masterMindWithFactoryMethod.views.View;
 
-public class PlayerView {
+public class PlayerView extends View{
 	
 	private final String COMBINATION_REGEX = "^[rgbycm][rgbycm][rgbycm][rgbycm]$";
+	
+	private Combination playerCombination;
 
 	public PlayerView() {
-		
+		super();
 	}
-	
-	public Combination askUserCombination() {
+
+	@Override
+	public void showInformation() {
 		String input;
 		
 		Scanner scanner = new Scanner(System.in);
@@ -32,7 +36,11 @@ public class PlayerView {
 	        }
 		}while(error.length() > 0);
 		
-		return inputToCombination(input);
+		playerCombination = inputToCombination(input);
+	}
+	
+	public Combination getPlayerCombination() {
+		return playerCombination;
 	}
 
 	private String checkErrorInInput(String input) {

@@ -39,7 +39,9 @@ public class ConsoleView extends MasterMindView {
 		do {
 			consoleBoardView.showInformation();
 			
-			Combination proposedCombination = playerView.askUserCombination();
+			playerView.showInformation();
+			
+			Combination proposedCombination = playerView.getPlayerCombination();
 			
 			board.proposeCombination(proposedCombination);
 			
