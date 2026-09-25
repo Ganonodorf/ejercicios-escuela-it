@@ -12,17 +12,22 @@ public class ConsoleView extends MasterMindView {
 	
 	private BoardView consoleBoardView;
 	private PlayerView playerView;
+	private WinView winView;
+	private LoseView loseView;
+	private StartView startView;
 	
 	public ConsoleView(Board board){
 		super(board);
 		consoleBoardView = new BoardView(board);
 		playerView = new PlayerView();
+		winView = new WinView();
+		loseView = new LoseView();
+		startView = new StartView();
 	}
 	
 	@Override
 	public void start() {
-		System.out.println("Welcome to MasterMind!");
-		System.out.println("Try to guess the combination with rybgmc colors.");
+		startView.showInformation();
 	}
 	
 	@Override
@@ -43,24 +48,16 @@ public class ConsoleView extends MasterMindView {
 		consoleBoardView.showInformation();
 		
 		if(board.isWinnerResult()) {
-			this.winMessage();
+			winView.showInformation();
 		}
 		else {
-			this.loseMessage();
+			loseView.showInformation();
 		}
 	}
 
 	@Override
 	public boolean resume() {
 		return this.askUserPlayAgain();
-	}
-	
-	public void winMessage() {
-		System.out.println("You've won!!! ;-)");
-	}
-	
-	public void loseMessage() {
-		System.out.println("You've lost!!! :-(");
 	}
 
 	public boolean askUserPlayAgain() {
