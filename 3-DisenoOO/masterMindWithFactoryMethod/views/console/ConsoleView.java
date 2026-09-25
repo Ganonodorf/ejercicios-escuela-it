@@ -8,8 +8,13 @@ import masterMindWithFactoryMethod.models.Combination;
 
 public class ConsoleView extends MasterMindView {
 	
+	private ConsoleBoardView consoleBoardView;
+	private PlayerView playerView;
+	
 	public ConsoleView(Board board){
 		super(board);
+		consoleBoardView = new ConsoleBoardView(board);
+		playerView = new PlayerView();
 	}
 	
 	@Override
@@ -22,10 +27,10 @@ public class ConsoleView extends MasterMindView {
 	public void play() {
 		board.initializeBoard();
 		
-		boardView = new BoardView(board);
+		consoleBoardView = new ConsoleBoardView(board);
 		
 		do {
-			boardView.showInformation();
+			consoleBoardView.showInformation();
 			
 			Combination proposedCombination = playerView.askUserCombination();
 			
@@ -33,7 +38,7 @@ public class ConsoleView extends MasterMindView {
 			
 		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
 
-		boardView.showInformation();
+		consoleBoardView.showInformation();
 		
 		if(board.isWinnerResult()) {
 			this.winMessage();
@@ -48,17 +53,14 @@ public class ConsoleView extends MasterMindView {
 		return this.askUserPlayAgain();
 	}
 	
-	@Override
 	public void winMessage() {
 		System.out.println("You've won!!! ;-)");
 	}
 	
-	@Override
 	public void loseMessage() {
 		System.out.println("You've lost!!! :-(");
 	}
 
-	@Override
 	public boolean askUserPlayAgain() {
 		String input;
 		
@@ -82,12 +84,10 @@ public class ConsoleView extends MasterMindView {
 		return isPlayingAgain(input);
 	}
 	
-	@Override
 	protected boolean isPlayingAgain(String input) {
 		return input.matches("y");
 	}
 	
-	@Override
 	protected boolean isGoodAnswer(String input) {
 		return input.matches(ANSWER_REGEX);
 	}

@@ -2,15 +2,15 @@ package masterMindWithFactoryMethod.views.console;
 
 import masterMindWithFactoryMethod.models.Board;
 import masterMindWithFactoryMethod.models.Play;
+import masterMindWithFactoryMethod.views.BoardView;
 
-public class BoardView {
-	
-	Board board;
-	
-	public BoardView(Board board) {
-		this.board = board;
+public class ConsoleBoardView extends BoardView{
+
+	public ConsoleBoardView(Board board) {
+		super(board);
 	}
-	
+
+	@Override
 	public void showInformation() {
 		int attempts = board.numberOfAttempts();
 		Play[] plays = board.getPlays();
@@ -22,4 +22,5 @@ public class BoardView {
 			System.out.println(plays[i].toString());
 		}
 	}
+
 }
