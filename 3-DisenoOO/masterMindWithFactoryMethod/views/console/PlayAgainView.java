@@ -38,8 +38,6 @@ public class PlayAgainView extends View{
 		}while(!goodAnswer);
 		
 		isPlayingAgain = inputMatchesPlayAgain(input);
-		
-		scanner.close();
 	}
 	
 	public boolean isPlayingAgain() {
