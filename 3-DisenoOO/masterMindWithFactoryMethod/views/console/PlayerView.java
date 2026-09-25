@@ -37,6 +37,8 @@ public class PlayerView extends View{
 		}while(error.length() > 0);
 		
 		playerCombination = inputToCombination(input);
+		
+		scanner.close();
 	}
 	
 	public Combination getPlayerCombination() {

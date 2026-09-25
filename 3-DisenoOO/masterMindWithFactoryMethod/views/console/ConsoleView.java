@@ -1,20 +1,17 @@
 package masterMindWithFactoryMethod.views.console;
 
-import java.util.Scanner;
-
 import masterMindWithFactoryMethod.views.MasterMindView;
 import masterMindWithFactoryMethod.models.Board;
 import masterMindWithFactoryMethod.models.Combination;
 
 public class ConsoleView extends MasterMindView {
 	
-	private final String ANSWER_REGEX = "^[yn]$";
-	
 	private BoardView consoleBoardView;
 	private PlayerView playerView;
 	private WinView winView;
 	private LoseView loseView;
 	private StartView startView;
+	private PlayAgainView playAgainView;
 	
 	public ConsoleView(Board board){
 		super(board);
@@ -23,6 +20,7 @@ public class ConsoleView extends MasterMindView {
 		winView = new WinView();
 		loseView = new LoseView();
 		startView = new StartView();
+		playAgainView = new PlayAgainView();
 	}
 	
 	@Override
@@ -59,37 +57,8 @@ public class ConsoleView extends MasterMindView {
 
 	@Override
 	public boolean resume() {
-		return this.askUserPlayAgain();
-	}
-
-	public boolean askUserPlayAgain() {
-		String input;
+		playAgainView.showInformation();
 		
-		Scanner scanner = new Scanner(System.in);
-		
-		boolean goodAnswer;
-		
-		System.out.println("Do you want to continue? (y/n): ");
-
-		do {
-	        input = scanner.nextLine();
-	        
-	        goodAnswer = isGoodAnswer(input);
-	        
-	        if(!goodAnswer) {
-	        	System.out.println("Not a valid answer. Try again.");
-	        }
-	        
-		}while(!goodAnswer);
-		
-		return isPlayingAgain(input);
-	}
-	
-	protected boolean isPlayingAgain(String input) {
-		return input.matches("y");
-	}
-	
-	protected boolean isGoodAnswer(String input) {
-		return input.matches(ANSWER_REGEX);
+		return playAgainView.isPlayingAgain();
 	}
 }
