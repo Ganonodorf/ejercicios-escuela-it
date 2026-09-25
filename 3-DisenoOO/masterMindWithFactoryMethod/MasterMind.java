@@ -4,6 +4,7 @@ import masterMindWithFactoryMethod.models.Board;
 import masterMindWithFactoryMethod.views.MasterMindView;
 
 public abstract class MasterMind {
+	
 	private Board board;
 	private MasterMindView masterMindView;
 	private final int MAX_NUMBER_OF_ATTEMPS = 8;

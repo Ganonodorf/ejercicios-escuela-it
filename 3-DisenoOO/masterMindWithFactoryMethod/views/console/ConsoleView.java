@@ -8,6 +8,8 @@ import masterMindWithFactoryMethod.models.Combination;
 
 public class ConsoleView extends MasterMindView {
 	
+	private final String ANSWER_REGEX = "^[yn]$";
+	
 	private ConsoleBoardView consoleBoardView;
 	private PlayerView playerView;
 	
