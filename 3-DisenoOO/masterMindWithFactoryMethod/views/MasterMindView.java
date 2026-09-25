@@ -2,7 +2,8 @@ package masterMindWithFactoryMethod.views;
 
 import masterMindWithFactoryMethod.models.Board;
 
-public abstract class MasterMindView {	
+public abstract class MasterMindView {
+	
 	protected Board board;
 	
 	public MasterMindView(Board board) {

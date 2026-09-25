@@ -10,12 +10,12 @@ public class ConsoleView extends MasterMindView {
 	
 	private final String ANSWER_REGEX = "^[yn]$";
 	
-	private ConsoleBoardView consoleBoardView;
+	private BoardView consoleBoardView;
 	private PlayerView playerView;
 	
 	public ConsoleView(Board board){
 		super(board);
-		consoleBoardView = new ConsoleBoardView(board);
+		consoleBoardView = new BoardView(board);
 		playerView = new PlayerView();
 	}
 	
@@ -29,7 +29,7 @@ public class ConsoleView extends MasterMindView {
 	public void play() {
 		board.initializeBoard();
 		
-		consoleBoardView = new ConsoleBoardView(board);
+		consoleBoardView = new BoardView(board);
 		
 		do {
 			consoleBoardView.showInformation();

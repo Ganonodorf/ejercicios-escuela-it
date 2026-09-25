@@ -2,13 +2,13 @@ package masterMindWithFactoryMethod.views;
 
 import masterMindWithFactoryMethod.models.Board;
 
-public abstract class BoardView {
+public abstract class ViewWithBoard extends View{
 	
 	protected Board board;
 	
-	public BoardView(Board board) {
+	public ViewWithBoard(Board board) {
+		super();
+		
 		this.board = board;
 	}
-	
-	public abstract void showInformation();
 }

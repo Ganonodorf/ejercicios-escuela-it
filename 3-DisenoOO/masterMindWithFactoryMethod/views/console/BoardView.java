@@ -2,11 +2,11 @@ package masterMindWithFactoryMethod.views.console;
 
 import masterMindWithFactoryMethod.models.Board;
 import masterMindWithFactoryMethod.models.Play;
-import masterMindWithFactoryMethod.views.BoardView;
+import masterMindWithFactoryMethod.views.ViewWithBoard;
 
-public class ConsoleBoardView extends BoardView{
+public class BoardView extends ViewWithBoard{
 
-	public ConsoleBoardView(Board board) {
+	public BoardView(Board board) {
 		super(board);
 	}
 
