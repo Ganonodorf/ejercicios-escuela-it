@@ -1,0 +1,74 @@
+package masterMindModelViewController.models;
+
+import java.util.Random;
+
+public class Board {
+	
+	private int maxNumberOfAttempts;
+	
+	private int numAttempts;
+	
+	private Combination secretCombination;
+	
+	private Play[] plays;
+	
+	private boolean winnerResult;
+	
+	public Board(int maxNumberOfAttempts) {
+		this.maxNumberOfAttempts = maxNumberOfAttempts;
+	}
+	
+	public void proposeCombination(Combination combination) {
+		int numberOfBlacks = secretCombination.numberOfExactMatches(combination);
+		
+		if(numberOfBlacks == 4) {
+			winnerResult = true;
+		}
+		
+		int numberOfWhites = secretCombination.numberOfEqualColors(combination) - numberOfBlacks;
+		
+		savePlay(new Play(combination, new Result(numberOfBlacks, numberOfWhites)));
+		
+		numAttempts++;
+	}
+	
+	private void savePlay(Play play) {
+		this.plays[numAttempts] = play;
+	}
+	
+	public boolean isWinnerResult() {
+		return winnerResult;
+	}
+	
+	public int numberOfAttempts() {
+		return numAttempts;
+	}
+
+	private void createSecretCombination() {
+		Random rand = new Random();
+		Color[] colors = Color.values();
+		
+		secretCombination = new Combination(colors[rand.nextInt(colors.length)], 
+											colors[rand.nextInt(colors.length)], 
+											colors[rand.nextInt(colors.length)], 
+											colors[rand.nextInt(colors.length)]);
+	}
+	
+	public Play[] getPlays() {
+		return plays;
+	}
+	
+	public boolean hasMoreAttempts() {
+		return numAttempts < maxNumberOfAttempts;
+	}
+	
+	public void initializeBoard() {
+		numAttempts = 0;
+		
+		winnerResult = false;
+		
+		createSecretCombination();
+		
+		plays = new Play[this.maxNumberOfAttempts];
+	}
+}
