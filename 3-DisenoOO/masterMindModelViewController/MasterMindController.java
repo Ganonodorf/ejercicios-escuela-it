@@ -7,7 +7,6 @@ import masterMindModelViewController.views.MasterMindView;
 public abstract class MasterMindController {
 	private MasterMind masterMind;
 	private MasterMindView masterMindView;
-	private final int MAX_NUMBER_OF_ATTEMPS = 8;
 	
 	public MasterMindController() {
 		masterMind = new MasterMind();
