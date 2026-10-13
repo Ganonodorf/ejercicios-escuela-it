@@ -1,0 +1,71 @@
+@startuml
+
+package Control <<Folder>>{
+	class MasterMindController
+	class GameController
+	class ConsoleMasterMindController
+	class GraphicsMasterMindController
+}
+
+package Model <<Folder>>{
+	class MasterMind
+	class Board
+	enum Color
+	class Combination
+	class Play
+	class Result
+}
+
+package View <<Folder>>{
+	class MasterMindView
+	class View
+	class ViewWithBoard
+
+	package View.Console <<Folder>>{
+		class BoardView
+		class ConsoleView
+		class LoseView
+		class PlayAgainView
+		class PlayerView
+		class StartView
+		class WinView
+	}
+
+	package View.Graphics <<Folder>>{
+		class GraphicsView
+	}
+}
+
+MasterMind *-- Board
+MasterMindController *-- MasterMind
+MasterMindController *-- MasterMindView
+MasterMindController *-- GameController
+GameController --> MasterMind
+GameController --> MasterMindView
+ConsoleMasterMindController -up-|> MasterMindController
+ConsoleMasterMindController --> ConsoleView
+GraphicsMasterMindController -up-|> MasterMindController
+GraphicsMasterMindController --> GraphicsView
+ConsoleView -up-|> MasterMindView
+GraphicsView -up-|> MasterMindView
+ViewWithBoard -up-|> View
+BoardView --|> ViewWithBoard
+ConsoleView *-- BoardView
+ConsoleView *-- PlayerView
+ConsoleView *-- WinView
+ConsoleView *-- LoseView
+ConsoleView *-- StartView
+ConsoleView *-- PlayAgainView
+LoseView -up-|> View
+PlayAgainView -up-|> View
+PlayerView -up-|> View
+StartView -up-|> View
+WinView -up-|> View
+
+Board *-- Combination
+Board *-- "8" Play
+Combination *-- "4" Color
+Play *-- "1" Combination
+Play *-- "1" Result
+
+@enduml
