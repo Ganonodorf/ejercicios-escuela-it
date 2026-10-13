@@ -4,7 +4,7 @@ import masterMindModelViewController.models.Board;
 import masterMindModelViewController.views.MasterMindView;
 import masterMindModelViewController.views.graphics.GraphicsView;
 
-public class GraphicsMasterMind extends MasterMind {
+public class GraphicsMasterMindController extends MasterMindController {
 	
 	@Override
 	public MasterMindView createView(Board board) {
@@ -12,8 +12,8 @@ public class GraphicsMasterMind extends MasterMind {
 	}
 
 	public static void main(String[] args) {
-		MasterMind masterMind = new GraphicsMasterMind();
+		MasterMindController masterMindController = new GraphicsMasterMindController();
 		
-		masterMind.play();
+		masterMindController.play();
 	}
 }

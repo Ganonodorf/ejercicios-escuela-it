@@ -12,3 +12,6 @@
 /GraphicsMasterMind.class
 /ConsoleView.class
 /GraphicsView.class
+/MasterMindController.class
+/ConsoleMasterMindController.class
+/GraphicsMasterMindController.class
