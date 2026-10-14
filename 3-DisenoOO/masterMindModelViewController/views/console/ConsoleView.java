@@ -5,17 +5,13 @@ import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
 
 public class ConsoleView extends MasterMindView {
-	
-	private BoardView consoleBoardView;
 	private PlayerView playerView;
 	private WinView winView;
 	private LoseView loseView;
 	private StartView startView;
 	private PlayAgainView playAgainView;
 	
-	public ConsoleView(Board board){
-		super(board);
-		consoleBoardView = new BoardView(board);
+	public ConsoleView(){
 		playerView = new PlayerView();
 		winView = new WinView();
 		loseView = new LoseView();
@@ -27,32 +23,33 @@ public class ConsoleView extends MasterMindView {
 	public void start() {
 		startView.showInformation();
 	}
+
 	
 	@Override
-	public void play() {
-		board.initializeBoard();
-		
-		consoleBoardView = new BoardView(board);
-		
-		do {
-			consoleBoardView.showInformation();
-			
-			playerView.showInformation();
-			
-			Combination proposedCombination = playerView.getPlayerCombination();
-			
-			board.proposeCombination(proposedCombination);
-			
-		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
+	public void board(Board board) {
+		new BoardView(board).showInformation();
+	}
 
-		consoleBoardView.showInformation();
+	@Override
+	public void player() {
+		playerView.showInformation();
+	}
+
+	@Override
+	public Combination getPlayerCombination() {
+		return playerView.getPlayerCombination();
+	}
+
+	@Override
+	public void win() {
+		winView.showInformation();
 		
-		if(board.isWinnerResult()) {
-			winView.showInformation();
-		}
-		else {
-			loseView.showInformation();
-		}
+	}
+
+	@Override
+	public void lose() {
+		loseView.showInformation();
+		
 	}
 
 	@Override
@@ -61,4 +58,5 @@ public class ConsoleView extends MasterMindView {
 		
 		return playAgainView.isPlayingAgain();
 	}
+
 }
