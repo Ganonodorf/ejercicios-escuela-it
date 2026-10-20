@@ -2,3 +2,7 @@
 /BoardView.class
 /ViewWithBoard.class
 /View.class
+/Choice.class
+/ProposeChoice.class
+/UndoChoice.class
+/RedoChoice.class
