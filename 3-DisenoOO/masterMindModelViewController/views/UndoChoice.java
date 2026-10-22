@@ -1,9 +1,11 @@
 package masterMindModelViewController.views;
 
+import masterMindModelViewController.utils.Observer;
+
 public class UndoChoice extends Choice {
 	
-	public UndoChoice() {
-		
+	public UndoChoice(Observer observer) {
+		super(observer);
 	}
 
 	@Override

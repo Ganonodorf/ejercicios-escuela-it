@@ -3,13 +3,15 @@ package masterMindModelViewController.views.console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import masterMindModelViewController.utils.Event;
+import masterMindModelViewController.utils.Observer;
 import masterMindModelViewController.views.Choice;
 import masterMindModelViewController.views.ProposeChoice;
 import masterMindModelViewController.views.RedoChoice;
 import masterMindModelViewController.views.UndoChoice;
 import masterMindModelViewController.views.View;
 
-public class MenuView extends View {
+public class MenuView extends View implements Observer{
 	
 	private ArrayList<Choice> choices;
 	
@@ -17,9 +19,9 @@ public class MenuView extends View {
 	
 	public MenuView() {
 		choices = new ArrayList<Choice>();
-		choices.add(new ProposeChoice());
-		choices.add(new UndoChoice());
-		choices.add(new RedoChoice());
+		choices.add(new ProposeChoice(this));
+		choices.add(new UndoChoice(this));
+		choices.add(new RedoChoice(this));
 	}
 	
 	@Override
@@ -58,5 +60,17 @@ public class MenuView extends View {
 	
 	private boolean isGoodAnswer(String input) {
 		return input.matches(ANSWER_REGEX);
+	}
+
+	@Override
+	public void Update(Event event) {
+		switch(event) {
+		case Event.Propose:
+			break;
+		case Event.Undo:
+			break;
+		case Event.Redo:
+			break;
+		}
 	}
 }

@@ -1,9 +1,11 @@
 package masterMindModelViewController.views;
 
+import masterMindModelViewController.utils.Observer;
+
 public class ProposeChoice extends Choice {
 	
-	public ProposeChoice() {
-		
+	public ProposeChoice(Observer observer) {
+		super(observer);
 	}
 
 	@Override
