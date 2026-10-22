@@ -1,6 +1,7 @@
 package masterMindModelViewController;
 
 import masterMindModelViewController.controllers.GameController;
+import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.views.MasterMindView;
 
@@ -11,11 +12,11 @@ public abstract class MasterMindController {
 	
 	public MasterMindController() {
 		masterMind = new MasterMind();
-		masterMindView = createView();
+		masterMindView = createView(masterMind.getBoard());
 		gameController = new GameController(masterMind.getBoard(), masterMindView);
 	}
 	
-	abstract MasterMindView createView();
+	abstract MasterMindView createView(Board board);
 	
 	public void play() {
 		do {

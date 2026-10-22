@@ -5,13 +5,15 @@ import masterMindModelViewController.models.Combination;
 
 public abstract class MasterMindView {
 	
-	public MasterMindView() {
-		
+	protected Board board; 
+	
+	public MasterMindView(Board board) {
+		this.board = board;
 	}
 	
 	public abstract void start();
 	
-	public abstract void board(Board board);
+	public abstract void board();
 	
 	public abstract void player();
 	

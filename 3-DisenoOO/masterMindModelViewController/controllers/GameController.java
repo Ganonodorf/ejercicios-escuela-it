@@ -18,7 +18,7 @@ public class GameController {
 		board.initializeBoard();
 		
 		do {
-			masterMindView.board(board);
+			masterMindView.board();
 			
 			masterMindView.player();
 			
@@ -28,7 +28,7 @@ public class GameController {
 			
 		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
 
-		masterMindView.board(board);
+		masterMindView.board();
 		
 		if(board.isWinnerResult()) {
 			masterMindView.win();

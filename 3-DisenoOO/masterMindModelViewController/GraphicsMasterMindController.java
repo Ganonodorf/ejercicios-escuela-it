@@ -1,12 +1,13 @@
 package masterMindModelViewController;
 
+import masterMindModelViewController.models.Board;
 import masterMindModelViewController.views.MasterMindView;
 import masterMindModelViewController.views.graphics.GraphicsView;
 
 public class GraphicsMasterMindController extends MasterMindController {
 	
 	@Override
-	public MasterMindView createView() {
+	public MasterMindView createView(Board board) {
 		return new GraphicsView();
 	}
 

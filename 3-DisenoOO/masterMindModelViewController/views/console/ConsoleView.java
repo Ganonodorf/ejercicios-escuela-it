@@ -11,12 +11,13 @@ public class ConsoleView extends MasterMindView {
 	private StartView startView;
 	private PlayAgainView playAgainView;
 	
-	public ConsoleView(){
+	public ConsoleView(Board board){
 		playerView = new PlayerView();
 		winView = new WinView();
 		loseView = new LoseView();
 		startView = new StartView();
 		playAgainView = new PlayAgainView();
+		super(board);
 	}
 	
 	@Override
@@ -26,8 +27,8 @@ public class ConsoleView extends MasterMindView {
 
 	
 	@Override
-	public void board(Board board) {
-		new BoardView(board).showInformation();
+	public void board() {
+		new BoardView(this.board).showInformation();
 	}
 
 	@Override
