@@ -6,8 +6,8 @@ import masterMindModelViewController.models.Combination;
 
 public class GraphicsView extends MasterMindView {
 	
-	public GraphicsView() {
-		
+	public GraphicsView(Board board) {
+		super(board);
 	}
 
 	@Override
@@ -17,7 +17,7 @@ public class GraphicsView extends MasterMindView {
 	}
 
 	@Override
-	public void board(Board board) {
+	public void board() {
 		// TODO Auto-generated method stub
 		
 	}

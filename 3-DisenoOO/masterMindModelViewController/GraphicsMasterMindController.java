@@ -8,7 +8,7 @@ public class GraphicsMasterMindController extends MasterMindController {
 	
 	@Override
 	public MasterMindView createView(Board board) {
-		return new GraphicsView();
+		return new GraphicsView(board);
 	}
 
 	public static void main(String[] args) {
