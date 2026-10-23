@@ -11,17 +11,17 @@ import masterMindModelViewController.views.RedoChoice;
 import masterMindModelViewController.views.UndoChoice;
 import masterMindModelViewController.views.View;
 
-public class MenuView extends View implements Observer{
+public class MenuView extends View{
 	
 	private ArrayList<Choice> choices;
 	
 	private String ANSWER_REGEX = "^[1-9]"; 
 	
-	public MenuView() {
+	public MenuView(Observer observer) {
 		choices = new ArrayList<Choice>();
-		choices.add(new ProposeChoice(this));
-		choices.add(new UndoChoice(this));
-		choices.add(new RedoChoice(this));
+		choices.add(new ProposeChoice(observer));
+		//choices.add(new UndoChoice(observer));
+		//choices.add(new RedoChoice(observer));
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class MenuView extends View implements Observer{
 			System.out.println("Choose an option (number): ");
 			
 			for(int i = 0; i < choices.size(); i++) {
-				System.out.println(i + "-" + choices.get(i).getName() + "");
+				System.out.println(i + 1 + "-" + choices.get(i).getName() + "");
 			}
 			
 	        input = scanner.nextLine();
@@ -55,22 +55,10 @@ public class MenuView extends View implements Observer{
 	}
 	
 	private void executeChoice(int input) {
-		choices.get(input).action();
+		choices.get(input - 1).action();
 	}
 	
 	private boolean isGoodAnswer(String input) {
 		return input.matches(ANSWER_REGEX);
-	}
-
-	@Override
-	public void Update(Event event) {
-		switch(event) {
-		case Event.Propose:
-			break;
-		case Event.Undo:
-			break;
-		case Event.Redo:
-			break;
-		}
 	}
 }

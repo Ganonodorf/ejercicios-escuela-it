@@ -6,13 +6,13 @@ import masterMindModelViewController.models.Color;
 import masterMindModelViewController.models.Combination;
 import masterMindModelViewController.views.View;
 
-public class PlayerView extends View{
+public class ProposeCombinationView extends View{
 	
 	private final String COMBINATION_REGEX = "^[rgbycm][rgbycm][rgbycm][rgbycm]$";
 	
-	private Combination playerCombination;
+	private Combination proposedCombination;
 
-	public PlayerView() {
+	public ProposeCombinationView() {
 		super();
 	}
 
@@ -36,11 +36,11 @@ public class PlayerView extends View{
 	        }
 		}while(error.length() > 0);
 		
-		playerCombination = inputToCombination(input);
+		proposedCombination = inputToCombination(input);
 	}
 	
 	public Combination getPlayerCombination() {
-		return playerCombination;
+		return proposedCombination;
 	}
 
 	private String checkErrorInInput(String input) {

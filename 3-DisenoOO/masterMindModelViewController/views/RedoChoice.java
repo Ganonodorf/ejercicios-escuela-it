@@ -1,5 +1,6 @@
 package masterMindModelViewController.views;
 
+import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
 
 public class RedoChoice extends Choice {
@@ -10,8 +11,7 @@ public class RedoChoice extends Choice {
 
 	@Override
 	public void action() {
-		// TODO Auto-generated method stub
-		
+		this.notify(Event.Redo);
 	}
 
 	@Override

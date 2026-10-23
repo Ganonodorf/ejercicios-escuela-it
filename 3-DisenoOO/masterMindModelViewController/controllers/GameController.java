@@ -11,7 +11,7 @@ public class GameController {
 	
 	public GameController(Board board, MasterMindView masterMindView) {
 		this.board = board;
-		this.masterMindView = masterMindView; 
+		this.masterMindView = masterMindView;
 	}
 	
 	public void play() {
@@ -20,7 +20,7 @@ public class GameController {
 		do {
 			masterMindView.board();
 			
-			masterMindView.player();
+			masterMindView.askProposedCombination();
 			
 			Combination proposedCombination = masterMindView.getPlayerCombination();
 			

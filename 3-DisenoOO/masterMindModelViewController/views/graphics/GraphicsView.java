@@ -3,11 +3,12 @@ package masterMindModelViewController.views.graphics;
 import masterMindModelViewController.views.MasterMindView;
 import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
+import masterMindModelViewController.utils.Observer;
 
 public class GraphicsView extends MasterMindView {
 	
-	public GraphicsView(Board board) {
-		super(board);
+	public GraphicsView(Board board, Observer observer) {
+		super(board, observer);
 	}
 
 	@Override
@@ -23,7 +24,19 @@ public class GraphicsView extends MasterMindView {
 	}
 
 	@Override
-	public void player() {
+	protected void createMenu(Observer observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void menu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void askProposedCombination() {
 		// TODO Auto-generated method stub
 		
 	}
