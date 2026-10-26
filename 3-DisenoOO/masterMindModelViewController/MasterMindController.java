@@ -31,7 +31,7 @@ public abstract class MasterMindController implements Observer {
 	public void Update(Event event) {
 		switch(event) {
 		case Event.Propose:
-			System.out.println("Welcome to Event.Propose!");
+			gameController.proposeCombination();
 			break;
 		case Event.Undo:
 			break;

@@ -14,27 +14,11 @@ public class GameController {
 		this.masterMindView = masterMindView;
 	}
 	
-	public void play() {
-		board.initializeBoard();
+	public void proposeCombination() {
+		masterMindView.askProposedCombination();
 		
-		do {
-			masterMindView.board();
-			
-			masterMindView.askProposedCombination();
-			
-			Combination proposedCombination = masterMindView.getPlayerCombination();
-			
-			board.proposeCombination(proposedCombination);
-			
-		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
-
-		masterMindView.board();
+		Combination proposedCombination = masterMindView.getPlayerCombination();
 		
-		if(board.isWinnerResult()) {
-			masterMindView.win();
-		}
-		else {
-			masterMindView.lose();
-		}
+		board.proposeCombination(proposedCombination);
 	}
 }
