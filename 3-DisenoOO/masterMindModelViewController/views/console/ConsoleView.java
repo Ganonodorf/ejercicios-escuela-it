@@ -3,6 +3,7 @@ package masterMindModelViewController.views.console;
 import masterMindModelViewController.views.MasterMindView;
 import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
+import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Observer;
 
 public class ConsoleView extends MasterMindView {
@@ -13,13 +14,13 @@ public class ConsoleView extends MasterMindView {
 	private StartView startView;
 	private PlayAgainView playAgainView;
 	
-	public ConsoleView(Board board, Observer observer){
+	public ConsoleView(MasterMind masterMind, Observer observer){
 		proposeCombinationView = new ProposeCombinationView();
 		winView = new WinView();
 		loseView = new LoseView();
 		startView = new StartView();
 		playAgainView = new PlayAgainView();
-		super(board, observer);
+		super(masterMind, observer);
 	}
 	
 	@Override
@@ -30,12 +31,12 @@ public class ConsoleView extends MasterMindView {
 	
 	@Override
 	public void board() {
-		new BoardView(this.board).showInformation();
+		new BoardView(masterMind.getBoard()).showInformation();
 	}
 
 	@Override
-	protected void createMenu(Observer observer) {
-		menuView = new MenuView(observer);
+	protected void createMenu(MasterMind masterMind, Observer observer) {
+		menuView = new MenuView(masterMind, observer);
 	}
 
 	@Override

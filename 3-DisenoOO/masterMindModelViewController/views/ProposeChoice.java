@@ -1,12 +1,13 @@
 package masterMindModelViewController.views;
 
+import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
 
 public class ProposeChoice extends Choice {
 	
-	public ProposeChoice(Observer observer) {
-		super(observer);
+	public ProposeChoice(MasterMind masterMind, Observer observer) {
+		super(masterMind, observer);
 	}
 
 	@Override
@@ -17,5 +18,10 @@ public class ProposeChoice extends Choice {
 	@Override
 	public void setName() {
 		this.name = "Propose a combination";
+	}
+
+	@Override
+	public boolean isActive() {
+		return true;
 	}
 }

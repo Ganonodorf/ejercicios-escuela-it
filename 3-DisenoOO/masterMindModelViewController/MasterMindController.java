@@ -1,7 +1,6 @@
 package masterMindModelViewController;
 
 import masterMindModelViewController.controllers.GameController;
-import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
@@ -14,11 +13,11 @@ public abstract class MasterMindController implements Observer {
 	
 	public MasterMindController() {
 		masterMind = new MasterMind();
-		masterMindView = createView(masterMind.getBoard(), this);
+		masterMindView = createView(masterMind, this);
 		gameController = new GameController(masterMind.getBoard(), masterMindView);
 	}
 	
-	abstract MasterMindView createView(Board board, Observer observer);
+	abstract MasterMindView createView(MasterMind masterMind, Observer observer);
 	
 	public void play() {
 		do {
@@ -32,8 +31,10 @@ public abstract class MasterMindController implements Observer {
 		switch(event) {
 		case Event.Propose:
 			gameController.proposeCombination();
+			masterMind.saveState();
 			break;
 		case Event.Undo:
+			System.out.println("Undo!");
 			break;
 		case Event.Redo:
 			break;

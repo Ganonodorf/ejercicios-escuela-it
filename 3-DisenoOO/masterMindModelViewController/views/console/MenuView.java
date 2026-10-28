@@ -3,6 +3,7 @@ package masterMindModelViewController.views.console;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
 import masterMindModelViewController.views.Choice;
@@ -17,11 +18,11 @@ public class MenuView extends View{
 	
 	private String ANSWER_REGEX = "^[1-9]"; 
 	
-	public MenuView(Observer observer) {
+	public MenuView(MasterMind masterMind, Observer observer) {
 		choices = new ArrayList<Choice>();
-		choices.add(new ProposeChoice(observer));
-		//choices.add(new UndoChoice(observer));
-		//choices.add(new RedoChoice(observer));
+		choices.add(new ProposeChoice(masterMind, observer));
+		choices.add(new UndoChoice(masterMind, observer));
+		choices.add(new RedoChoice(masterMind, observer));
 	}
 	
 	@Override
@@ -31,12 +32,20 @@ public class MenuView extends View{
 		Scanner scanner = new Scanner(System.in);
 		
 		boolean goodAnswer;
+		
+		ArrayList<Choice> availableChoices = new ArrayList<Choice>();
+		
+		for(Choice choice: choices) {
+			if(choice.isActive()) {
+				availableChoices.add(choice);
+			}
+		}
 
 		do {
 			System.out.println("Choose an option (number): ");
 			
-			for(int i = 0; i < choices.size(); i++) {
-				System.out.println(i + 1 + "-" + choices.get(i).getName() + "");
+			for(int i = 0; i < availableChoices.size(); i++) {
+				System.out.println(i + 1 + "-" + availableChoices.get(i).getName() + "");
 			}
 			
 	        input = scanner.nextLine();
@@ -51,11 +60,7 @@ public class MenuView extends View{
 		
 		int choiceNumber = Integer.parseInt(input);
 		
-		executeChoice(choiceNumber);
-	}
-	
-	private void executeChoice(int input) {
-		choices.get(input - 1).action();
+		availableChoices.get(choiceNumber - 1).action();
 	}
 	
 	private boolean isGoodAnswer(String input) {

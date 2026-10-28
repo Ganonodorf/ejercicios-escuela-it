@@ -15,8 +15,12 @@ public class MasterMind {
 		mementos = new ArrayList<Memento>();
 	}
 	
-	public void SaveState() {
+	public void saveState() {
 		Memento memento = new Memento(MAX_NUMBER_OF_ATTEMPS, board.getPlays());
+	}
+	
+	public boolean canUndo() {
+		return board.numberOfAttempts() > 0; 
 	}
 	
 	public Board getBoard() {

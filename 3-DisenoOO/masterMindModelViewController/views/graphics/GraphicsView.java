@@ -1,14 +1,14 @@
 package masterMindModelViewController.views.graphics;
 
 import masterMindModelViewController.views.MasterMindView;
-import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
+import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Observer;
 
 public class GraphicsView extends MasterMindView {
 	
-	public GraphicsView(Board board, Observer observer) {
-		super(board, observer);
+	public GraphicsView(MasterMind masterMind, Observer observer) {
+		super(masterMind, observer);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class GraphicsView extends MasterMindView {
 	}
 
 	@Override
-	protected void createMenu(Observer observer) {
+	protected void createMenu(MasterMind masterMind, Observer observer) {
 		// TODO Auto-generated method stub
 		
 	}

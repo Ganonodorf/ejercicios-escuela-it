@@ -1,23 +1,23 @@
 package masterMindModelViewController.views;
 
-import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
+import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Observer;
 
 public abstract class MasterMindView {
 	
-	protected Board board;
+	protected MasterMind masterMind;
 	
-	public MasterMindView(Board board, Observer observer) {
-		this.board = board;
-		createMenu(observer);
+	public MasterMindView(MasterMind masterMind, Observer observer) {
+		this.masterMind = masterMind;
+		createMenu(masterMind, observer);
 	}
 	
 	public abstract void start();
 	
 	public abstract void board();
 	
-	protected abstract void createMenu(Observer observer);
+	protected abstract void createMenu(MasterMind masterMind, Observer observer);
 	
 	public abstract void menu();
 	
@@ -34,18 +34,18 @@ public abstract class MasterMindView {
 	public void play() {
 		start();
 		
-		board.initializeBoard();
+		masterMind.getBoard().initializeBoard();
 		
 		do {
 			board();
 			
 			menu();
 			
-		}while(board.hasMoreAttempts() && board.isWinnerResult() == false);
+		}while(masterMind.getBoard().hasMoreAttempts() && masterMind.getBoard().isWinnerResult() == false);
 
 		board();
 		
-		if(board.isWinnerResult()) {
+		if(masterMind.getBoard().isWinnerResult()) {
 			win();
 		}
 		else {
