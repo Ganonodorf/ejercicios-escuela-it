@@ -6,7 +6,7 @@ import masterMindModelViewController.utils.Observer;
 
 public abstract class MasterMindView {
 	
-	protected Board board; 
+	protected Board board;
 	
 	public MasterMindView(Board board, Observer observer) {
 		this.board = board;
