@@ -21,7 +21,6 @@ public abstract class MasterMindController implements Observer {
 	
 	public void play() {
 		do {
-			masterMindView.start();
 			masterMindView.play();
 		}while(masterMindView.resume());
 	}
