@@ -17,6 +17,7 @@ public class MasterMind {
 	
 	public void saveState() {
 		Memento memento = new Memento(MAX_NUMBER_OF_ATTEMPS, board.getPlays());
+		mementos.add(memento);
 	}
 	
 	public boolean canUndo() {

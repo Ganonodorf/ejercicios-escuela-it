@@ -1,7 +1,6 @@
 package masterMindModelViewController.views.console;
 
 import masterMindModelViewController.views.MasterMindView;
-import masterMindModelViewController.models.Board;
 import masterMindModelViewController.models.Combination;
 import masterMindModelViewController.models.MasterMind;
 import masterMindModelViewController.utils.Observer;
@@ -15,12 +14,12 @@ public class ConsoleView extends MasterMindView {
 	private PlayAgainView playAgainView;
 	
 	public ConsoleView(MasterMind masterMind, Observer observer){
+		super(masterMind, observer);
 		proposeCombinationView = new ProposeCombinationView();
 		winView = new WinView();
 		loseView = new LoseView();
 		startView = new StartView();
 		playAgainView = new PlayAgainView();
-		super(masterMind, observer);
 	}
 	
 	@Override
