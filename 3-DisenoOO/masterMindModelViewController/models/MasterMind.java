@@ -11,13 +11,11 @@ public class MasterMind {
 	private ArrayList<Memento> mementos;
 	
 	public MasterMind() {
-		board = new Board(MAX_NUMBER_OF_ATTEMPS);
-		mementos = new ArrayList<Memento>();
+		reset();
 	}
 	
 	public void saveState() {
-		Memento memento = new Memento(MAX_NUMBER_OF_ATTEMPS, board.getPlays());
-		mementos.add(memento);
+		mementos.addFirst(board.createMemento());
 	}
 	
 	public boolean canUndo() {
