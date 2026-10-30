@@ -1,5 +1,6 @@
 package masterMindModelViewController.models;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
@@ -10,12 +11,14 @@ public class Board {
 	
 	private Combination secretCombination;
 	
-	private Play[] plays;
+	private ArrayList<Play> plays;
 	
 	private boolean winnerResult;
 	
 	public Board(int maxNumberOfAttempts) {
 		this.maxNumberOfAttempts = maxNumberOfAttempts;
+		
+		initializeBoard();
 	}
 	
 	public void proposeCombination(Combination combination) {
@@ -33,7 +36,7 @@ public class Board {
 	}
 	
 	private void savePlay(Play play) {
-		this.plays[numAttempts] = play;
+		this.plays.add(play);
 	}
 	
 	public boolean isWinnerResult() {
@@ -54,7 +57,7 @@ public class Board {
 											colors[rand.nextInt(colors.length)]);
 	}
 	
-	public Play[] getPlays() {
+	public ArrayList<Play> getPlays() {
 		return plays;
 	}
 	
@@ -69,6 +72,26 @@ public class Board {
 		
 		createSecretCombination();
 		
-		plays = new Play[this.maxNumberOfAttempts];
+		plays = new ArrayList<Play>();
+	}
+	
+	public Memento createMemento() {
+		ArrayList<Play> mementoPlays = new ArrayList<Play>();
+		
+		for(Play play: plays) {
+			mementoPlays.add(play.copy());
+		}
+		
+		return new Memento(numAttempts, mementoPlays);
+	}
+	
+	public void setState(Memento memento) {
+		this.numAttempts = memento.getAttempts();
+		
+		this.plays = new ArrayList<Play>();
+		
+		for(int i = 0; i < this.numAttempts; i++) {
+			this.plays.add(memento.getPlay(i).copy());
+		}
 	}
 }

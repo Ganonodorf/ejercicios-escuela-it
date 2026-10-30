@@ -13,4 +13,8 @@ public class Play {
 	public String toString() {
 		return combination.toString() + " --> " + result.toString();
 	}
+	
+	public Play copy() {
+		return new Play(combination, result);
+	}
 }

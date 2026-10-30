@@ -33,7 +33,7 @@ public abstract class MasterMindController implements Observer {
 			masterMind.saveState();
 			break;
 		case Event.Undo:
-			System.out.println("Undo!");
+			masterMind.undo();
 			break;
 		case Event.Redo:
 			break;

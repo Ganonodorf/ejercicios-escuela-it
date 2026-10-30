@@ -11,11 +11,19 @@ public class MasterMind {
 	private ArrayList<Memento> mementos;
 	
 	public MasterMind() {
-		reset();
+		board = new Board(MAX_NUMBER_OF_ATTEMPS);
+		
+		mementos = new ArrayList<Memento>();
+		
+		saveState();
 	}
 	
 	public void saveState() {
 		mementos.addFirst(board.createMemento());
+		
+		for(Memento memento: mementos){
+			memento.toString();
+		}
 	}
 	
 	public boolean canUndo() {
@@ -24,5 +32,19 @@ public class MasterMind {
 	
 	public Board getBoard() {
 		return board;
+	}
+	
+	public void undo() {
+		mementos.removeFirst();
+		
+		board.setState(mementos.getFirst());
+	}
+	
+	public void reset() {
+		board.initializeBoard();
+		
+		mementos = new ArrayList<Memento>();
+		
+		saveState();
 	}
 }
