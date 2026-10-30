@@ -2,15 +2,18 @@ package masterMindModelViewController.views;
 
 import masterMindModelViewController.models.Combination;
 import masterMindModelViewController.models.MasterMind;
+import masterMindModelViewController.utils.Observed;
 import masterMindModelViewController.utils.Observer;
 
-public abstract class MasterMindView {
+public abstract class MasterMindView extends Observed{
 	
 	protected MasterMind masterMind;
 	
 	public MasterMindView(MasterMind masterMind, Observer observer) {
 		this.masterMind = masterMind;
+		this.addObserver(observer);
 		createMenu(masterMind, observer);
+		createResume(observer);
 	}
 	
 	public abstract void start();
@@ -18,6 +21,8 @@ public abstract class MasterMindView {
 	public abstract void board();
 	
 	protected abstract void createMenu(MasterMind masterMind, Observer observer);
+	
+	protected abstract void createResume(Observer observer);
 	
 	public abstract void menu();
 	
@@ -33,8 +38,6 @@ public abstract class MasterMindView {
 
 	public void play() {
 		start();
-		
-		masterMind.getBoard().initializeBoard();
 		
 		do {
 			board();

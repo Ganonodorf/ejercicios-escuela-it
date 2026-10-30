@@ -30,6 +30,12 @@ public class GraphicsView extends MasterMindView {
 	}
 
 	@Override
+	protected void createResume(Observer observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public void menu() {
 		// TODO Auto-generated method stub
 		

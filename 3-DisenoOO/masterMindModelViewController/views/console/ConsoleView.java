@@ -3,6 +3,7 @@ package masterMindModelViewController.views.console;
 import masterMindModelViewController.views.MasterMindView;
 import masterMindModelViewController.models.Combination;
 import masterMindModelViewController.models.MasterMind;
+import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
 
 public class ConsoleView extends MasterMindView {
@@ -19,7 +20,6 @@ public class ConsoleView extends MasterMindView {
 		winView = new WinView();
 		loseView = new LoseView();
 		startView = new StartView();
-		playAgainView = new PlayAgainView();
 	}
 	
 	@Override
@@ -36,6 +36,11 @@ public class ConsoleView extends MasterMindView {
 	@Override
 	protected void createMenu(MasterMind masterMind, Observer observer) {
 		menuView = new MenuView(masterMind, observer);
+	}
+
+	@Override
+	protected void createResume(Observer observer) {
+		playAgainView = new PlayAgainView(observer);
 	}
 
 	@Override
@@ -68,6 +73,10 @@ public class ConsoleView extends MasterMindView {
 	@Override
 	public boolean resume() {
 		playAgainView.showInformation();
+		
+		if(playAgainView.isPlayingAgain()) {
+			this.notify(Event.NewGame);
+		}
 		
 		return playAgainView.isPlayingAgain();
 	}

@@ -19,6 +19,7 @@ public class MenuView extends View{
 	private String ANSWER_REGEX = "^[1-9]"; 
 	
 	public MenuView(MasterMind masterMind, Observer observer) {
+		super();
 		choices = new ArrayList<Choice>();
 		choices.add(new ProposeChoice(masterMind, observer));
 		choices.add(new UndoChoice(masterMind, observer));

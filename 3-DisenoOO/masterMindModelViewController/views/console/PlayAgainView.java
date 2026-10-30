@@ -2,6 +2,7 @@ package masterMindModelViewController.views.console;
 
 import java.util.Scanner;
 
+import masterMindModelViewController.utils.Observer;
 import masterMindModelViewController.views.View;
 
 public class PlayAgainView extends View{
@@ -12,8 +13,9 @@ public class PlayAgainView extends View{
 	
 	private boolean isPlayingAgain;
 	
-	public PlayAgainView() {
+	public PlayAgainView(Observer observer) {
 		super();
+		
 	}
 
 	@Override
