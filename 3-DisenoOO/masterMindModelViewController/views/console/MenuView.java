@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import masterMindModelViewController.models.MasterMind;
+import masterMindModelViewController.utils.ClosedInterval;
 import masterMindModelViewController.utils.Event;
 import masterMindModelViewController.utils.Observer;
 import masterMindModelViewController.views.Choice;
@@ -32,7 +33,9 @@ public class MenuView extends View{
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		boolean goodAnswer;
+		boolean isInteger;
+		
+		boolean isCorrectChoice = false;
 		
 		ArrayList<Choice> availableChoices = new ArrayList<Choice>();
 		
@@ -51,20 +54,29 @@ public class MenuView extends View{
 			
 	        input = scanner.nextLine();
 	        
-	        goodAnswer = isGoodAnswer(input);
+	        isInteger = isNumber(input);
 	        
-	        if(!goodAnswer) {
-	        	System.out.println("Not a valid answer. Try again.");
+	        if(!isInteger) {
+	        	System.out.println("Not a valid answer. You have to introduce an integer.");
+	        }
+	        else {
+	        	isCorrectChoice = new ClosedInterval(1, availableChoices.size()).includes(Integer.parseInt(input));
+
+		        if(!isCorrectChoice) {
+		        	System.out.println("Not a valid answer. You have to introduce an available choice.");
+		        }
 	        }
 	        
-		}while(!goodAnswer);
+	        System.out.println(isInteger);
+	        System.out.println(isCorrectChoice);
+		}while(!isInteger || !isCorrectChoice);
 		
 		int choiceNumber = Integer.parseInt(input);
 		
 		availableChoices.get(choiceNumber - 1).action();
 	}
 	
-	private boolean isGoodAnswer(String input) {
+	private boolean isNumber(String input) {
 		return input.matches(ANSWER_REGEX);
 	}
 }
