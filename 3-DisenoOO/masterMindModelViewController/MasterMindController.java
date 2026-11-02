@@ -36,6 +36,7 @@ public abstract class MasterMindController implements Observer {
 			masterMind.undo();
 			break;
 		case Event.Redo:
+			masterMind.redo();
 			break;
 		case Event.NewGame:
 			masterMind.reset();

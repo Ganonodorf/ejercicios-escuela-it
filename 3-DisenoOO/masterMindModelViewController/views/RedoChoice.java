@@ -22,7 +22,6 @@ public class RedoChoice extends Choice {
 
 	@Override
 	public boolean isActive() {
-		// TODO Auto-generated method stub
-		return false;
+		return masterMind.canRedo();
 	}
 }
