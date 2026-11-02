@@ -10,26 +10,26 @@ public class MasterMind {
 	
 	private ArrayList<Memento> mementos;
 	
-	private ArrayList<Memento> backupMementos;
-	
-	private int redoCount = 0;
+	private int undoCount = 0;
 	
 	public MasterMind() {
 		board = new Board(MAX_NUMBER_OF_ATTEMPS);
 		
 		mementos = new ArrayList<Memento>();
 		
-		backupMementos = new ArrayList<Memento>();
-		
 		saveState();
 	}
 	
-	public void saveState() {		
+	public void saveState() {
+		if(undoCount > 0) {
+			for(int i = undoCount; i > 0; i--) {
+				mementos.removeFirst();
+			}
+		}
+		
 		mementos.addFirst(board.createMemento());
 		
-		backupMementos.addFirst(board.createMemento());
-		
-		redoCount = 0;
+		undoCount = 0;
 	}
 	
 	public boolean canUndo() {
@@ -37,23 +37,19 @@ public class MasterMind {
 	}
 	
 	public void undo() {
-		mementos.removeFirst();
+		undoCount += 1;
 		
-		board.setState(mementos.getFirst());
-		
-		redoCount += 1;
+		board.setState(mementos.get(undoCount));
 	}
 	
 	public boolean canRedo() {
-		return redoCount > 0;
+		return undoCount > 0;
 	}
 	
 	public void redo() {
-		mementos.addFirst(backupMementos.get(redoCount - 1));
+		board.setState(mementos.get(undoCount - 1));
 		
-		board.setState(mementos.getFirst());
-		
-		redoCount -= 1;
+		undoCount -= 1;
 	}
 	
 	public Board getBoard() {
@@ -64,8 +60,6 @@ public class MasterMind {
 		board.initializeBoard();
 		
 		mementos = new ArrayList<Memento>();
-		
-		backupMementos = new ArrayList<Memento>();
 		
 		saveState();
 	}
