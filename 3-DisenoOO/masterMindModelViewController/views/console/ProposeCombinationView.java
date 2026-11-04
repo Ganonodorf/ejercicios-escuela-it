@@ -58,40 +58,9 @@ public class ProposeCombinationView extends View{
 		Color[] colors = new Color[4];
 		
 		for(int i = 0; i < 4; i++) {
-			colors[i] = charToColor(input.charAt(i));
+			colors[i] = Color.charToColor(input.charAt(i));
 		}
 		
 		return new Combination(colors[0], colors[1], colors[2], colors[3]);
 	}
-
-	private Color charToColor(char colorChar) {
-		Color result;
-
-		switch(colorChar) {
-		case 'r':
-			result = Color.RED;
-			break;
-		case 'g':
-			result = Color.GREEN;
-			break;
-		case 'b':
-			result = Color.BLUE;
-			break;
-		case 'm':
-			result = Color.MAGENTA;
-			break;
-		case 'c':
-			result = Color.CYAN;
-			break;
-		case 'y':
-			result = Color.YELLOW;
-			break;
-		default:
-			result = Color.RED;
-			break;
-		}
-		
-		return result;
-	}
-
 }
