@@ -66,9 +66,6 @@ public class MenuView extends View{
 		        	System.out.println("Not a valid answer. You have to introduce an available choice.");
 		        }
 	        }
-	        
-	        System.out.println(isInteger);
-	        System.out.println(isCorrectChoice);
 		}while(!isInteger || !isCorrectChoice);
 		
 		int choiceNumber = Integer.parseInt(input);
